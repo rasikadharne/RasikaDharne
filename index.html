@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio | Constantly Revamping</title> <!-- Updated title tag -->
+    <title>Portfolio | Constantly Revamping</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome for Social Media Icons -->
@@ -16,21 +16,34 @@
             -moz-osx-font-smoothing: grayscale;
         }
         .hero-section {
-            /* Background image for the initial view */
-            /* Using a landscape placeholder image. Replace with your actual hero image URL! */
-            background-image: url('https://placehold.co/1920x1080/D4BBA4/FFFFFF?text=Your+Landscape+Hero+Image+Here'); 
-            background-size: cover; /* Ensures the image covers the entire section */
-            background-position: center; /* Centers the image */
-            height: 80vh; /* Occupies 80% of viewport height */
+            /* Fallback background image for browsers that don't support video or if video fails */
+            background-image: url('./images/home_tab/hero-background-static.jpg'); /* Provide a static image fallback */
+            background-size: cover;
+            background-position: center;
+            height: 80vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
             position: relative;
-            color: #fff; /* Light text for contrast */
-            /* Subtle overlay for better text readability on various images */
+            color: #fff;
             box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.25);
+            overflow: hidden; /* Ensure video doesn't overflow */
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -1; /* Place video behind text */
+            transform: translateX(-50%) translateY(-50%);
+            background-size: cover;
+            background-position: center;
         }
 
         /* Styles for content sections, initially hidden */
@@ -89,7 +102,6 @@
 
     <!-- Sticky Header with Navigation and Profile Photo -->
     <header class="fixed top-0 w-full bg-white bg-opacity-95 backdrop-blur-sm z-20 shadow-sm py-4 px-6 flex justify-end items-center">
-        <!-- Removed h1 "Rasika Dharne" from here -->
         <nav class="flex items-center space-x-4 md:space-x-6">
             <!-- Main Navigation Links -->
             <a href="#hero-home" class="nav-link" data-target="home-page-main-content">Home</a>
@@ -121,17 +133,24 @@
             </div>
 
             <!-- Profile Photo -->
-            <img src="https://placehold.co/40x40/D4BBA4/FFFFFF?text=Photo" alt="Rasika Dharne Profile Photo" class="w-10 h-10 rounded-full shadow-md object-cover border-2 border-white ml-4">
+            <img src="./images/about_me_tab/profile.png" alt="Rasika Dharne Profile Photo" class="w-10 h-10 rounded-full shadow-md object-cover border-2 border-white ml-4">
         </nav>
     </header>
 
     <!-- Main Content Wrapper - Adds top padding for fixed header -->
-    <div class="max-w-4xl w-full bg-white rounded-xl shadow-lg relative overflow-hidden mt-[80px]"> <!-- Adjusted mt to roughly match header height -->
+    <div class="max-w-4xl w-full bg-white rounded-xl shadow-lg relative overflow-hidden mt-[80px]">
 
         <!-- Hero Section - Always visible at the top of the Home page -->
         <section id="hero-home" class="hero-section">
-            <h1 class="text-6xl md:text-8xl font-extrabold text-white drop-shadow-lg">Rasika Dharne</h1>
-            <p class="text-xl md:text-2xl text-white mt-4 drop-shadow-md">constantly revamping.</p>
+            <!-- Video Background -->
+            <video autoplay muted loop playsinline class="hero-video">
+                <source src="https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO_NAME/main/images/home/Home%20page%20timelapse.MOV" type="video/quicktime"> <!-- UPDATED SRC AND TYPE -->
+                <source src="./images/home_tab/videos/timelapse.mp4" type="video/mp4"> <!-- Keep as fallback, update path if you convert -->
+                <source src="./images/home_tab/videos/timelapse.webm" type="video/webm"> <!-- Keep as fallback, update path if you convert -->
+                Your browser does not support the video tag.
+            </video>
+            <h1 class="text-6xl md:text-8xl font-extrabold text-white drop-shadow-lg relative z-10">Rasika Dharne</h1>
+            <p class="text-xl md:text-2xl text-white mt-4 drop-shadow-md relative z-10">constantly revamping.</p>
         </section>
 
         <!-- Main Content Area - All sections below the hero -->
@@ -186,7 +205,7 @@
                 </div>
                 <div id="about-me-content-text">
                     <div class="flex flex-col md:flex-row items-center md:items-start mb-6">
-                        <img src="https://placehold.co/120x120/F5F5DC/0F172A?text=Your+Photo" alt="Rasika Dharne Profile Photo" class="w-32 h-32 rounded-full shadow-md object-cover border-4 border-white mb-4 md:mb-0 md:mr-6">
+                        <img src="./images/about_me_tab/profile.png" alt="Rasika Dharne Profile Photo" class="w-32 h-32 rounded-full shadow-md object-cover border-4 border-white mb-4 md:mb-0 md:mr-6">
                         <div>
                             <p class="text-gray-700 leading-relaxed mb-4">
                                 Greetings! I'm Rasika Dharne, a dedicated [Your Profession/Role, e.g., software engineer, creative designer, researcher]
@@ -573,140 +592,4 @@
                         generationConfig: {
                             responseModalities: ["AUDIO"],
                             speechConfig: {
-                                voiceConfig: {
-                                    prebuiltVoiceConfig: { voiceName: "Kore" }
-                                }
-                            }
-                        },
-                        model: "gemini-2.5-flash-preview-tts"
-                    };
-
-                    const apiKey = "";
-                    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=${apiKey}`;
-
-                    const response = await fetchWithExponentialBackoff(apiUrl, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(payload)
-                    });
-
-                    const result = await response.json();
-                    const part = result?.candidates?.[0]?.content?.parts?.[0];
-                    const audioData = part?.inlineData?.data;
-                    const mimeType = part?.inlineData?.mimeType;
-
-                    if (audioData && mimeType && mimeType.startsWith("audio/")) {
-                        const sampleRateMatch = mimeType.match(/rate=(\d+)/);
-                        const sampleRate = sampleRateMatch ? parseInt(sampleRateMatch[1], 10) : 16000;
-
-                        const pcmDataBuffer = base64ToArrayBuffer(audioData);
-                        const pcm16 = new Int16Array(pcmDataBuffer);
-                        const wavBlob = pcmToWav(pcm16, sampleRate);
-                        const audioUrl = URL.createObjectURL(wavBlob);
-
-                        currentAudio = new Audio(audioUrl);
-                        currentAudio.play();
-                        showMessageBox('Playing audio...', 'success', false);
-
-                        currentAudio.onended = () => {
-                            hideMessageBox();
-                            URL.revokeObjectURL(audioUrl);
-                            currentAudio = null;
-                        };
-                        currentAudio.onerror = (e) => {
-                            showMessageBox('Audio playback error.', 'error');
-                            console.error("Audio error:", e);
-                            URL.revokeObjectURL(audioUrl);
-                            currentAudio = null;
-                        };
-
-                    } else {
-                        throw new Error("Invalid audio data received from API.");
-                    }
-                } catch (error) {
-                    showMessageBox('Failed to generate speech: ' + error.message, 'error');
-                    console.error("TTS Error:", error);
-                } finally {
-                    if (!currentAudio || currentAudio.paused) {
-                         loadingIndicator.classList.add('hidden');
-                    }
-                }
-            }
-
-
-            // Handle navigation link clicks
-            function handleNavLinkClick(event) {
-                event.preventDefault(); // Prevent default link behavior (page refresh)
-                const targetId = event.currentTarget.dataset.target;
-                const targetSection = document.getElementById(targetId);
-
-                // Stop any ongoing audio when switching tabs
-                if (currentAudio) {
-                    currentAudio.pause();
-                    currentAudio.currentTime = 0;
-                    currentAudio = null;
-                    hideMessageBox();
-                }
-
-                deactivateAllNavLinks();
-                hideAllContentSections(); // Hide all content sections including the hero
-
-                // If clicking 'Home', show the hero section and scroll to top
-                if (event.currentTarget.getAttribute('href') === '#hero-home') {
-                    document.getElementById('hero-home').classList.remove('hidden');
-                    document.getElementById('home-page-main-content').classList.add('active'); // Also activate the main home content
-                    event.currentTarget.classList.add('active');
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                } else if (targetSection) {
-                    targetSection.classList.add('active'); // Show the target section
-
-                    // Activate the clicked link
-                    event.currentTarget.classList.add('active');
-                    if (event.currentTarget.closest('.group')) {
-                        // If it's a dropdown link, activate the parent dropdown button
-                        const parentButton = event.currentTarget.closest('.group').querySelector('.nav-link');
-                        if (parentButton) parentButton.classList.add('active');
-                        // Special active class for Leisure Diaries sub-items
-                        if (event.currentTarget.closest('.group').querySelector('#leisure-dropdown-btn')) { // Check if it's the leisure dropdown
-                            event.currentTarget.classList.add('active-leisure');
-                        }
-                    }
-
-                    // Scroll to the content section itself, below the sticky header
-                    const headerOffset = document.querySelector('header').offsetHeight;
-                    const elementPosition = targetSection.getBoundingClientRect().top + window.scrollY;
-                    window.scrollTo({
-                        top: elementPosition - headerOffset - 20, // Adjusted offset
-                        behavior: 'smooth'
-                    });
-                }
-            }
-
-            // Attach event listeners to all navigation and dropdown links
-            navLinks.forEach(link => {
-                link.addEventListener('click', handleNavLinkClick);
-            });
-            dropdownLinks.forEach(link => {
-                link.addEventListener('click', handleNavLinkClick);
-            });
-
-            // Speak Button Click Handler
-            speakButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    const contentId = button.dataset.contentId;
-                    speakContent(contentId);
-                });
-            });
-
-            // Initial setup: Activate the "Home" content section and its nav link
-            // And ensure hero is visible on initial load
-            const initialNavLink = document.querySelector('.nav-link[data-target="home-page-main-content"]');
-            if (initialNavLink) {
-                initialNavLink.classList.add('active');
-                document.getElementById('home-page-main-content').classList.add('active');
-                document.getElementById('hero-home').classList.remove('hidden'); // Ensure hero is visible
-            }
-        });
-    </script>
-</body>
-</html>
+                                voiceConf
