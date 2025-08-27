@@ -17,9 +17,10 @@
         }
         .hero-section {
             /* Background image for the initial view */
-            background-image: url('https://placehold.co/1920x1080/D4BBA4/FFFFFF?text=Your+Landscape+Hero+Image+Here');  /* Replace with your actual hero image */
-            background-size: cover;
-            background-position: center;
+            /* Using a landscape placeholder image. Replace with your actual hero image URL! */
+            background-image: url('https://placehold.co/1920x1080/D4BBA4/FFFFFF?text=Your+Landscape+Hero+Image+Here'); 
+            background-size: cover; /* Ensures the image covers the entire section */
+            background-position: center; /* Centers the image */
             height: 80vh; /* Occupies 80% of viewport height */
             display: flex;
             flex-direction: column;
@@ -87,8 +88,9 @@
 <body class="bg-yellow-50 min-h-screen flex flex-col items-center pb-10">
 
     <!-- Sticky Header with Navigation and Profile Photo -->
-    <header class="fixed top-0 w-full bg-white bg-opacity-95 backdrop-blur-sm z-20 shadow-sm py-4 px-6 flex justify-between items-center">
-        <nav class="flex-grow flex justify-end items-center space-x-4 md:space-x-6">
+    <header class="fixed top-0 w-full bg-white bg-opacity-95 backdrop-blur-sm z-20 shadow-sm py-4 px-6 flex justify-end items-center">
+        <!-- Removed h1 "Rasika Dharne" from here -->
+        <nav class="flex items-center space-x-4 md:space-x-6">
             <!-- Main Navigation Links -->
             <a href="#hero-home" class="nav-link" data-target="home-page-main-content">Home</a>
             <a href="#about-me-content" class="nav-link" data-target="about-me-content">About Me</a>
