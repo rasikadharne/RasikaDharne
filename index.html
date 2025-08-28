@@ -11,7 +11,7 @@
     <style>
         /* Custom styles for the Inter font and smooth transitions */
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Inter', sans-serif; /* Keeping Inter, as it's very similar to the reference's clean sans-serif font */
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
@@ -57,19 +57,30 @@
 
         /* Navigation link styling */
         .nav-link {
-            @apply text-lg text-gray-700 font-medium px-3 py-2 rounded-md hover:bg-orange-100 hover:text-orange-600 transition-colors duration-200;
+            @apply text-lg text-gray-700 font-medium px-3 py-2 rounded-md transition-all duration-200 ease-in-out;
+            border-bottom: 2px solid transparent; /* Default transparent underline */
+        }
+        .nav-link:hover {
+            @apply text-orange-600;
+            border-bottom-color: #F97316; /* Orange-500 for hover */
         }
         .nav-link.active {
-            @apply bg-orange-200 text-orange-700 font-semibold;
+            @apply bg-transparent text-orange-700 font-semibold; /* Removed background for active to match reference */
+            border-bottom-color: #F97316; /* Orange-500 for active */
         }
         /* Dropdown specific link styling */
         .dropdown-link {
-            @apply block px-4 py-2 text-sm text-gray-700 hover:bg-orange-100 transition-colors duration-200;
+            @apply block px-4 py-2 text-sm text-gray-700 transition-colors duration-200;
+            border-bottom: 2px solid transparent; /* Default transparent underline for dropdown items */
         }
-
+        .dropdown-link:hover {
+            @apply bg-orange-100;
+            border-bottom-color: #F97316; /* Orange-500 for dropdown hover */
+        }
         /* Active styling for Leisure Diaries dropdown items */
         .dropdown-link.active-leisure {
             @apply bg-lime-100 text-lime-600 font-medium;
+            border-bottom-color: #84CC16; /* Lime-500 for active leisure */
         }
 
         /* Animation for content fade-in */
@@ -209,10 +220,10 @@
                 <div id="about-me-content-text">
                     <div class="flex flex-col items-center mb-6"> <!-- Changed to flex-col and items-center for vertical stacking and centering -->
                         <!-- Profile Photo in About Me section -->
-                        <img src="https://raw.githubusercontent.com/rasikadharne/my-portfolio/main/images/about_me/Display%20Picture.JPG" alt="Rasika Dharne Profile Photo" class="w-32 h-32 rounded-full shadow-md object-cover border-4 border-white mb-6"> <!-- Added mb-6 for spacing -->
+                        <img src="https://raw.githubusercontent.com/rasikadharne/my-portfolio/main/images/about_me/Display%20Picture.JPG" alt="Rasika Dharne Profile Photo" class="w-48 h-48 rounded-full shadow-lg object-cover border-4 border-white mb-8"> <!-- Larger image, centered, with more spacing -->
                         
                         <!-- Content directly below the picture -->
-                        <div class="w-full text-center"> <!-- Added w-full and text-center for content alignment -->
+                        <div class="w-full max-w-2xl text-center px-4"> <!-- Constrains width and centers text -->
                             <h3 class="text-2xl font-semibold text-gray-800 mb-3">Who am I?</h3>
                             <p class="text-gray-700 leading-relaxed mb-6">
                                 My name is Rasika Dharne, and I am [Your Age/Background]. I live in [Your Location] and [mention a key aspect of your life, e.g., work as a software engineer, pursue various creative projects]. My journey is defined by [mention a core value or passion]. This space is where I share my professional and personal growth.
