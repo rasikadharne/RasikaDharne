@@ -132,8 +132,8 @@
                 </div>
             </div>
 
-            <!-- Profile Photo -->
-            <img src="./images/about_me_tab/profile.png" alt="Rasika Dharne Profile Photo" class="w-10 h-10 rounded-full shadow-md object-cover border-2 border-white ml-4">
+            <!-- Profile Photo in Header -->
+            <img src="https://raw.githubusercontent.com/rasikadharne/my-portfolio/main/images/about_me/Display%20Picture.JPG" alt="Rasika Dharne Profile Photo" class="w-10 h-10 rounded-full shadow-md object-cover border-2 border-white ml-4">
         </nav>
     </header>
 
@@ -144,9 +144,12 @@
         <section id="hero-home" class="hero-section">
             <!-- Video Background -->
             <video autoplay muted loop playsinline class="hero-video">
-                <source src="https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO_NAME/main/images/home/Home%20page%20timelapse.MOV" type="video/quicktime"> <!-- UPDATED SRC AND TYPE -->
-                <source src="./images/home_tab/videos/timelapse.mp4" type="video/mp4"> <!-- Keep as fallback, update path if you convert -->
-                <source src="./images/home_tab/videos/timelapse.webm" type="video/webm"> <!-- Keep as fallback, update path if you convert -->
+                <!-- Primary source: MP4 (most compatible) -->
+                <source src="https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO_NAME/main/images/home/videos/home-timelapse.mp4" type="video/mp4">
+                <!-- Secondary source: WebM (for broader browser support) -->
+                <source src="https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO_NAME/main/images/home/videos/home-timelapse.webm" type="video/webm">
+                <!-- Fallback for MOV (if you insist on keeping it, but MP4/WebM are better) -->
+                <source src="https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO_NAME/main/images/home/Home%20page%20timelapse.MOV" type="video/quicktime">
                 Your browser does not support the video tag.
             </video>
             <h1 class="text-6xl md:text-8xl font-extrabold text-white drop-shadow-lg relative z-10">Rasika Dharne</h1>
@@ -205,7 +208,8 @@
                 </div>
                 <div id="about-me-content-text">
                     <div class="flex flex-col md:flex-row items-center md:items-start mb-6">
-                        <img src="https://github.com/rasikadharne/my-portfolio/blob/main/images/about_me/Display%20Picture.JPG" alt="Rasika Dharne Profile Photo" class="w-32 h-32 rounded-full shadow-md object-cover border-4 border-white mb-4 md:mb-0 md:mr-6">
+                        <!-- Profile Photo in About Me section -->
+                        <img src="https://raw.githubusercontent.com/rasikadharne/my-portfolio/main/images/about_me/Display%20Picture.JPG" alt="Rasika Dharne Profile Photo" class="w-32 h-32 rounded-full shadow-md object-cover border-4 border-white mb-4 md:mb-0 md:mr-6">
                         <div>
                             <p class="text-gray-700 leading-relaxed mb-4">
                                 Greetings! I'm Rasika Dharne, a dedicated [Your Profession/Role, e.g., software engineer, creative designer, researcher]
@@ -592,4 +596,140 @@
                         generationConfig: {
                             responseModalities: ["AUDIO"],
                             speechConfig: {
-                                voiceConf
+                                voiceConfig: {
+                                    prebuiltVoiceConfig: { voiceName: "Kore" }
+                                }
+                            }
+                        },
+                        model: "gemini-2.5-flash-preview-tts"
+                    };
+
+                    const apiKey = "";
+                    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=${apiKey}`;
+
+                    const response = await fetchWithExponentialBackoff(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    const result = await response.json();
+                    const part = result?.candidates?.[0]?.content?.parts?.[0];
+                    const audioData = part?.inlineData?.data;
+                    const mimeType = part?.inlineData?.mimeType;
+
+                    if (audioData && mimeType && mimeType.startsWith("audio/")) {
+                        const sampleRateMatch = mimeType.match(/rate=(\d+)/);
+                        const sampleRate = sampleRateMatch ? parseInt(sampleRateMatch[1], 10) : 16000;
+
+                        const pcmDataBuffer = base64ToArrayBuffer(audioData);
+                        const pcm16 = new Int16Array(pcmDataBuffer);
+                        const wavBlob = pcmToWav(pcm16, sampleRate);
+                        const audioUrl = URL.createObjectURL(wavBlob);
+
+                        currentAudio = new Audio(audioUrl);
+                        currentAudio.play();
+                        showMessageBox('Playing audio...', 'success', false);
+
+                        currentAudio.onended = () => {
+                            hideMessageBox();
+                            URL.revokeObjectURL(audioUrl);
+                            currentAudio = null;
+                        };
+                        currentAudio.onerror = (e) => {
+                            showMessageBox('Audio playback error.', 'error');
+                            console.error("Audio error:", e);
+                            URL.revokeObjectURL(audioUrl);
+                            currentAudio = null;
+                        };
+
+                    } else {
+                        throw new Error("Invalid audio data received from API.");
+                    }
+                } catch (error) {
+                    showMessageBox('Failed to generate speech: ' + error.message, 'error');
+                    console.error("TTS Error:", error);
+                } finally {
+                    if (!currentAudio || currentAudio.paused) {
+                         loadingIndicator.classList.add('hidden');
+                    }
+                }
+            }
+
+
+            // Handle navigation link clicks
+            function handleNavLinkClick(event) {
+                event.preventDefault(); // Prevent default link behavior (page refresh)
+                const targetId = event.currentTarget.dataset.target;
+                const targetSection = document.getElementById(targetId);
+
+                // Stop any ongoing audio when switching tabs
+                if (currentAudio) {
+                    currentAudio.pause();
+                    currentAudio.currentTime = 0;
+                    currentAudio = null;
+                    hideMessageBox();
+                }
+
+                deactivateAllNavLinks();
+                hideAllContentSections(); // Hide all content sections including the hero
+
+                // If clicking 'Home', show the hero section and scroll to top
+                if (event.currentTarget.getAttribute('href') === '#hero-home') {
+                    document.getElementById('hero-home').classList.remove('hidden');
+                    document.getElementById('home-page-main-content').classList.add('active'); // Also activate the main home content
+                    event.currentTarget.classList.add('active');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                } else if (targetSection) {
+                    targetSection.classList.add('active'); // Show the target section
+
+                    // Activate the clicked link
+                    event.currentTarget.classList.add('active');
+                    if (event.currentTarget.closest('.group')) {
+                        // If it's a dropdown link, activate the parent dropdown button
+                        const parentButton = event.currentTarget.closest('.group').querySelector('.nav-link');
+                        if (parentButton) parentButton.classList.add('active');
+                        // Special active class for Leisure Diaries sub-items
+                        if (event.currentTarget.closest('.group').querySelector('#leisure-dropdown-btn')) { // Check if it's the leisure dropdown
+                            event.currentTarget.classList.add('active-leisure');
+                        }
+                    }
+
+                    // Scroll to the content section itself, below the sticky header
+                    const headerOffset = document.querySelector('header').offsetHeight;
+                    const elementPosition = targetSection.getBoundingClientRect().top + window.scrollY;
+                    window.scrollTo({
+                        top: elementPosition - headerOffset - 20, // Adjusted offset
+                        behavior: 'smooth'
+                    });
+                }
+            }
+
+            // Attach event listeners to all navigation and dropdown links
+            navLinks.forEach(link => {
+                link.addEventListener('click', handleNavLinkClick);
+            });
+            dropdownLinks.forEach(link => {
+                link.addEventListener('click', handleNavLinkClick);
+            });
+
+            // Speak Button Click Handler
+            speakButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const contentId = button.dataset.contentId;
+                    speakContent(contentId);
+                });
+            });
+
+            // Initial setup: Activate the "Home" content section and its nav link
+            // And ensure hero is visible on initial load
+            const initialNavLink = document.querySelector('.nav-link[data-target="home-page-main-content"]');
+            if (initialNavLink) {
+                initialNavLink.classList.add('active');
+                document.getElementById('home-page-main-content').classList.add('active');
+                document.getElementById('hero-home').classList.remove('hidden'); // Ensure hero is visible
+            }
+        });
+    </script>
+</body>
+</html>
