@@ -53,32 +53,6 @@
         .content-section.active {
             display: block;
         }
-        /* Navigation link styling */
-        .nav-link {
-            @apply text-lg text-gray-700 font-medium px-3 py-2 rounded-md transition-all duration-200 ease-in-out;
-            border-bottom: 2px solid transparent;
-        }
-        .nav-link:hover {
-            @apply text-orange-600;
-            border-bottom-color: #F97316;
-        }
-        .nav-link.active {
-            @apply bg-transparent text-orange-700 font-semibold;
-            border-bottom-color: #F97316;
-        }
-        /* Dropdown specific link styling */
-        .dropdown-link {
-            @apply block px-4 py-2 text-sm text-gray-700 transition-colors duration-200;
-            border-bottom: 2px solid transparent;
-        }
-        .dropdown-link:hover {
-            @apply bg-orange-100;
-            border-bottom-color: #F97316;
-        }
-        .dropdown-link.active-leisure {
-            @apply bg-lime-100 text-lime-600 font-medium;
-            border-bottom-color: #84CC16;
-        }
         /* Animation */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
@@ -88,6 +62,12 @@
         .text-shadow {
             text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
         }
+        /* Custom active state for nav links */
+        .nav-link.active {
+            color: #c2410c; /* text-orange-700 */
+            font-weight: 600; /* font-semibold */
+            border-bottom-color: #F97316; /* border-orange-500 */
+        }
     </style>
 </head>
 <body class="bg-slate-100 min-h-screen flex flex-col items-center pb-10">
@@ -95,19 +75,21 @@
     <!-- Header -->
     <header class="fixed top-0 w-full bg-white bg-opacity-95 backdrop-blur-sm z-20 shadow-sm py-4 px-6 flex justify-center items-center relative">
         <nav class="flex items-center space-x-4 md:space-x-6">
-            <a href="#hero-home" class="nav-link" data-target="home-page-main-content">Home</a>
-            <a href="#about-me-content" class="nav-link" data-target="about-me-content">About Me</a>
-            <a href="#portfolio-detailed-projects-content" class="nav-link" data-target="portfolio-detailed-projects-content">Portfolio</a>
+            <a href="#hero-home" class="nav-link text-lg text-gray-700 font-medium px-3 py-2 rounded-md transition-all duration-200 ease-in-out border-b-2 border-transparent hover:text-orange-600 hover:border-orange-500" data-target="home-page-main-content">Home</a>
+            <a href="#about-me-content" class="nav-link text-lg text-gray-700 font-medium px-3 py-2 rounded-md transition-all duration-200 ease-in-out border-b-2 border-transparent hover:text-orange-600 hover:border-orange-500" data-target="about-me-content">About Me</a>
+            <a href="#portfolio-detailed-projects-content" class="nav-link text-lg text-gray-700 font-medium px-3 py-2 rounded-md transition-all duration-200 ease-in-out border-b-2 border-transparent hover:text-orange-600 hover:border-orange-500" data-target="portfolio-detailed-projects-content">Portfolio</a>
 
-            <!-- Leisure Diaries Dropdown -->
+            <!-- Explorations Dropdown -->
             <div class="relative group">
-                <button class="nav-link flex items-center" id="leisure-dropdown-btn">
-                    Leisure Diaries
+                <button class="nav-link text-lg text-gray-700 font-medium px-3 py-2 rounded-md transition-all duration-200 ease-in-out border-b-2 border-transparent hover:text-orange-600 hover:border-orange-500 flex items-center" id="explorations-dropdown-btn">
+                    Explorations
                     <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                 </button>
-                <div class="absolute right-0 md:left-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-40 hidden group-hover:block transition-all duration-200 ease-out">
-                    <a href="#leisure-hiking-content" class="dropdown-link" data-target="leisure-hiking-content">Hiking</a>
-                    <a href="#leisure-cooking-content" class="dropdown-link" data-target="leisure-cooking-content">Cooking</a>
+                <!-- FIXED: Dropdown now appears on hover with smooth transition -->
+                <div class="absolute right-0 md:left-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-40 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-in-out transform scale-95 group-hover:scale-100">
+                    <a href="#financial-content" class="block px-4 py-2 text-sm text-gray-700 transition-colors duration-200 hover:bg-orange-100" data-target="financial-content">Financial</a>
+                    <a href="#hiking-content" class="block px-4 py-2 text-sm text-gray-700 transition-colors duration-200 hover:bg-orange-100" data-target="hiking-content">Hiking</a>
+                    <a href="#baking-content" class="block px-4 py-2 text-sm text-gray-700 transition-colors duration-200 hover:bg-orange-100" data-target="baking-content">Baking</a>
                 </div>
             </div>
         </nav>
@@ -231,12 +213,18 @@
                 </div>
             </section>
 
-            <!-- Leisure Diaries Sections -->
-            <section id="leisure-hiking-content" class="content-section hidden bg-white rounded-lg p-6 md:p-8">
-                <h2 class="text-3xl font-bold text-gray-800">Hiking Adventures</h2>
+            <!-- NEW: Explorations Sections -->
+            <section id="financial-content" class="content-section hidden bg-white rounded-lg p-6 md:p-8">
+                <h2 class="text-3xl font-bold text-gray-800">Financial Projects</h2>
+                <!-- Add your financial project content here -->
             </section>
-            <section id="leisure-cooking-content" class="content-section hidden bg-white rounded-lg p-6 md:p-8">
-                <h2 class="text-3xl font-bold text-gray-800">Culinary Creations</h2>
+            <section id="hiking-content" class="content-section hidden bg-white rounded-lg p-6 md:p-8">
+                <h2 class="text-3xl font-bold text-gray-800">Hiking Adventures</h2>
+                <!-- Add your hiking content here -->
+            </section>
+            <section id="baking-content" class="content-section hidden bg-white rounded-lg p-6 md:p-8">
+                <h2 class="text-3xl font-bold text-gray-800">Baking Creations</h2>
+                 <!-- Add your baking content here -->
             </section>
 
         </main>
