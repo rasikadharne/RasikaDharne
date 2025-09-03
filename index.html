@@ -8,6 +8,9 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome for Social Media Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Libraries for PDF Download -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
+
     <style>
         /* Custom styles for the Inter font and smooth transitions */
         body {
@@ -66,26 +69,36 @@
         .nav-link.active {
             color: #c2410c; /* text-orange-700 */
             font-weight: 600; /* font-semibold */
-            border-bottom-color: #F97316; /* border-orange-500 */
+            border-bottom-color: #EA580C; /* border-orange-600 */
+        }
+        .full-text {
+            display: none;
+        }
+        .skill-circle {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-left: 3px; /* Use margin-left to space out circles */
         }
     </style>
 </head>
-<body class="bg-slate-100 min-h-screen flex flex-col items-center pb-10">
+<body class="bg-stone-100 min-h-screen flex flex-col items-center pb-10">
 
     <!-- Header -->
     <header class="fixed top-0 w-full bg-white bg-opacity-95 backdrop-blur-sm z-20 shadow-sm py-4 px-6 flex justify-center items-center relative">
         <nav class="flex items-center space-x-4 md:space-x-6">
-            <a href="#hero-home" class="nav-link text-lg text-gray-700 font-medium px-3 py-2 rounded-md transition-all duration-200 ease-in-out border-b-2 border-transparent hover:text-orange-600 hover:border-orange-500" data-target="home-page-main-content">Home</a>
-            <a href="#about-me-content" class="nav-link text-lg text-gray-700 font-medium px-3 py-2 rounded-md transition-all duration-200 ease-in-out border-b-2 border-transparent hover:text-orange-600 hover:border-orange-500" data-target="about-me-content">About Me</a>
-            <a href="#portfolio-detailed-projects-content" class="nav-link text-lg text-gray-700 font-medium px-3 py-2 rounded-md transition-all duration-200 ease-in-out border-b-2 border-transparent hover:text-orange-600 hover:border-orange-500" data-target="portfolio-detailed-projects-content">Portfolio</a>
+            <a href="#hero-home" class="nav-link text-lg text-gray-700 font-medium px-3 py-2 rounded-md transition-all duration-200 ease-in-out border-b-2 border-transparent hover:text-orange-700 hover:border-orange-600" data-target="home-page-main-content">Home</a>
+            <a href="#about-me-content" class="nav-link text-lg text-gray-700 font-medium px-3 py-2 rounded-md transition-all duration-200 ease-in-out border-b-2 border-transparent hover:text-orange-700 hover:border-orange-600" data-target="about-me-content">About Me</a>
+            <a href="#resume-content" class="nav-link text-lg text-gray-700 font-medium px-3 py-2 rounded-md transition-all duration-200 ease-in-out border-b-2 border-transparent hover:text-orange-700 hover:border-orange-600" data-target="resume-content">Resume</a>
+            <a href="#portfolio-detailed-projects-content" class="nav-link text-lg text-gray-700 font-medium px-3 py-2 rounded-md transition-all duration-200 ease-in-out border-b-2 border-transparent hover:text-orange-700 hover:border-orange-600" data-target="portfolio-detailed-projects-content">Portfolio</a>
 
             <!-- Explorations Dropdown -->
             <div class="relative group">
-                <button class="nav-link text-lg text-gray-700 font-medium px-3 py-2 rounded-md transition-all duration-200 ease-in-out border-b-2 border-transparent hover:text-orange-600 hover:border-orange-500 flex items-center" id="explorations-dropdown-btn">
+                <button class="nav-link text-lg text-gray-700 font-medium px-3 py-2 rounded-md transition-all duration-200 ease-in-out border-b-2 border-transparent hover:text-orange-700 hover:border-orange-600 flex items-center" id="explorations-dropdown-btn">
                     Explorations
                     <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                 </button>
-                <!-- FIXED: Dropdown now appears on hover with smooth transition -->
                 <div class="absolute right-0 md:left-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-40 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-in-out transform scale-95 group-hover:scale-100">
                     <a href="#financial-content" class="block px-4 py-2 text-sm text-gray-700 transition-colors duration-200 hover:bg-orange-100" data-target="financial-content">Financial</a>
                     <a href="#hiking-content" class="block px-4 py-2 text-sm text-gray-700 transition-colors duration-200 hover:bg-orange-100" data-target="hiking-content">Hiking</a>
@@ -93,8 +106,13 @@
                 </div>
             </div>
         </nav>
-        <!-- Profile image positioned absolutely to not affect nav centering -->
-        <img src="https://raw.githubusercontent.com/rasikadharne/my-portfolio/main/images/about_me/Display%20Picture.JPG" alt="Rasika Dharne Profile Photo" class="w-10 h-10 rounded-full shadow-md object-cover border-2 border-white absolute right-6 top-1/2 -translate-y-1/2">
+        <!-- Contact and Profile container -->
+        <div class="absolute right-6 top-1/2 -translate-y-1/2 flex items-center space-x-4">
+            <a href="#contact-form" data-target="about-me-content" class="inline-block bg-orange-600 text-white font-bold py-2 px-6 rounded-full shadow-lg hover:bg-orange-700 transition-colors text-sm">
+               Contact Me
+            </a>
+            <img src="https://raw.githubusercontent.com/rasikadharne/my-portfolio/main/images/about_me/Display%20Picture.JPG" alt="Rasika Dharne Profile Photo" class="w-10 h-10 rounded-full shadow-md object-cover border-2 border-white">
+        </div>
     </header>
 
     <!-- Hero Section -->
@@ -102,7 +120,7 @@
         <div class="my-auto pt-24 hero-content">
             <h1 class="text-6xl md:text-8xl font-extrabold text-white drop-shadow-lg tracking-tight text-shadow">Rasika Dharne</h1>
             <p class="text-2xl md:text-3xl text-white mt-4 italic tracking-wide text-shadow">constantly revamping.</p>
-            <a href="#main-content-wrapper" id="cta-button" class="mt-8 inline-block bg-orange-500 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-orange-600 transition-transform transform hover:scale-105">
+            <a href="#resume-content" data-target="resume-content" class="mt-8 inline-block bg-orange-600 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-orange-700 transition-transform transform hover:scale-105">
                 Explore My Work
             </a>
         </div>
@@ -131,49 +149,127 @@
                 <!-- TIMELINE Block -->
                 <div>
                     <h3 class="text-3xl font-bold text-gray-800 mb-12 text-center">TIMELINE</h3>
-                    <div class="relative container mx-auto px-6 flex flex-col space-y-2">
+                    <div class="relative container mx-auto px-6 flex flex-col space-y-8">
                         <!-- Vertical line -->
-                        <div class="absolute z-0 w-1 h-full bg-orange-200 shadow-md left-1/2 transform -translate-x-1/2"></div>
+                        <div class="absolute z-0 w-1 h-full bg-orange-300 shadow-md left-1/2 transform -translate-x-1/2"></div>
                 
-                        <!-- Right Timeline Item -->
-                        <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
-                            <div class="flex items-center justify-center w-10 h-10 rounded-full border-2 border-orange-400 bg-white text-orange-500 z-10 md:order-1 md:translate-x-[-50%]">
-                                <i class="fas fa-briefcase"></i>
-                            </div>
-                            <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-4 rounded border border-gray-200 shadow">
-                                <div class="flex items-center justify-between space-x-2 mb-1">
-                                    <h4 class="font-bold text-gray-800">Research Assistant @ KTH</h4>
-                                    <time class="font-medium text-sm text-orange-600">September 2024</time>
+                        <!-- Timeline Item 2025 - Description LEFT -->
+                        <div class="relative flex items-center">
+                            <div class="md:w-1/2 w-full">
+                                <div class="md:mr-8">
+                                    <div class="bg-white p-6 rounded border border-gray-200 shadow">
+                                         <h4 class="font-bold text-gray-800 mb-2">Business Solution Analyst: Product Development</h4>
+                                        <div class="text-gray-600 text-sm space-y-3">
+                                            <div class="project-expandable">
+                                                <strong>Salesforce AI Agent POC:</strong> <span class="summary-text">Authored white paper on Salesforce Agents for dynamic blurb generation, securing client POC approval with projected 1,000 monthly hours saved ($360K annual cost reductions per program).</span>
+                                                <div class="full-text mt-2">
+                                                    <p>Authored a white paper outlining benefits and an implementation plan for leveraging Salesforce Agents to create a dynamic blurb module, securing approval for a client POC. Currently collaborating with architects and stakeholders to execute the POC, projecting 20K hours and $600K saved, 5% improved patient adherence, 20-30% fewer support inquiries, and $50-100K annual reductions in errors/disputes per program.</p>
+                                                </div>
+                                                <a href="#" class="read-more-btn text-orange-700 hover:underline text-xs font-semibold block mt-1">Read More...</a>
+                                            </div>
+                                            <p>
+                                                <strong>Coverage Discovery Workflows:</strong> Leading requirements for end-to-end workflows embedding eligibility/coverage discovery tools into existing access ecosystem preventing ~3,600 annual claim denials (300/month on 10K volume) while modularizing for scalable external deployment.
+                                            </p>
+                                        </div>
+                                    </div>
                                 </div>
-                                <p class="text-gray-600 text-sm">I worked at the LangSec group, investigating the impact and prevalence of client-side prototype pollution in JavaScript in various websites.</p>
+                            </div>
+                            <div class="absolute left-1/2 -translate-x-1/2 md:relative md:left-auto md:translate-x-0">
+                                <div class="z-10 flex items-center justify-center w-10 h-10 rounded-full border-2 border-orange-500 bg-white text-orange-600">
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                            <div class="md:w-1/2 md:pl-8 hidden md:block">
+                                <p class="font-semibold text-orange-700">2025 – Present</p>
+                                <p class="text-sm text-stone-600 mt-1">Senior Business Solution Analyst:<br>Product Development</p>
                             </div>
                         </div>
-                
-                        <!-- Left Timeline Item -->
-                        <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
-                            <div class="flex items-center justify-center w-10 h-10 rounded-full border-2 border-orange-400 bg-white text-orange-500 z-10 md:order-1 md:translate-x-[-50%]">
-                                <i class="fas fa-vote-yea"></i>
-                            </div>
-                            <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-4 rounded border border-gray-200 shadow">
-                                <div class="flex items-center justify-between space-x-2 mb-1">
-                                    <h4 class="font-bold text-gray-800">IST Delegate Election App</h4>
-                                    <time class="font-medium text-sm text-orange-600">October 2023</time>
+
+                        <!-- Timeline Item 2022-2024 - Description RIGHT -->
+                        <div class="relative flex items-center md:flex-row-reverse">
+                            <div class="md:w-1/2 w-full">
+                                <div class="md:ml-8">
+                                     <div class="bg-white p-6 rounded border border-gray-200 shadow">
+                                        <div class="text-gray-600 text-sm space-y-3">
+                                            <div class="project-expandable">
+                                                <strong>Hypothesis Driven Product Revamp:</strong> <span class="summary-text">Conceptualized the hypothesis-driven expansion of a core AI product, broadening its predictive capabilities from solely medical benefits to a comprehensive suite including diagnostic and pharmacy verification...</span>
+                                                <div class="full-text mt-2">
+                                                   <p>Conceptualized the hypothesis-driven expansion of a core AI product, broadening its predictive capabilities from solely medical benefits to a comprehensive suite including diagnostic and pharmacy verification. This architectural enhancement drastically cut benefit verification costs from $30 to cents per transaction, directly enabling the successful onboarding of five new client programs (4 pharmacy, 1 diagnostic) and scaling the product's market reach.</p>
+                                                </div>
+                                                <a href="#" class="read-more-btn text-orange-700 hover:underline text-xs font-semibold block mt-1">Read More...</a>
+                                            </div>
+                                            <div class="project-expandable">
+                                                <strong>Salesforce CRM Enhancements:</strong> <span class="summary-text">Orchestrated a comprehensive overhaul of the patient enrollment and claims submission process, introducing API-driven automation to eliminate critical workflow bottlenecks...</span>
+                                                <div class="full-text mt-2">
+                                                    <p>Orchestrated a comprehensive overhaul of the patient enrollment and claims submission process, introducing API-driven automation to eliminate critical workflow bottlenecks. The solution slashed user time-on-task by 5 minutes and cut clicks by nearly 50% (from 280 to 150), enabling a significant increase in operational capacity and allowing teams to shift focus from manual data entry to high-impact patient care.</p>
+                                                </div>
+                                                 <a href="#" class="read-more-btn text-orange-700 hover:underline text-xs font-semibold block mt-1">Read More...</a>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <p class="text-gray-600 text-sm">As a member of the Pedagogical Council, I volunteered to re-build the student representative election platform using Rust and React.</p>
+                            </div>
+                            <div class="absolute left-1/2 -translate-x-1/2 md:relative md:left-auto md:translate-x-0">
+                                <div class="z-10 flex items-center justify-center w-10 h-10 rounded-full border-2 border-orange-500 bg-white text-orange-600">
+                                    <i class="fas fa-robot"></i>
+                                </div>
+                            </div>
+                            <div class="md:w-1/2 md:text-right md:pr-8 hidden md:block">
+                                <p class="font-semibold text-orange-700">2022 - 2024</p>
+                                <p class="text-sm text-stone-600 mt-1">Senior Business Solution Analyst:<br>Product Development</p>
                             </div>
                         </div>
-                
-                        <!-- Right Timeline Item -->
-                        <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
-                            <div class="flex items-center justify-center w-10 h-10 rounded-full border-2 border-orange-400 bg-white text-orange-500 z-10 md:order-1 md:translate-x-[-50%]">
-                                <i class="fas fa-graduation-cap"></i>
-                            </div>
-                            <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-4 rounded border border-gray-200 shadow">
-                                <div class="flex items-center justify-between space-x-2 mb-1">
-                                    <h4 class="font-bold text-gray-800">MSc Cybersecurity @ KTH</h4>
-                                    <time class="font-medium text-sm text-orange-600">August 2023</time>
+
+                        <!-- Timeline Item 2020-2022 - Description LEFT -->
+                        <div class="relative flex items-center">
+                            <div class="md:w-1/2 w-full">
+                                <div class="md:mr-8">
+                                    <div class="bg-white p-6 rounded border border-gray-200 shadow">
+                                        <div class="text-gray-600 text-sm space-y-3">
+                                            <p><strong>Error Classification Engine:</strong> Instead of letting users guess what to do with dynamic errors, the system automatically categorizes every error into actionable buckets (User Fixable, System Resolvable, Manual Review, Informational). This eliminates the guesswork that creates unnecessary incidents.</p>
+                                            <p><strong>API integrations:</strong> Built APIs/batch feeds with pharmacies and aggregators, implemented 20+ integrations.</p>
+                                            <div class="project-expandable">
+                                                <strong>Patient Segmentation Effort:</strong> <span class="summary-text">Define requirements for segmentation-driven patient communication platform that automated and personalized stakeholder outreach across multiple channels...</span>
+                                                <div class="full-text mt-2">
+                                                   <p>Define requirements for segmentation-driven patient communication platform that automated and personalized stakeholder outreach across multiple channels, including SMS, email, letters, and phone reminders. By translating patient segmentation scores into unique communication cadences, this initiative dramatically improved patient adherence while significantly reducing operational overhead for care teams.</p>
+                                                </div>
+                                                 <a href="#" class="read-more-btn text-orange-700 hover:underline text-xs font-semibold block mt-1">Read More...</a>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <p class="text-gray-600 text-sm">I started a Cybersecurity Master programme at KTH Royal Institute of Technology in Sweden 🇸🇪.</p>
+                            </div>
+                            <div class="absolute left-1/2 -translate-x-1/2 md:relative md:left-auto md:translate-x-0">
+                                <div class="z-10 flex items-center justify-center w-10 h-10 rounded-full border-2 border-orange-500 bg-white text-orange-600">
+                                    <i class="fas fa-cogs"></i>
+                                </div>
+                            </div>
+                            <div class="md:w-1/2 md:pl-8 hidden md:block">
+                                <p class="font-semibold text-orange-700">2020 - 2022</p>
+                                <p class="text-sm text-stone-600 mt-1">Senior Business Solution Analyst:<br>Product Development</p>
+                            </div>
+                        </div>
+
+                         <!-- Timeline Item 2018-2020 - Description RIGHT -->
+                        <div class="relative flex items-center md:flex-row-reverse">
+                            <div class="md:w-1/2 w-full">
+                                <div class="md:ml-8">
+                                     <div class="bg-white p-6 rounded border border-gray-200 shadow">
+                                        <div class="text-gray-600 text-sm space-y-3">
+                                            <p><strong>Enterprise Data Migration:</strong> Refine end-to-end requirements for cloud migration of enterprise data for three core programs, ensuring business continuity. This strategic initiative successfully modernized the company's data infrastructure, significantly enhancing scalability, security, and data accessibility to support future growth.</p>
+                                            <p><strong>Correspondence Automation:</strong> Defined logic for merging fields, fax/email blasts, and SMS integration with vendors. Role: Completed end-to-end requirements for 5 medical programs, reducing trigger time from 3 minutes to seconds per record.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="absolute left-1/2 -translate-x-1/2 md:relative md:left-auto md:translate-x-0">
+                                <div class="z-10 flex items-center justify-center w-10 h-10 rounded-full border-2 border-orange-500 bg-white text-orange-600">
+                                    <i class="fas fa-database"></i>
+                                </div>
+                            </div>
+                            <div class="md:w-1/2 md:text-right md:pr-8 hidden md:block">
+                                <p class="font-semibold text-orange-700">2018 - 2020</p>
+                                 <p class="text-sm text-stone-600 mt-1">Business Solution Analyst:<br>Product Development</p>
                             </div>
                         </div>
                     </div>
@@ -182,15 +278,157 @@
 
             <!-- About Me Content -->
             <section id="about-me-content" class="content-section hidden bg-white rounded-lg p-6 md:p-8">
-                <h2 class="text-3xl font-bold text-gray-800 mb-4">About Me</h2>
                 <div class="flex flex-col items-center">
-                    <img src="https://raw.githubusercontent.com/rasikadharne/my-portfolio/main/images/about_me/Display%20Picture.JPG" alt="Rasika Dharne Profile Photo" class="w-48 h-48 rounded-full shadow-lg object-cover border-4 border-white mb-8">
-                    <div class="w-full max-w-2xl text-center">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">About Me</h2>
+                    <img src="https://raw.githubusercontent.com/rasikadharne/my-portfolio/main/images/about_me/Display%20Picture.JPG" alt="Rasika Dharne Profile Photo" class="w-64 h-64 rounded-full shadow-lg object-cover border-4 border-white mb-8">
+                    <div class="w-full max-w-2xl text-left">
                         <h3 class="text-2xl font-semibold text-gray-800 mb-3">Who am I?</h3>
-                        <p class="text-gray-700 leading-relaxed mb-6">
-                            My name is Rasika Dharne. [Add more about your background and journey here]. This space is where I share my professional and personal growth.
+                        <p class="text-gray-700 leading-relaxed mb-4">
+                            I’m a problem solver at heart with over seven years of experience in the healthcare technology space. My focus is always on understanding the real business need first, then figuring out how technology can add value—rather than creating unnecessary overhead. Over the years, I’ve led projects that cut manual work, saved millions in costs, and helped teams make smarter, data-driven decisions.
+                        </p>
+                        <p class="text-gray-700 leading-relaxed mb-4">
+                            I’ve embraced the principle of “invert,” a mental model I learned from Charlie Munger: instead of only asking how to succeed, I ask what could cause failure and work backward to avoid it. This mindset has been invaluable in building products that are innovative, practical, and resilient.
+                        </p>
+                        <p class="text-gray-700 leading-relaxed mb-4">
+                           I enjoy turning complex challenges into simple, effective solutions—whether it’s streamlining workflows, automating processes, or helping a team bring a new product to life. I thrive on working closely with technical teams, business leaders, and end users to ensure every solution is scalable, simple, and impactful.
+                        </p>
+                         <p class="text-gray-700 leading-relaxed mb-6">
+                           Outside of work, I’m endlessly curious—exploring everything from blockchain to fitness and nutrition. I thrive on learning, experimenting, and creating value wherever I can.
                         </p>
                     </div>
+
+                    <!-- Let's Work Together Section -->
+                    <div class="w-full max-w-2xl mt-10">
+                         <h3 class="text-2xl font-semibold text-gray-800 mb-3 text-center">Let's Work Together</h3>
+                         <p class="text-center text-gray-600 mb-6">Please feel free to connect with me.</p>
+
+                         <form id="contact-form" class="space-y-4">
+                            <div class="flex flex-col md:flex-row gap-4">
+                                <div class="w-full">
+                                    <label for="firstName" class="block text-sm font-medium text-gray-700">First Name</label>
+                                    <input type="text" id="firstName" name="firstName" required class="mt-1 block w-full px-3 py-2 bg-white border border-stone-300 rounded-md shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500">
+                                </div>
+                                <div class="w-full">
+                                     <label for="lastName" class="block text-sm font-medium text-gray-700">Last Name</label>
+                                     <input type="text" id="lastName" name="lastName" required class="mt-1 block w-full px-3 py-2 bg-white border border-stone-300 rounded-md shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500">
+                                </div>
+                            </div>
+                             <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700">Email ID</label>
+                                <input type="email" id="email" name="email" required class="mt-1 block w-full px-3 py-2 bg-white border border-stone-300 rounded-md shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500">
+                            </div>
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
+                                <textarea id="message" name="message" rows="4" maxlength="500" class="mt-1 block w-full px-3 py-2 bg-white border border-stone-300 rounded-md shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500"></textarea>
+                                <p class="text-xs text-gray-500 mt-1 text-right">Max. 500 characters</p>
+                            </div>
+                             <div class="text-center">
+                                 <button type="submit" class="inline-block bg-orange-600 text-white font-bold py-3 px-10 rounded-full shadow-lg hover:bg-orange-700 transition-colors">
+                                     Submit
+                                 </button>
+                             </div>
+                         </form>
+                         <div id="form-success-message" class="hidden text-center p-4 mt-4 bg-green-100 text-green-800 rounded-md">
+                            Thanks for connecting! I'll get back to you soon.
+                        </div>
+                        <div id="form-error-message" class="hidden text-center p-4 mt-4 bg-red-100 text-red-800 rounded-md">
+                            Oops! Something went wrong. Please try again.
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Resume Content Section -->
+            <section id="resume-content" class="content-section hidden bg-white rounded-lg text-stone-800 p-6 md:p-10">
+                <div id="resume-export-area">
+                    <!-- Centered Header with Contact -->
+                    <div class="text-center mb-6">
+                        <h2 class="text-4xl md:text-5xl font-bold text-black">Rasika Dharne</h2>
+                         <ul class="flex flex-wrap justify-center gap-x-4 gap-y-1 text-stone-500 mt-3 text-xs md:text-sm">
+                             <li class="flex items-center"><i class="fas fa-envelope fa-fw mr-2 text-orange-600"></i>rasikadharne@gmail.com</li>
+                             <li class="flex items-center"><i class="fab fa-linkedin fa-fw mr-2 text-orange-600"></i>linkedin.com/in/rasikadharne</li>
+                             <li class="flex items-center"><i class="fas fa-globe fa-fw mr-2 text-orange-600"></i>rasikadharne.github.io/RasikaDharne/</li>
+                        </ul>
+                    </div>
+    
+                    <!-- Professional Summary -->
+                    <div class="mb-6">
+                        <h3 class="text-xl font-bold text-black border-b border-stone-300 pb-2 mb-3">Summary</h3>
+                        <p class="text-stone-700" style="line-height: 1.5;">
+                            With 7+ years in healthcare tech, I am passionate about building intelligent systems that empower teams and deliver measurable impact. I thrive on transforming complex workflows into streamlined, data-driven solutions that save time, reduce costs, and accelerate enterprise growth. 
+                        </p>
+                    </div>
+    
+                    <!-- Skills -->
+                    <div class="mb-6">
+                        <h3 class="text-xl font-bold text-black border-b border-stone-300 pb-2 mb-3">Skills</h3>
+                        <div id="skills-container-new" class="grid grid-cols-2 gap-x-8 gap-y-2 text-stone-700 text-sm">
+                            <!-- Skills will be injected by JS here -->
+                        </div>
+                    </div>
+                    
+                    <!-- Work Experience -->
+                    <div class="mb-6">
+                         <h3 class="text-xl font-bold text-black border-b border-stone-300 pb-2 mb-4">Work Experience</h3>
+                         <div class="space-y-4">
+                            <!-- Experience Block -->
+                            <div>
+                                 <div class="flex justify-between items-baseline mb-1">
+                                    <h4 class="text-xl font-bold">Tata Consultancy Services, Client- Cencora</h4>
+                                    <p class="text-sm text-stone-500 flex-shrink-0 ml-4"><em>2018 - Present</em></p>
+                                </div>
+    
+                                <!-- Role 1 -->
+                                <div class="mb-3">
+                                    <div class="flex justify-between items-start">
+                                        <h5 class="text-lg font-semibold text-stone-800">Senior Business Solution Analyst:<br>Product Development</h5>
+                                        <p class="text-sm text-stone-500 flex-shrink-0 ml-4 text-right"><em>2020 - Present</em></p>
+                                    </div>
+                                    <ul class="list-disc list-inside text-stone-700 space-y-2 mt-2 text-sm pl-4" style="line-height: 1.6;">
+                                        <li>Salesforce AI Agent POC: Championed proof-of-concept for AI-powered benefit blurb generation, scanning 271 responses to automate manual data extraction projecting $50-100K annual reductions in errors/disputes per program</li>
+                                        <li>Salesforce Integrations: Oversaw end-to-end requirements for embedding eligibility/coverage discovery tools into existing systems, preventing 3,600+ annual claim denials while designing modular architecture for scalable deployment</li>
+                                        <li>Automated Patients Benefits with AI: Led 8-member team implementing diagnostic/pharmacy benefit predictions, accelerated onboarding from 2 weeks to 4 days by designing standard on-boarding practice</li>
+                                        <li>Product Optimization: Identified prediction enhancement opportunities and defined technical requirements that improved ML accuracy 40% and enabled 10x client program expansion (1 to 10) through strategic vendor integrations</li>
+                                        <li>Salesforce Workflow Revamp: Streamlined patient enrollment workflows by mapping and eliminating redundant CRM actions, cutting clicks per patient by 28% ((250→180) improving overall operational efficiency.</li>
+                                    </ul>
+                                </div>
+    
+                                 <!-- Role 2 -->
+                                <div>
+                                    <div class="flex justify-between items-baseline">
+                                        <h5 class="text-lg font-semibold text-stone-800">Business Solution Analyst</h5>
+                                        <p class="text-sm text-stone-500 flex-shrink-0 ml-4"><em>Dec 2018 - Dec 2020</em></p>
+                                    </div>
+                                    <ul class="list-disc list-inside text-stone-700 space-y-2 mt-2 text-sm pl-4" style="line-height: 1.6;">
+                                       <li>Data Migration Effort: Managed cross-functional migration of enterprise data for 3 programs to the cloud, implementing 20+ vendor APIs and producing detailed technical documentation.</li>
+                                       <li>UAT Support: Conducted end-to-end UAT with stakeholders, ensuring all functional and technical scenarios were accurately tested and validated.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                         </div>
+                    </div>
+    
+                    <!-- Education -->
+                    <div>
+                        <h3 class="text-xl font-bold text-black border-b border-stone-300 pb-2 mb-3">Education</h3>
+                         <div class="space-y-2">
+                            <div>
+                                <p class="font-semibold text-stone-800">M.Sc. Innovation Management & Entrepreneurship</p>
+                                <p class="text-sm text-stone-500"><em>Temple University, 2015</em></p>
+                            </div>
+                             <div>
+                                <p class="font-semibold text-stone-800">B.E. Instrumentation & Control</p>
+                                <p class="text-sm text-stone-500"><em>Cummins College of Engineering, 2014</em></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Download Button at the bottom -->
+                <div class="text-center mt-10">
+                    <button id="download-pdf-btn" class="inline-block bg-orange-600 text-white font-bold py-3 px-10 rounded-full shadow-lg hover:bg-orange-700 transition-colors">
+                        <i class="fas fa-file-pdf mr-2"></i> Download PDF
+                    </button>
                 </div>
             </section>
 
@@ -213,7 +451,7 @@
                 </div>
             </section>
 
-            <!-- NEW: Explorations Sections -->
+            <!-- Explorations Sections -->
             <section id="financial-content" class="content-section hidden bg-white rounded-lg p-6 md:p-8">
                 <h2 class="text-3xl font-bold text-gray-800">Financial Projects</h2>
                 <!-- Add your financial project content here -->
@@ -233,9 +471,9 @@
         <footer class="mt-10 pt-6 border-t border-gray-200 text-center p-6 bg-white rounded-b-xl">
             <p class="text-gray-600 mb-4">&copy; 2025 Rasika Dharne. All rights reserved.</p>
             <div class="flex justify-center space-x-6 text-gray-700">
-                <a href="#" class="hover:text-orange-600"><i class="fab fa-linkedin fa-2x"></i></a>
-                <a href="#" class="hover:text-orange-600"><i class="fab fa-github fa-2x"></i></a>
-                <a href="#" class="hover:text-orange-600"><i class="fab fa-twitter fa-2x"></i></a>
+                <a href="#" class="hover:text-orange-700"><i class="fab fa-linkedin fa-2x"></i></a>
+                <a href="#" class="hover:text-orange-700"><i class="fab fa-github fa-2x"></i></a>
+                <a href="#" class="hover:text-orange-700"><i class="fab fa-twitter fa-2x"></i></a>
             </div>
         </footer>
     </div>
@@ -247,7 +485,6 @@
             const contentSections = document.querySelectorAll('.content-section');
             const heroSection = document.getElementById('hero-home');
             const mainContentWrapper = document.getElementById('main-content-wrapper');
-            const ctaButton = document.getElementById('cta-button');
             
             function handleLinkClick(event) {
                 event.preventDefault();
@@ -271,31 +508,154 @@
                     mainContentWrapper.style.marginTop = '80px';
                     targetSection.classList.add('active');
                 }
+                 // Special scroll for contact form link
+                if (event.currentTarget.getAttribute('href') === '#contact-form') {
+                    setTimeout(() => {
+                        const formElement = document.getElementById('contact-form');
+                        if (formElement) {
+                            formElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        }
+                    }, 300); // Allow time for the section to fade in
+                }
             }
         
             allLinks.forEach(link => {
                 link.addEventListener('click', handleLinkClick);
             });
+            
+            // Skills data
+            const skills = [
+                { name: 'Requirement Gathering & Analysis', score: 5 },
+                { name: 'SQL', score: 5 },
+                { name: 'API Integration', score: 5 },
+                { name: 'Salesforce', score: 4 },
+                { name: 'Prompt Engineering', score: 4 },
+                { name: 'Data Storytelling', score: 4 },
+                { name: 'Process Automation (RPA)', score: 4 },
+                { name: 'Python', score: 3 },
+                { name: 'Microsoft Azure', score: 3 },
+                { name: 'Tableau', score: 3 },
+                { name: 'Power BI', score: 3 }
+            ];
 
-            // Smooth scroll for CTA button
-            if (ctaButton) {
-                ctaButton.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const targetElement = document.querySelector(this.getAttribute('href'));
-                    if (targetElement) {
-                        // Calculate position considering the fixed header
-                        const headerOffset = document.querySelector('header').offsetHeight;
-                        const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
-                        const offsetPosition = elementPosition - headerOffset;
-
-                        window.scrollTo({
-                            top: offsetPosition,
-                            behavior: 'smooth'
-                        });
+            const skillsContainer = document.getElementById('skills-container-new');
+            if (skillsContainer) {
+                 // Sort skills from highest to lowest score, then alphabetically
+                skills.sort((a, b) => {
+                    if (b.score === a.score) {
+                        return a.name.localeCompare(b.name);
                     }
+                    return b.score - a.score;
+                });
+                
+                skillsContainer.innerHTML = ''; // Clear previous skills
+                skills.forEach(skill => {
+                    const skillElement = document.createElement('div');
+                    skillElement.className = 'flex items-center justify-between';
+
+                    const skillName = document.createElement('span');
+                    skillName.className = 'text-stone-700';
+                    skillName.textContent = skill.name;
+                    skillElement.appendChild(skillName);
+                    
+                    const circles = document.createElement('div');
+                    circles.className = 'flex-shrink-0';
+                    for (let i = 0; i < 5; i++) {
+                        const circle = document.createElement('span');
+                        circle.className = 'skill-circle';
+                        circle.classList.add(i < skill.score ? 'bg-orange-600' : 'bg-stone-300');
+                        circles.appendChild(circle);
+                    }
+                    skillElement.appendChild(circles);
+                    skillsContainer.appendChild(skillElement);
+                });
+            }
+            
+            // PDF Download functionality
+            const downloadPdfBtn = document.getElementById('download-pdf-btn');
+            if(downloadPdfBtn) {
+                downloadPdfBtn.addEventListener('click', function() {
+                    const resumeElement = document.getElementById('resume-export-area');
+                    const opt = {
+                      margin:       0.5,
+                      filename:     'Rasika_Dharne_Resume.pdf',
+                      image:        { type: 'jpeg', quality: 0.98 },
+                      html2canvas:  { scale: 2 },
+                      jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+                    };
+                    html2pdf().set(opt).from(resumeElement).save();
                 });
             }
         
+            // Contact form functionality
+            const contactForm = document.getElementById('contact-form');
+            const formSuccessMessage = document.getElementById('form-success-message');
+            const formErrorMessage = document.getElementById('form-error-message');
+
+            if(contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const formData = new FormData(contactForm);
+                    const formAction = "https://formspree.io/f/movnpqwp";
+
+                    fetch(formAction, {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    }).then(response => {
+                        if (response.ok) {
+                            contactForm.style.display = 'none';
+                            formSuccessMessage.style.display = 'block';
+                            formErrorMessage.style.display = 'none';
+                        } else {
+                            response.json().then(data => {
+                                if (Object.hasOwn(data, 'errors')) {
+                                    const errorText = data["errors"].map(error => error["message"]).join(", ");
+                                    formErrorMessage.textContent = `Oops! ${errorText}`;
+                                } else {
+                                    formErrorMessage.textContent = 'Oops! Something went wrong submitting the form.';
+                                }
+                                formErrorMessage.style.display = 'block';
+                                formSuccessMessage.style.display = 'none';
+                            })
+                        }
+                    }).catch(error => {
+                        formErrorMessage.textContent = 'Oops! Something went wrong. Please try again.';
+                        formErrorMessage.style.display = 'block';
+                        formSuccessMessage.style.display = 'none';
+                    });
+                });
+            }
+
+             // Corrected Read More button functionality
+            document.querySelectorAll('.read-more-btn').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation(); 
+
+                    const projectExpandable = this.closest('.project-expandable');
+                    if (!projectExpandable) return;
+
+                    const fullText = projectExpandable.querySelector('.full-text');
+                    const summaryText = projectExpandable.querySelector('.summary-text');
+                    
+                    if (fullText && summaryText) {
+                        if (fullText.style.display === 'none' || fullText.style.display === '') {
+                            fullText.style.display = 'block';
+                            summaryText.style.display = 'none';
+                            this.textContent = 'Read Less...';
+                        } else {
+                            fullText.style.display = 'none';
+                            summaryText.style.display = 'inline';
+                            this.textContent = 'Read More...';
+                        }
+                    }
+                });
+            });
+
             // Initial setup for page load
             document.querySelector('a[data-target="home-page-main-content"]').classList.add('active');
             heroSection.classList.add('active');
@@ -305,3 +665,4 @@
     </script>
 </body>
 </html>
+
