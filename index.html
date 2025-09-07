@@ -4,11 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio | Constantly Revamping</title>
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome for Social Media Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Libraries for PDF Download -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
 
     <style>
@@ -85,58 +82,87 @@
 </head>
 <body class="bg-stone-100 min-h-screen flex flex-col items-center pb-10">
 
-    <!-- Header -->
-    <header class="fixed top-0 w-full bg-white bg-opacity-95 backdrop-blur-sm z-20 shadow-sm py-4 px-6 flex justify-center items-center relative">
-        <nav class="flex items-center space-x-4 md:space-x-6">
-            <a href="#hero-home" class="nav-link text-lg text-gray-700 font-medium px-3 py-2 rounded-md transition-all duration-200 ease-in-out border-b-2 border-transparent hover:text-orange-700 hover:border-orange-600" data-target="home-page-main-content">Home</a>
-            <a href="#about-me-content" class="nav-link text-lg text-gray-700 font-medium px-3 py-2 rounded-md transition-all duration-200 ease-in-out border-b-2 border-transparent hover:text-orange-700 hover:border-orange-600" data-target="about-me-content">About Me</a>
-            <a href="#resume-content" class="nav-link text-lg text-gray-700 font-medium px-3 py-2 rounded-md transition-all duration-200 ease-in-out border-b-2 border-transparent hover:text-orange-700 hover:border-orange-600" data-target="resume-content">Resume</a>
-            <a href="#portfolio-detailed-projects-content" class="nav-link text-lg text-gray-700 font-medium px-3 py-2 rounded-md transition-all duration-200 ease-in-out border-b-2 border-transparent hover:text-orange-700 hover:border-orange-600" data-target="portfolio-detailed-projects-content">Portfolio</a>
-
-            <!-- Explorations Dropdown -->
-            <div class="relative group">
-                <button class="nav-link text-lg text-gray-700 font-medium px-3 py-2 rounded-md transition-all duration-200 ease-in-out border-b-2 border-transparent hover:text-orange-700 hover:border-orange-600 flex items-center" id="explorations-dropdown-btn">
-                    Explorations
-                    <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                </button>
-                <div class="absolute right-0 md:left-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-40 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-in-out transform scale-95 group-hover:scale-100">
-                    <a href="#financial-content" class="block px-4 py-2 text-sm text-gray-700 transition-colors duration-200 hover:bg-orange-100" data-target="financial-content">Financial</a>
-                    <a href="#hiking-content" class="block px-4 py-2 text-sm text-gray-700 transition-colors duration-200 hover:bg-orange-100" data-target="hiking-content">Hiking</a>
-                    <a href="#baking-content" class="block px-4 py-2 text-sm text-gray-700 transition-colors duration-200 hover:bg-orange-100" data-target="baking-content">Baking</a>
-                    <a href="#books-read-content" class="block px-4 py-2 text-sm text-gray-700 transition-colors duration-200 hover:bg-orange-100" data-target="books-read-content">Books Read</a>
-                </div>
-            </div>
-        </nav>
-        <!-- Contact and Profile container -->
-        <div class="absolute right-6 top-1/2 -translate-y-1/2 flex items-center space-x-4">
-            <a href="#contact-form" data-target="about-me-content" class="inline-block bg-orange-600 text-white font-bold py-2 px-6 rounded-full shadow-lg hover:bg-orange-700 transition-colors text-sm">
-               Contact Me
-            </a>
+    <header class="fixed top-0 w-full bg-white bg-opacity-95 backdrop-blur-sm z-30 shadow-sm py-4 px-6 flex justify-between items-center">
+        <div class="flex items-center">
             <img src="https://raw.githubusercontent.com/rasikadharne/my-portfolio/main/images/about_me/Display%20Picture.JPG" alt="Rasika Dharne Profile Photo" class="w-10 h-10 rounded-full shadow-md object-cover border-2 border-white">
+            <span class="ml-3 font-bold text-gray-800 md:hidden">Rasika Dharne</span>
+        </div>
+        
+        <button id="mobile-menu-btn" class="md:hidden text-gray-700 focus:outline-none">
+            <i class="fas fa-bars fa-lg"></i>
+        </button>
+
+        <div id="desktop-nav-container" class="hidden md:flex items-center space-x-4">
+            <nav class="flex items-center space-x-4 md:space-x-6">
+                <a href="#hero-home" class="nav-link text-lg text-gray-700 font-medium px-3 py-2 rounded-md transition-all duration-200 ease-in-out border-b-2 border-transparent hover:text-orange-700 hover:border-orange-600" data-target="home-page-main-content">Home</a>
+                <a href="#about-me-content" class="nav-link text-lg text-gray-700 font-medium px-3 py-2 rounded-md transition-all duration-200 ease-in-out border-b-2 border-transparent hover:text-orange-700 hover:border-orange-600" data-target="about-me-content">About Me</a>
+                <a href="#resume-content" class="nav-link text-lg text-gray-700 font-medium px-3 py-2 rounded-md transition-all duration-200 ease-in-out border-b-2 border-transparent hover:text-orange-700 hover:border-orange-600" data-target="resume-content">Resume</a>
+                <a href="#portfolio-detailed-projects-content" class="nav-link text-lg text-gray-700 font-medium px-3 py-2 rounded-md transition-all duration-200 ease-in-out border-b-2 border-transparent hover:text-orange-700 hover:border-orange-600" data-target="portfolio-detailed-projects-content">Portfolio</a>
+
+                <div class="relative group">
+                    <button class="nav-link text-lg text-gray-700 font-medium px-3 py-2 rounded-md transition-all duration-200 ease-in-out border-b-2 border-transparent hover:text-orange-700 hover:border-orange-600 flex items-center" id="explorations-dropdown-btn">
+                        Explorations
+                        <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="absolute right-0 md:left-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-40 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-in-out transform scale-95 group-hover:scale-100">
+                        <a href="#financial-content" class="block px-4 py-2 text-sm text-gray-700 transition-colors duration-200 hover:bg-orange-100" data-target="financial-content">Financial</a>
+                        <a href="#hiking-content" class="block px-4 py-2 text-sm text-gray-700 transition-colors duration-200 hover:bg-orange-100" data-target="hiking-content">Hiking</a>
+                        <a href="#baking-content" class="block px-4 py-2 text-sm text-gray-700 transition-colors duration-200 hover:bg-orange-100" data-target="baking-content">Baking</a>
+                        <a href="#books-read-content" class="block px-4 py-2 text-sm text-gray-700 transition-colors duration-200 hover:bg-orange-100" data-target="books-read-content">Books Read</a>
+                    </div>
+                </div>
+            </nav>
+            <div class="flex items-center space-x-4 ml-4">
+                <a href="#contact-form" data-target="about-me-content" class="inline-block bg-orange-600 text-white font-bold py-2 px-6 rounded-full shadow-lg hover:bg-orange-700 transition-colors text-sm">
+                    Contact Me
+                </a>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-white shadow-lg md:hidden">
+            <nav class="flex flex-col p-4 space-y-2">
+                 <a href="#hero-home" class="nav-link text-lg text-gray-700 font-medium px-3 py-2 rounded-md" data-target="home-page-main-content">Home</a>
+                <a href="#about-me-content" class="nav-link text-lg text-gray-700 font-medium px-3 py-2 rounded-md" data-target="about-me-content">About Me</a>
+                <a href="#resume-content" class="nav-link text-lg text-gray-700 font-medium px-3 py-2 rounded-md" data-target="resume-content">Resume</a>
+                <a href="#portfolio-detailed-projects-content" class="nav-link text-lg text-gray-700 font-medium px-3 py-2 rounded-md" data-target="portfolio-detailed-projects-content">Portfolio</a>
+                
+                <div>
+                     <button class="w-full text-left nav-link text-lg text-gray-700 font-medium px-3 py-2 rounded-md flex justify-between items-center" id="mobile-explorations-btn">
+                        Explorations
+                        <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div id="mobile-explorations-dropdown" class="hidden pl-4 mt-2 space-y-2">
+                        <a href="#financial-content" class="block px-4 py-2 text-sm text-gray-700" data-target="financial-content">Financial</a>
+                        <a href="#hiking-content" class="block px-4 py-2 text-sm text-gray-700" data-target="hiking-content">Hiking</a>
+                        <a href="#baking-content" class="block px-4 py-2 text-sm text-gray-700" data-target="baking-content">Baking</a>
+                        <a href="#books-read-content" class="block px-4 py-2 text-sm text-gray-700" data-target="books-read-content">Books Read</a>
+                    </div>
+                </div>
+
+                <a href="#contact-form" data-target="about-me-content" class="mt-4 w-full text-center bg-orange-600 text-white font-bold py-2 px-6 rounded-full shadow-lg hover:bg-orange-700">
+                    Contact Me
+                </a>
+            </nav>
         </div>
     </header>
 
-    <!-- Hero Section -->
+
     <section id="hero-home" class="hero-section content-section active">
-        <div class="my-auto pt-24 hero-content">
-            <h1 class="text-6xl md:text-8xl font-extrabold text-white drop-shadow-lg tracking-tight text-shadow">Rasika Dharne</h1>
-            <p class="text-2xl md:text-3xl text-white mt-4 italic tracking-wide text-shadow">constantly revamping.</p>
+        <div class="my-auto pt-24 hero-content px-4">
+            <h1 class="text-5xl sm:text-6xl md:text-8xl font-extrabold text-white drop-shadow-lg tracking-tight text-shadow">Rasika Dharne</h1>
+            <p class="text-xl sm:text-2xl md:text-3xl text-white mt-4 italic tracking-wide text-shadow">constantly revamping.</p>
             <a href="#resume-content" data-target="resume-content" class="mt-8 inline-block bg-orange-600 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-orange-700 transition-transform transform hover:scale-105">
                 Explore My Work
             </a>
         </div>
     </section>
 
-    <!-- Main Content Wrapper -->
     <div id="main-content-wrapper" class="max-w-4xl w-full bg-white rounded-xl shadow-lg relative overflow-hidden mt-8">
 
-        <!-- Main Content Area -->
-        <main class="p-6 md:p-10">
+        <main class="p-4 sm:p-6 md:p-10">
 
-            <!-- Home Page Content -->
-            <section id="home-page-main-content" class="content-section active bg-white rounded-lg p-6 md:p-8">
-                <!-- Welcome Block -->
-                <div class="mb-16">
+            <section id="home-page-main-content" class="content-section active bg-white rounded-lg p-4 md:p-8">
+                <div class="mb-12">
                     <div class="flex justify-between items-center mb-6">
                         <h2 class="text-3xl font-bold text-gray-800">Welcome!</h2>
                     </div>
@@ -147,140 +173,133 @@
                     </div>
                 </div>
 
-                <!-- TIMELINE Block -->
                 <div>
                     <h3 class="text-3xl font-bold text-gray-800 mb-12 text-center">TIMELINE</h3>
-                    <div class="relative container mx-auto px-6 flex flex-col space-y-8">
-                        <!-- Vertical line -->
-                        <div class="absolute z-0 w-1 h-full bg-orange-300 shadow-md left-1/2 transform -translate-x-1/2"></div>
-                
-                        <!-- Timeline Item 2025 - Description LEFT -->
-                        <div class="relative flex items-center">
-                            <div class="md:w-1/2 w-full">
-                                <div class="md:mr-8">
-                                    <div class="bg-white p-6 rounded border border-gray-200 shadow">
-                                        <div class="text-gray-600 text-sm space-y-3">
-                                            <div class="project-expandable">
-                                                <strong>Salesforce AI Agent POC:</strong> <span class="summary-text">Authored white paper on Salesforce AgentForce for dynamic blurb generation, securing POC approval with projected 500 monthly hours saved (~$180K annual savings).</span>
-                                                <div class="full-text mt-2">
-                                                    <p>Authored a white paper outlining the benefits and implementation plan for leveraging Salesforce AgentForce to create a dynamic blurb module, securing client approval for a Proof of Concept (POC). Currently collaborating with stakeholders to execute the POC, projecting an average of 500 hours saved per month, resulting in approximately $180K in savings annual for 6,000 Benefits Verifications (BV) per month requiring manual intervention.</p>
-                                                </div>
-                                                <a href="#" class="read-more-btn text-orange-700 hover:underline text-xs font-semibold block mt-1">Read More...</a>
+                    <div class="relative container mx-auto px-2 sm:px-6 flex flex-col space-y-8">
+                        <div class="absolute z-0 w-1 h-full bg-orange-300 shadow-md left-5 md:left-1/2 transform md:-translate-x-1/2"></div>
+                        
+                        <div class="relative flex items-start">
+                            <div class="absolute left-5 top-0 -translate-x-1/2 z-10 flex items-center justify-center w-10 h-10 rounded-full border-2 border-orange-500 bg-white text-orange-600">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div class="w-full pl-12 md:pl-0 md:w-1/2 md:pr-8">
+                                <div class="md:hidden mb-2">
+                                    <p class="font-semibold text-orange-700">2025 – Present</p>
+                                    <p class="text-sm text-stone-600 mt-1">Senior Business Solution Analyst</p>
+                                </div>
+                                <div class="bg-white p-4 sm:p-6 rounded border border-gray-200 shadow">
+                                    <div class="text-gray-600 text-sm space-y-3">
+                                        <div class="project-expandable">
+                                            <strong>Salesforce AI Agent POC:</strong> <span class="summary-text">Authored white paper on Salesforce AgentForce for dynamic blurb generation, securing POC approval with projected 500 monthly hours saved (~$180K annual savings).</span>
+                                            <div class="full-text mt-2">
+                                                <p>Authored a white paper outlining the benefits and implementation plan for leveraging Salesforce AgentForce to create a dynamic blurb module, securing client approval for a Proof of Concept (POC). Currently collaborating with stakeholders to execute the POC, projecting an average of 500 hours saved per month, resulting in approximately $180K in savings annual for 6,000 Benefits Verifications (BV) per month requiring manual intervention.</p>
                                             </div>
-                                            <p>
-                                                <strong>Coverage Discovery Workflows:</strong> Leading requirements for end-to-end workflows embedding eligibility/coverage discovery tools into existing access ecosystem preventing ~3,600 annual claim denials (300/month on 10K volume) while modularizing for scalable external deployment.
-                                            </p>
+                                            <a href="#" class="read-more-btn text-orange-700 hover:underline text-xs font-semibold block mt-1">Read More...</a>
                                         </div>
+                                        <p>
+                                            <strong>Coverage Discovery Workflows:</strong> Leading requirements for end-to-end workflows embedding eligibility/coverage discovery tools into existing access ecosystem preventing ~3,600 annual claim denials (300/month on 10K volume) while modularizing for scalable external deployment.
+                                        </p>
                                     </div>
                                 </div>
                             </div>
-                            <div class="absolute left-1/2 -translate-x-1/2 md:relative md:left-auto md:translate-x-0">
-                                <div class="z-10 flex items-center justify-center w-10 h-10 rounded-full border-2 border-orange-500 bg-white text-orange-600">
-                                    <i class="fas fa-star"></i>
-                                </div>
-                            </div>
-                            <div class="md:w-1/2 md:pl-8 hidden md:block">
+                            <div class="hidden md:block md:w-1/2 md:pl-8">
                                 <p class="font-semibold text-orange-700">2025 – Present</p>
                                 <p class="text-sm text-stone-600 mt-1">Senior Business Solution Analyst:<br>Product Development</p>
                             </div>
                         </div>
 
-                        <!-- Timeline Item 2022-2024 - Description RIGHT -->
-                        <div class="relative flex items-center md:flex-row-reverse">
-                            <div class="md:w-1/2 w-full">
-                                <div class="md:ml-8">
-                                     <div class="bg-white p-6 rounded border border-gray-200 shadow">
-                                        <div class="text-gray-600 text-sm space-y-3">
-                                            <div class="project-expandable">
-                                                <strong>Hypothesis Driven Product Revamp:</strong> <span class="summary-text">Conceptualized the hypothesis-driven expansion of a core AI product, broadening its predictive capabilities from solely medical benefits to a comprehensive suite including diagnostic and pharmacy verification...</span>
-                                                <div class="full-text mt-2">
-                                                   <p>Conceptualized the hypothesis-driven expansion of a core AI product, broadening its predictive capabilities from solely medical benefits to a comprehensive suite including diagnostic and pharmacy verification. This architectural enhancement drastically cut benefit verification costs from $30 to cents per transaction, directly enabling the successful onboarding of five new client programs (4 pharmacy, 1 diagnostic) and scaling the product's market reach.</p>
-                                                </div>
-                                                <a href="#" class="read-more-btn text-orange-700 hover:underline text-xs font-semibold block mt-1">Read More...</a>
+                        <div class="relative flex items-start md:flex-row-reverse">
+                             <div class="absolute left-5 top-0 -translate-x-1/2 z-10 flex items-center justify-center w-10 h-10 rounded-full border-2 border-orange-500 bg-white text-orange-600">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <div class="w-full pl-12 md:pl-0 md:w-1/2 md:ml-8">
+                                 <div class="md:hidden mb-2">
+                                    <p class="font-semibold text-orange-700">2022 - 2024</p>
+                                    <p class="text-sm text-stone-600 mt-1">Senior Business Solution Analyst</p>
+                                </div>
+                               <div class="bg-white p-4 sm:p-6 rounded border border-gray-200 shadow">
+                                    <div class="text-gray-600 text-sm space-y-3">
+                                        <div class="project-expandable">
+                                            <strong>Hypothesis Driven Product Revamp:</strong> <span class="summary-text">Conceptualized the hypothesis-driven expansion of a core AI product, broadening its predictive capabilities...</span>
+                                            <div class="full-text mt-2">
+                                                <p>Conceptualized the hypothesis-driven expansion of a core AI product, broadening its predictive capabilities from solely medical benefits to a comprehensive suite including diagnostic and pharmacy verification. This architectural enhancement drastically cut benefit verification costs from $30 to cents per transaction, directly enabling the successful onboarding of five new client programs (4 pharmacy, 1 diagnostic) and scaling the product's market reach.</p>
                                             </div>
-                                            <div class="project-expandable">
-                                                <strong>Salesforce CRM Enhancements:</strong> <span class="summary-text">Orchestrated a comprehensive overhaul of the patient enrollment and claims submission process, introducing API-driven automation to eliminate critical workflow bottlenecks...</span>
-                                                <div class="full-text mt-2">
-                                                    <p>Orchestrated a comprehensive overhaul of the patient enrollment and claims submission process, introducing API-driven automation to eliminate critical workflow bottlenecks. The solution slashed user time-on-task by 5 minutes and cut clicks by nearly 50% (from 280 to 150), enabling a significant increase in operational capacity and allowing teams to shift focus from manual data entry to high-impact patient care.</p>
-                                                </div>
-                                                 <a href="#" class="read-more-btn text-orange-700 hover:underline text-xs font-semibold block mt-1">Read More...</a>
+                                            <a href="#" class="read-more-btn text-orange-700 hover:underline text-xs font-semibold block mt-1">Read More...</a>
+                                        </div>
+                                        <div class="project-expandable">
+                                            <strong>Salesforce CRM Enhancements:</strong> <span class="summary-text">Orchestrated a comprehensive overhaul of the patient enrollment and claims submission process...</span>
+                                            <div class="full-text mt-2">
+                                                <p>Orchestrated a comprehensive overhaul of the patient enrollment and claims submission process, introducing API-driven automation to eliminate critical workflow bottlenecks. The solution slashed user time-on-task by 5 minutes and cut clicks by nearly 50% (from 280 to 150), enabling a significant increase in operational capacity and allowing teams to shift focus from manual data entry to high-impact patient care.</p>
                                             </div>
+                                            <a href="#" class="read-more-btn text-orange-700 hover:underline text-xs font-semibold block mt-1">Read More...</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="absolute left-1/2 -translate-x-1/2 md:relative md:left-auto md:translate-x-0">
-                                <div class="z-10 flex items-center justify-center w-10 h-10 rounded-full border-2 border-orange-500 bg-white text-orange-600">
-                                    <i class="fas fa-robot"></i>
-                                </div>
-                            </div>
-                            <div class="md:w-1/2 md:text-right md:pr-8 hidden md:block">
+                           <div class="hidden md:block md:w-1/2 md:text-right md:pr-8">
                                 <p class="font-semibold text-orange-700">2022 - 2024</p>
                                 <p class="text-sm text-stone-600 mt-1">Senior Business Solution Analyst:<br>Product Development</p>
                             </div>
                         </div>
 
-                        <!-- Timeline Item 2020-2022 - Description LEFT -->
-                        <div class="relative flex items-center">
-                            <div class="md:w-1/2 w-full">
-                                <div class="md:mr-8">
-                                    <div class="bg-white p-6 rounded border border-gray-200 shadow">
-                                        <div class="text-gray-600 text-sm space-y-3">
-                                            <p><strong>Error Classification Engine:</strong> Instead of letting users guess what to do with dynamic errors, the system automatically categorizes every error into actionable buckets (User Fixable, System Resolvable, Manual Review, Informational). This eliminates the guesswork that creates unnecessary incidents.</p>
-                                            <p><strong>API integrations:</strong> Built APIs/batch feeds with pharmacies and aggregators, implemented 20+ integrations.</p>
-                                            <div class="project-expandable">
-                                                <strong>Patient Segmentation Effort:</strong> <span class="summary-text">Define requirements for segmentation-driven patient communication platform that automated and personalized stakeholder outreach across multiple channels...</span>
-                                                <div class="full-text mt-2">
-                                                   <p>Define requirements for segmentation-driven patient communication platform that automated and personalized stakeholder outreach across multiple channels, including SMS, email, letters, and phone reminders. By translating patient segmentation scores into unique communication cadences, this initiative dramatically improved patient adherence while significantly reducing operational overhead for care teams.</p>
-                                                </div>
-                                                 <a href="#" class="read-more-btn text-orange-700 hover:underline text-xs font-semibold block mt-1">Read More...</a>
+                        <div class="relative flex items-start">
+                             <div class="absolute left-5 top-0 -translate-x-1/2 z-10 flex items-center justify-center w-10 h-10 rounded-full border-2 border-orange-500 bg-white text-orange-600">
+                                <i class="fas fa-cogs"></i>
+                            </div>
+                            <div class="w-full pl-12 md:pl-0 md:w-1/2 md:pr-8">
+                                <div class="md:hidden mb-2">
+                                    <p class="font-semibold text-orange-700">2020 - 2022</p>
+                                    <p class="text-sm text-stone-600 mt-1">Senior Business Solution Analyst</p>
+                                </div>
+                                <div class="bg-white p-4 sm:p-6 rounded border border-gray-200 shadow">
+                                    <div class="text-gray-600 text-sm space-y-3">
+                                        <p><strong>Error Classification Engine:</strong> System automatically categorizes errors into actionable buckets, eliminating guesswork that creates unnecessary incidents.</p>
+                                        <p><strong>API integrations:</strong> Built APIs/batch feeds with pharmacies and aggregators, implemented 20+ integrations.</p>
+                                        <div class="project-expandable">
+                                            <strong>Patient Segmentation Effort:</strong> <span class="summary-text">Define requirements for segmentation-driven patient communication platform...</span>
+                                            <div class="full-text mt-2">
+                                                <p>Define requirements for segmentation-driven patient communication platform that automated and personalized stakeholder outreach across multiple channels, including SMS, email, letters, and phone reminders. By translating patient segmentation scores into unique communication cadences, this initiative dramatically improved patient adherence while significantly reducing operational overhead for care teams.</p>
                                             </div>
+                                            <a href="#" class="read-more-btn text-orange-700 hover:underline text-xs font-semibold block mt-1">Read More...</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="absolute left-1/2 -translate-x-1/2 md:relative md:left-auto md:translate-x-0">
-                                <div class="z-10 flex items-center justify-center w-10 h-10 rounded-full border-2 border-orange-500 bg-white text-orange-600">
-                                    <i class="fas fa-cogs"></i>
-                                </div>
-                            </div>
-                            <div class="md:w-1/2 md:pl-8 hidden md:block">
+                            <div class="hidden md:block md:w-1/2 md:pl-8">
                                 <p class="font-semibold text-orange-700">2020 - 2022</p>
                                 <p class="text-sm text-stone-600 mt-1">Senior Business Solution Analyst:<br>Product Development</p>
                             </div>
                         </div>
 
-                         <!-- Timeline Item 2018-2020 - Description RIGHT -->
-                        <div class="relative flex items-center md:flex-row-reverse">
-                            <div class="md:w-1/2 w-full">
-                                <div class="md:ml-8">
-                                     <div class="bg-white p-6 rounded border border-gray-200 shadow">
-                                        <div class="text-gray-600 text-sm space-y-3">
-                                            <p><strong>Enterprise Data Migration:</strong> Refine end-to-end requirements for cloud migration of enterprise data for three core programs, ensuring business continuity. This strategic initiative successfully modernized the company's data infrastructure, significantly enhancing scalability, security, and data accessibility to support future growth.</p>
-                                            <p><strong>Correspondence Automation:</strong> Defined logic for merging fields, fax/email blasts, and SMS integration with vendors. Role: Completed end-to-end requirements for 5 medical programs, reducing trigger time from 3 minutes to seconds per record.</p>
-                                        </div>
+                        <div class="relative flex items-start md:flex-row-reverse">
+                             <div class="absolute left-5 top-0 -translate-x-1/2 z-10 flex items-center justify-center w-10 h-10 rounded-full border-2 border-orange-500 bg-white text-orange-600">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <div class="w-full pl-12 md:pl-0 md:w-1/2 md:ml-8">
+                                <div class="md:hidden mb-2">
+                                    <p class="font-semibold text-orange-700">2018 - 2020</p>
+                                    <p class="text-sm text-stone-600 mt-1">Business Solution Analyst</p>
+                                </div>
+                                <div class="bg-white p-4 sm:p-6 rounded border border-gray-200 shadow">
+                                    <div class="text-gray-600 text-sm space-y-3">
+                                        <p><strong>Enterprise Data Migration:</strong> Refine end-to-end requirements for cloud migration of enterprise data for three core programs, ensuring business continuity. This strategic initiative successfully modernized the company's data infrastructure.</p>
+                                        <p><strong>Correspondence Automation:</strong> Defined logic for merging fields, fax/email blasts, and SMS integration with vendors. Completed end-to-end requirements for 5 medical programs, reducing trigger time from 3 minutes to seconds per record.</p>
                                     </div>
                                 </div>
                             </div>
-                            <div class="absolute left-1/2 -translate-x-1/2 md:relative md:left-auto md:translate-x-0">
-                                <div class="z-10 flex items-center justify-center w-10 h-10 rounded-full border-2 border-orange-500 bg-white text-orange-600">
-                                    <i class="fas fa-database"></i>
-                                </div>
-                            </div>
-                            <div class="md:w-1/2 md:text-right md:pr-8 hidden md:block">
+                            <div class="hidden md:block md:w-1/2 md:text-right md:pr-8">
                                 <p class="font-semibold text-orange-700">2018 - 2020</p>
-                                 <p class="text-sm text-stone-600 mt-1">Business Solution Analyst:<br>Product Development</p>
+                                <p class="text-sm text-stone-600 mt-1">Business Solution Analyst:<br>Product Development</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- About Me Content -->
-            <section id="about-me-content" class="content-section hidden bg-white rounded-lg p-6 md:p-8">
+            <section id="about-me-content" class="content-section hidden bg-white rounded-lg p-4 md:p-8">
                 <div class="flex flex-col items-center">
                     <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">About Me</h2>
-                    <img src="https://raw.githubusercontent.com/rasikadharne/my-portfolio/main/images/about_me/Display%20Picture.JPG" alt="Rasika Dharne Profile Photo" class="w-64 h-64 rounded-full shadow-lg object-cover border-4 border-white mb-8">
+                    <img src="https://raw.githubusercontent.com/rasikadharne/my-portfolio/main/images/about_me/Display%20Picture.JPG" alt="Rasika Dharne Profile Photo" class="w-48 h-48 sm:w-64 sm:h-64 rounded-full shadow-lg object-cover border-4 border-white mb-8">
                     <div class="w-full max-w-2xl text-left">
                         <h3 class="text-2xl font-semibold text-gray-800 mb-3">Who am I?</h3>
                         <p class="text-gray-700 leading-relaxed mb-4">
@@ -290,14 +309,13 @@
                             I’ve embraced the principle of “invert,” a mental model I learned from Charlie Munger: instead of only asking how to succeed, I ask what could cause failure and work backward to avoid it. This mindset has been invaluable in building products that are innovative, practical, and resilient.
                         </p>
                         <p class="text-gray-700 leading-relaxed mb-4">
-                           I enjoy turning complex challenges into simple, effective solutions—whether it’s streamlining workflows, automating processes, or helping a team bring a new product to life. I thrive on working closely with technical teams, business leaders, and end users to ensure every solution is scalable, simple, and impactful.
+                            I enjoy turning complex challenges into simple, effective solutions—whether it’s streamlining workflows, automating processes, or helping a team bring a new product to life. I thrive on working closely with technical teams, business leaders, and end users to ensure every solution is scalable, simple, and impactful.
                         </p>
                          <p class="text-gray-700 leading-relaxed mb-6">
-                           Outside of work, I’m endlessly curious—exploring everything from blockchain to fitness and nutrition. I thrive on learning, experimenting, and creating value wherever I can.
+                            Outside of work, I’m endlessly curious—exploring everything from blockchain to fitness and nutrition. I thrive on learning, experimenting, and creating value wherever I can.
                         </p>
                     </div>
 
-                    <!-- Let's Work Together Section -->
                     <div class="w-full max-w-2xl mt-10">
                          <h3 class="text-2xl font-semibold text-gray-800 mb-3 text-center">Let's Work Together</h3>
                          <p class="text-center text-gray-600 mb-6">Please feel free to connect with me.</p>
@@ -322,11 +340,11 @@
                                 <textarea id="message" name="message" rows="4" maxlength="500" class="mt-1 block w-full px-3 py-2 bg-white border border-stone-300 rounded-md shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500"></textarea>
                                 <p class="text-xs text-gray-500 mt-1 text-right">Max. 500 characters</p>
                             </div>
-                             <div class="text-center">
-                                 <button type="submit" class="inline-block bg-orange-600 text-white font-bold py-3 px-10 rounded-full shadow-lg hover:bg-orange-700 transition-colors">
-                                     Submit
-                                 </button>
-                             </div>
+                              <div class="text-center">
+                                  <button type="submit" class="inline-block bg-orange-600 text-white font-bold py-3 px-10 rounded-full shadow-lg hover:bg-orange-700 transition-colors">
+                                       Submit
+                                  </button>
+                              </div>
                          </form>
                          <div id="form-success-message" class="hidden text-center p-4 mt-4 bg-green-100 text-green-800 rounded-md">
                             Thanks for connecting! I'll get back to you soon.
@@ -338,79 +356,63 @@
                 </div>
             </section>
             
-            <!-- Resume Content Section -->
-            <section id="resume-content" class="content-section hidden bg-white rounded-lg text-stone-800 p-6 md:p-10">
+            <section id="resume-content" class="content-section hidden bg-white rounded-lg text-stone-800 p-4 sm:p-6 md:p-10">
                 <div id="resume-export-area">
-                    <!-- Centered Header with Contact -->
                     <div class="text-center mb-8">
-                        <h2 class="text-4xl md:text-5xl font-bold text-black">Rasika Dharne</h2>
-                        <ul class="flex flex-wrap justify-center gap-x-4 gap-y-1 text-stone-500 mt-3 text-xs md:text-sm">
+                        <h2 class="text-3xl md:text-5xl font-bold text-black">Rasika Dharne</h2>
+                        <ul class="flex flex-wrap justify-center gap-x-4 gap-y-1 text-stone-500 mt-3 text-xs sm:text-sm">
                             <li class="flex items-center"><i class="fas fa-envelope fa-fw mr-2 text-orange-600"></i>rasikadharne@gmail.com</li>
                             <li class="flex items-center"><i class="fab fa-linkedin fa-fw mr-2 text-orange-600"></i>linkedin.com/in/rasikadharne</li>
                             <li class="flex items-center"><i class="fas fa-globe fa-fw mr-2 text-orange-600"></i>rasikadharne.github.io/RasikaDharne/</li>
                         </ul>
                     </div>
 
-                    <!-- Professional Summary -->
                     <div class="mb-8">
                         <h3 class="text-xl font-bold text-black border-b border-stone-300 pb-2 mb-3 flex items-center"><i class="fas fa-user-circle fa-fw mr-3 text-orange-600"></i>Summary</h3>
-                        <p class="text-stone-700" style="line-height: 1.5;">
+                        <p class="text-stone-700 text-sm sm:text-base" style="line-height: 1.5;">
                             For around 7 years I have consulted for Fortune 500 Healthcare clients, building reliable, responsive, cost-effective distributed architectures. My approach centers on rigorous preparation and anticipating risks, with a constant focus on downstream impacts to build solutions that are robust, scalable, and outcome-driven.
                         </p>
                     </div>
 
-                    <!-- Skills -->
                     <div class="mb-8">
                         <h3 class="text-xl font-bold text-black border-b border-stone-300 pb-2 mb-3 flex items-center"><i class="fas fa-cogs fa-fw mr-3 text-orange-600"></i>Skills</h3>
                         <div id="skills-container-new" class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2 text-stone-700 text-sm">
-                            <!-- Skills will be injected by JS here -->
-                        </div>
+                            </div>
                     </div>
                     
-                    <!-- Work Experience -->
                     <div class="mb-8">
                         <h3 class="text-xl font-bold text-black border-b border-stone-300 pb-2 mb-4 flex items-center"><i class="fas fa-briefcase fa-fw mr-3 text-orange-600"></i>Work Experience</h3>
                         <div class="space-y-6">
-                            <!-- Experience Block -->
                             <div>
-                                <div class="flex justify-between items-baseline mb-2">
-                                    <h4 class="text-xl font-bold">Tata Consultancy Services, Client- Cencora</h4>
-                                    <p class="text-sm text-stone-500 flex-shrink-0 ml-4"><em>2018 - Present</em></p>
+                                <div class="flex flex-col sm:flex-row justify-between sm:items-baseline mb-2">
+                                    <h4 class="text-lg sm:text-xl font-bold">Tata Consultancy Services, Client- Cencora</h4>
+                                    <p class="text-sm text-stone-500 flex-shrink-0 sm:ml-4"><em>2018 - Present</em></p>
                                 </div>
                                 
                                 <div class="space-y-4">
-                                    <!-- Role 1 -->
                                     <div>
-                                        <div class="flex justify-between items-start">
-                                            <h5 class="text-lg font-semibold text-stone-800">Senior Business Solution Analyst-Product</h5>
-                                            <p class="text-sm text-stone-500 flex-shrink-0 ml-4 text-right"><em>2020 - Present</em></p>
+                                        <div class="flex flex-col sm:flex-row justify-between sm:items-start">
+                                            <h5 class="text-base sm:text-lg font-semibold text-stone-800">Senior Business Solution Analyst-Product</h5>
+                                            <p class="text-sm text-stone-500 flex-shrink-0 sm:ml-4 sm:text-right"><em>2020 - Present</em></p>
                                         </div>
                                         <ul class="list-disc list-inside text-stone-700 space-y-2 mt-2 text-sm pl-4" style="line-height: 1.6;">
-                                            <li>Leading proof-of-concept for designing an AI-powered benefit blurb generation agent, to automate responses, projecting ~$180K in annual savings per program, while reducing staff effort by ~500 hours</li>
-                                            <li>Owned the functional blueprint for a major AI product expansion, scaling the predictive pipeline from a single service (Medical) into a multi-service platform (Pharmacy, Diagnostic), expanding program adoption from 2 to 8, unlocking new revenue streams</li>
-                                            <li>Optimized 5 crucial Salesforce case workflows by building a custom click-tracking tool to analyze user behavior, eliminating low-performing steps to cut user clicks by an average of 28% (250→180)</li>
-                                            <li>Drove a 40% increase in predictions accuracy by defining new architecture and validating the design via A/B testing on a controlled dataset, resulting in reduction of cost per transaction from $35 to 15¢</li>
-                                            <li>Applied Monte Carlo simulation to uncover ~3,000 errors in 10,000 successfully predicted benefits, quantifying operational risk from 15–30 minutes of manual rework per case, securing leadership approval for a model review</li>
-                                            <li>Adopted LLMs to accelerate SQL/SOQL/Power BI queries, reducing reliance on external teams and improving SLA response times from 1 day to minutes, while preparing executive decks and leading leadership reviews</li>
-                                            <li>Proactively evolved the KPI frameworks in tandem with new feature launches, driving alignment between Product and Reporting teams to create a trusted data source that saved 10 hours of weekly leadership review time</li>
-                                            <li>Initiated a vendor audit that corrected billing inaccuracies, recovering $4.3M annually ($360K/month) and triggering a strategic contract renegotiation across three programs</li>
-                                            <li>Collaborated with directors on strategic planning, translating data findings and SME knowledge into quarterly and annual roadmaps that guided PI planning objectives and cross-team priorities</li>
-                                            <li>Led a cross-functional team of 18 (onshore/offshore) by authoring and refining epics and user stories across multiple initiatives, leading backlog refinement ceremonies to ensure a consistent one-sprint-ahead pipeline</li>
+                                            <li>Leading proof-of-concept for designing an AI-powered benefit blurb generation agent, projecting ~$180K in annual savings.</li>
+                                            <li>Owned the functional blueprint for a major AI product expansion, scaling the predictive pipeline from a single service (Medical) into a multi-service platform.</li>
+                                            <li>Optimized 5 crucial Salesforce case workflows by building a custom click-tracking tool to analyze user behavior, cutting user clicks by 28%.</li>
+                                            <li>Drove a 40% increase in predictions accuracy by defining new architecture and validating the design via A/B testing.</li>
+                                            <li>Applied Monte Carlo simulation to uncover ~3,000 errors in 10,000 successfully predicted benefits.</li>
+                                            <li>Adopted LLMs to accelerate SQL/SOQL/Power BI queries, reducing SLA response times from 1 day to minutes.</li>
                                         </ul>
                                     </div>
-                                    <!-- Role 2 -->
                                     <div>
-                                        <div class="flex justify-between items-baseline">
-                                            <h5 class="text-lg font-semibold text-stone-800">Business Solution Analyst</h5>
-                                            <p class="text-sm text-stone-500 flex-shrink-0 ml-4"><em>Dec 2018 - Dec 2020</em></p>
+                                        <div class="flex flex-col sm:flex-row justify-between sm:items-baseline">
+                                            <h5 class="text-base sm:text-lg font-semibold text-stone-800">Business Solution Analyst</h5>
+                                            <p class="text-sm text-stone-500 flex-shrink-0 sm:ml-4"><em>Dec 2018 - Dec 2020</em></p>
                                         </div>
                                         <ul class="list-disc list-inside text-stone-700 space-y-2 mt-2 text-sm pl-4" style="line-height: 1.6;">
-                                            <li>Supported data analysis workstream for the cloud migration of 3 enterprise programs, delivering comprehensive data maps and over 200 business rules to ensure the integrity and accuracy of all critical business data</li>
-                                            <li>Defined requirements for a centralized Error Intelligence Layer to dynamically classify errors transforming raw logs into structured, actionable guidance, reducing user-reported incidents by over 25% in a single quarter</li>
-                                            <li>Conducted end-to-end UAT with stakeholders, ensuring all user-centered scenarios are tested</li>
-                                            <li>Implemented ~20+ API integrations by defining detailed scope and requirements, ensuring on-time delivery</li>
-                                            <li>Partnered with governance, compliance, and legal teams to revise requirements for data transfer and adverse event reporting projects, ensuring alignment with patient access policies and regulatory standards</li>
-                                            <li>Authored 20+ API integration documents, including data transfer agreements for vendor collaborations, internal business guidelines, and implementation guides, ensuring seamless data exchange and compliance</li>                                      
+                                            <li>Supported data analysis workstream for the cloud migration of 3 enterprise programs, delivering comprehensive data maps and over 200 business rules.</li>
+                                            <li>Defined requirements for a centralized Error Intelligence Layer to dynamically classify errors, reducing user-reported incidents by over 25%.</li>
+                                            <li>Implemented ~20+ API integrations by defining detailed scope and requirements.</li>
                                         </ul>
                                     </div>
                                     </div>
@@ -418,7 +420,6 @@
                         </div>
                     </div>
 
-                    <!-- Education -->
                     <div>
                         <h3 class="text-xl font-bold text-black border-b border-stone-300 pb-2 mb-3 flex items-center"><i class="fas fa-graduation-cap fa-fw mr-3 text-orange-600"></i>Education</h3>
                         <div class="space-y-4">
@@ -436,7 +437,6 @@
                     </div>
                 </div>
                 
-                <!-- Download Button at the bottom -->
                 <div class="text-center mt-10">
                     <button id="download-pdf-btn" class="inline-block bg-orange-600 text-white font-bold py-3 px-10 rounded-full shadow-lg hover:bg-orange-700 transition-colors">
                         <i class="fas fa-file-pdf mr-2"></i> Download PDF
@@ -444,13 +444,12 @@
                 </div>
             </section>
             
-            <!-- Portfolio Detail Page -->
-            <section id="project-1-details" class="content-section hidden bg-white rounded-lg p-6 md:p-10">
+            <section id="project-1-details" class="content-section hidden bg-white rounded-lg p-4 sm:p-6 md:p-10">
                 <a href="#portfolio-detailed-projects-content" data-target="portfolio-detailed-projects-content" class="inline-flex items-center text-orange-600 hover:text-orange-800 mb-6">
                     <i class="fas fa-arrow-left mr-2"></i>
                     Back to Portfolio
                 </a>
-                <h2 class="text-3xl font-bold text-gray-800">Salesforce AI Agent POC:</h2>
+                <h2 class="text-2xl sm:text-3xl font-bold text-gray-800">Salesforce AI Agent POC:</h2>
                 <p class="text-md text-stone-500 mb-2"><em>A White Paper on Bridging Gaps in Patient Communication</em></p>
                 <p class="text-sm text-stone-400 mb-6">YEAR: Currently working on the POC</p>
 
@@ -459,59 +458,39 @@
                 <div class="space-y-6 text-stone-800" style="line-height: 1.6;">
                     <div>
                         <h4 class="text-xl font-bold mb-2">Objective</h4>
-                        <p>To evaluate if an AI-driven solution to dynamically generate context specific, patient-friendly benefit explanations ("blurbs"), aiming to reduce therapy delays (even today this is part of manual process), decrease operational costs (as a user would have to figure out and fill in the explanation before its sent out to stakeholders), and improve the patient experience by eliminating a critical administrative bottleneck.</p>
+                        <p>To evaluate if an AI-driven solution to dynamically generate context specific, patient-friendly benefit explanations ("blurbs"), aiming to reduce therapy delays, decrease operational costs, and improve the patient experience.</p>
                     </div>
                     <div>
                         <h4 class="text-xl font-bold mb-2">The Challenge</h4>
-                        <p class="mb-3">The manual process of crafting blurbs for the Summary of Benefits (SOB) presented a significant obstacle to value-based care.</p>
-                        <ul class="list-disc list-inside pl-4 space-y-2">
+                         <ul class="list-disc list-inside pl-4 space-y-2 text-sm sm:text-base">
                             <li><strong>Process Inefficiency:</strong> The manual workflow was time-intensive, error-prone, and created bottlenecks that directly delayed patient access to therapy.</li>
-                            <li><strong>Patient Confusion:</strong> Organizations often used generic, high-level blurbs that lacked specificity, leading to patient confusion, frustration, and increased support inquiries.</li>
-                            <li><strong>Scalability Issues:</strong> Manually crafting tailored blurbs for every possible combination of benefits and prior authorization variables was impractical and unsustainable.</li>
+                            <li><strong>Patient Confusion:</strong> Organizations often used generic blurbs that lacked specificity, leading to patient confusion and increased support inquiries.</li>
+                            <li><strong>Scalability Issues:</strong> Manually crafting tailored blurbs for every possible combination of benefits was impractical and unsustainable.</li>
                         </ul>
                     </div>
                      <div>
                         <h4 class="text-xl font-bold mb-2">The Solution</h4>
-                        <p>I began researching state-of-the-art AI techniques for complex, fact-based problem-solving. My review of several technical papers, including research on Chain-of-Thought (CoT) prompting and the use of knowledge graphs, sparked the core idea for a solution. I theorized that this combination was a perfect fit: CoT could provide the logical, step-by-step reasoning needed to navigate complex benefit rules, while a knowledge graph could supply the structured, factual data required for accuracy. With this conceptual framework in mind, I then investigated our existing enterprise technology stack. After a thorough review of the documentation for Salesforce Agent Force, I confirmed that its underlying architecture was built on these very same principles. This was a critical realization—it meant we didn't need to build a new system from scratch. I am currently working with our team to conduct a POC and identify a feasible approach to this problem.</p>
+                        <p>I researched state-of-the-art AI techniques, including Chain-of-Thought (CoT) prompting and knowledge graphs. I theorized this combination was a perfect fit. I then investigated our existing enterprise technology and confirmed Salesforce Agent Force's underlying architecture was built on these principles. I am currently working with our team to conduct a POC to identify a feasible approach.</p>
                     </div>
                      <div>
                         <h4 class="text-xl font-bold mb-2">Benefits & Business Impacts</h4>
-                        <p class="text-stone-700 mb-4">The proposed LLM-powered Blurb Management module delivers transformative benefits by automating blurb generation, a critical yet inefficient step in the benefits verification (BV) process.</p>
                         <div class="space-y-6">
-                            <!-- Benefit 1 -->
                             <div>
                                 <h5 class="text-lg font-semibold text-stone-800">Accelerated Patient Access to Therapy</h5>
                                 <div class="pl-4 mt-2 space-y-2 text-sm">
-                                    <p><strong>Impact:</strong> Automating blurb generation eliminates manual peer reviews, which currently average 5 minutes per case. For an organization processing 10,000 BVs monthly where 60% require manual blurb generation, this saves 500 staff hours per month.</p>
-                                    <p><strong>Value:</strong> Faster BV completion reduces time-to-therapy, enabling patients to start treatment sooner. Industry studies suggest a 1-day reduction in therapy delays can improve patient adherence by up to 5%, potentially reducing downstream complications.</p>
-                                    <p><strong>Strategic Alignment:</strong> Timely therapy access supports value-based care goals by prioritizing patient outcomes and reducing care delivery delays.</p>
+                                    <p><strong>Impact:</strong> Automating blurb generation eliminates manual peer reviews, saving 500 staff hours per month.</p>
                                 </div>
                             </div>
-                            <!-- Benefit 2 -->
                             <div>
                                 <h5 class="text-lg font-semibold text-stone-800">Improved Patient and Provider Experience</h5>
                                  <div class="pl-4 mt-2 space-y-2 text-sm">
-                                    <p><strong>Impact:</strong> Tailored, patient-friendly blurbs replace generic explanations, reducing confusion. Clear information (e.g., “Your plan covers the drug with a $2,000 deductible, $500 met”) can decrease patient support calls by an estimated 20–30%.</p>
-                                    <p><strong>Value:</strong> Enhanced clarity minimizes provider frustration with inconsistent cost-share grids, reducing rework and improving trust. Satisfied patients and providers are more likely to engage with healthcare services.</p>
-                                    <p><strong>Strategic Alignment:</strong> Patient-centric communication fosters trust and aligns with value-based care’s focus on transparency and engagement.</p>
+                                    <p><strong>Impact:</strong> Tailored, patient-friendly blurbs replace generic explanations, reducing confusion and support calls by an estimated 20–30%.</p>
                                 </div>
                             </div>
-                            <!-- Benefit 3 -->
                             <div>
                                 <h5 class="text-lg font-semibold text-stone-800">Cost Saving & Operational Efficiency</h5>
                                 <div class="pl-4 mt-2 space-y-2 text-sm">
-                                    <p><strong>Impact:</strong> Automation reduces manual labor costs. Assuming an average hourly staff cost of $30, the 500 hours saved monthly translates to $15,000 in monthly savings (or ~$180,000 annually) for the 6,000 BVs that need manual intervention.</p>
-                                    <p><strong>Value:</strong> The module’s scalability minimizes the need for additional staffing as volume grows. Error reduction also decreases costly rework, estimated at $5–$10 per erroneous BV.</p>
-                                    <p><strong>Strategic Alignment:</strong> Cost efficiencies free up resources for high-impact, patient-focused initiatives, enhancing operational agility.</p>
-                                </div>
-                            </div>
-                            <!-- Benefit 4 -->
-                            <div>
-                                <h5 class="text-lg font-semibold text-stone-800">Data-Driven Insights for Continuous Improvement</h5>
-                                <div class="pl-4 mt-2 space-y-2 text-sm">
-                                    <p><strong>Impact:</strong> The module’s metadata (e.g., reasoning logs) enables auditing and performance tracking, identifying patterns in delays or errors. This data can inform process optimizations, reducing turnaround time by an additional 10–15%.</p>
-                                    <p><strong>Value:</strong> Insights from blurb generation patterns allow proactive engagement with payers to streamline coverage policies, potentially reducing denials by 5–10%.</p>
-                                    <p><strong>Strategic Alignment:</strong> Leveraging data for process improvement positions the organization as a forward-thinking leader in value-based care delivery.</p>
+                                    <p><strong>Impact:</strong> Automation reduces manual labor costs, translating to ~$180,000 in annual savings.</p>
                                 </div>
                             </div>
                         </div>
@@ -519,110 +498,70 @@
                 </div>
             </section>
 
-            <!-- New Portfolio Detail Page for Project 2 -->
-            <section id="project-2-details" class="content-section hidden bg-white rounded-lg p-6 md:p-10">
+            <section id="project-2-details" class="content-section hidden bg-white rounded-lg p-4 sm:p-6 md:p-10">
                 <a href="#portfolio-detailed-projects-content" data-target="portfolio-detailed-projects-content" class="inline-flex items-center text-orange-600 hover:text-orange-800 mb-6">
                     <i class="fas fa-arrow-left mr-2"></i>
                     Back to Portfolio
                 </a>
-                <h2 class="text-3xl font-bold text-gray-800">Salesforce optimizations</h2>
+                <h2 class="text-2xl sm:text-3xl font-bold text-gray-800">Salesforce optimizations</h2>
                 <p class="text-stone-700 my-4 leading-relaxed">
                     Contributed towards several Salesforce initiatives.
                 </p>
                 
                 <div class="space-y-8 text-stone-800">
-                    <!-- Sub Project 1 -->
                     <div class="p-4 border-l-4 border-orange-200">
                         <h4 class="text-xl font-bold mb-2">Project: Automated Healthcare Coverage & Eligibility Verification</h4>
-                        <p class="mb-3"><strong>Objective:</strong> To streamline the benefits verification process by implementing an automated service to discover and validate patient insurance coverage. The goal was to improve data accuracy, reduce manual intervention, and prevent claim denials caused by incorrect policy information.</p>
-                        <h5 class="font-semibold mb-2">Contributions & Outcomes:</h5>
+                        <p class="mb-3"><strong>Objective:</strong> To streamline the benefits verification process by implementing an automated service to discover and validate patient insurance coverage.</p>
                         <ul class="list-disc list-inside pl-4 space-y-2 text-sm">
-                            <li>Led the end-to-end implementation of the service, from initial requirements gathering and design to testing and final deployment.</li>
+                            <li>Led the end-to-end implementation of the service, from requirements gathering to deployment.</li>
                             <li>Coordinated with third-party vendors to ensure a seamless API integration via MuleSoft.</li>
-                            <li>Oversaw the development of the Salesforce data model, including custom objects, fields, APEX code modifications, and the creation of platform events.</li>
-                            <li>Achieved a highly successful launch, resulting in a post-production incident rate of less than 5% and significantly improving the efficiency of the benefits verification team.</li>
+                             <li>Achieved a successful launch, with a post-production incident rate of less than 5%.</li>
                         </ul>
-                        <p class="mt-3 text-xs text-stone-600"><strong>Technologies:</strong> Salesforce CRM, MuleSoft, APEX, Platform Events, Custom Objects & Relationships</p>
                     </div>
                     
-                    <!-- Sub Project 2 -->
                     <div class="p-4 border-l-4 border-orange-200">
                         <h4 class="text-xl font-bold mb-2">Project: User Experience & Workflow Optimization</h4>
                         <p class="mb-3"><strong>Objective:</strong> To improve user productivity within Salesforce by identifying and eliminating inefficiencies in core business processes.</p>
-                        <h5 class="font-semibold mb-2">Contributions & Outcomes:</h5>
-                        <ul class="list-disc list-inside pl-4 space-y-2 text-sm">
-                            <li>Developed a custom click-tracking tool to analyze user behavior and data entry patterns across five critical case management workflows.</li>
-                            <li>Utilized the data to identify bottlenecks and eliminate redundant steps, redesigning the user interface and process flow.</li>
-                            <li>Successfully reduced user clicks by an average of 28% (from approximately 250 to 180 clicks) for the targeted workflows, leading to significant time savings and improved user satisfaction.</li>
+                         <ul class="list-disc list-inside pl-4 space-y-2 text-sm">
+                            <li>Developed a custom click-tracking tool to analyze user behavior.</li>
+                            <li>Utilized the data to identify bottlenecks and redesign the user interface.</li>
+                            <li>Successfully reduced user clicks by an average of 28% for targeted workflows.</li>
                         </ul>
-                         <p class="mt-3 text-xs text-stone-600"><strong>Technologies:</strong> Salesforce CRM, Custom Salesforce Tooling, Process Analysis</p>
-                    </div>
-                    
-                    <!-- Sub Project 3 -->
-                    <div class="p-4 border-l-4 border-orange-200">
-                        <h4 class="text-xl font-bold mb-2">Project: Logistics & Financial Services Module</h4>
-                        <p class="mb-3"><strong>Objective:</strong> To build a new, end-to-end workflow within Salesforce to manage the scheduling, fulfillment, and payment of logistical services for qualified program participants.</p>
-                         <h5 class="font-semibold mb-2">Contributions & Outcomes:</h5>
-                        <ul class="list-disc list-inside pl-4 space-y-2 text-sm">
-                            <li>Architected the complete business and system requirements for the new module.</li>
-                            <li>Designed the Salesforce data model, defining the necessary custom objects, fields, and relationships to track service requests, scheduling, and financial states.</li>
-                            <li>Defined the automation logic, including triggers and platform events, to manage the lifecycle of a service request from qualification and scheduling to financial reconciliation (credit/debit) upon completion.</li>
-                        </ul>
-                        <p class="mt-3 text-xs text-stone-600"><strong>Technologies:</strong> Salesforce CRM, Process Builder, Flow, Custom Objects & Relationships</p>
-                    </div>
-                    
-                    <!-- Sub Project 4 -->
-                    <div class="p-4 border-l-4 border-orange-200">
-                         <h4 class="text-xl font-bold mb-2">Project: FHIR API-Driven Enrollment Process</h4>
-                        <p class="mb-3"><strong>Objective:</strong> To integrate a standardized, API-driven enrollment channel into Salesforce, allowing for automated creation and processing of new participant records.</p>
-                        <h5 class="font-semibold mb-2">Contributions & Outcomes:</h5>
-                        <ul class="list-disc list-inside pl-4 space-y-2 text-sm">
-                            <li>Coordinated the integration from the Salesforce perspective, focusing on how incoming data from the FHIR API would be processed and stored.</li>
-                            <li>Designed the data mapping strategy to ensure information was correctly routed to the appropriate objects and fields.</li>
-                            <li>Established the core business logic to determine when to create new participant records versus updating existing ones, preventing data duplication.</li>
-                            <li>Defined the rules for triggering specific onboarding cases and workflows upon successful enrollment via the API.</li>
-                        </ul>
-                         <p class="mt-3 text-xs text-stone-600"><strong>Technologies:</strong> Salesforce CRM, FHIR, API Integration, Data Mapping</p>
                     </div>
                 </div>
             </section>
 
-            <!-- Portfolio Main Page (List of projects) -->
-            <section id="portfolio-detailed-projects-content" class="content-section hidden bg-white rounded-lg p-6 md:p-8">
+            <section id="portfolio-detailed-projects-content" class="content-section hidden bg-white rounded-lg p-4 md:p-8">
                 <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Portfolio</h2>
                 <div class="space-y-6">
-                    <!-- Project 1 Link -->
                     <a href="#project-1-details" data-target="project-1-details" class="block bg-stone-50 p-6 rounded-lg border border-stone-200 hover:shadow-lg hover:border-orange-400 transition-all duration-300">
-                        <h3 class="text-2xl font-semibold text-gray-800">Salesforce AI Agent POC:</h3>
+                        <h3 class="text-xl sm:text-2xl font-semibold text-gray-800">Salesforce AI Agent POC:</h3>
                         <p class="text-sm text-stone-500 mb-2"><em>A White Paper on Bridging Gaps in Patient Communication</em></p>
-                        <p class="text-stone-600 text-sm">Here is the brief overview of the white paper proposed to the client: To evaluate if an AI-driven solution to dynamically generate context specific, patient-friendly benefit explanations ("blurbs")...</p>
+                        <p class="text-stone-600 text-sm">An overview of a white paper proposing an AI-driven solution to dynamically generate context-specific, patient-friendly benefit explanations...</p>
                     </a>
-                    <!-- Project 2 Link -->
-                     <a href="#project-2-details" data-target="project-2-details" class="block bg-stone-50 p-6 rounded-lg border border-stone-200 hover:shadow-lg hover:border-orange-400 transition-all duration-300">
-                        <h3 class="text-2xl font-semibold text-gray-800">Salesforce Product & Implementation Specialist</h3>
-                        <p class="text-stone-600 text-sm mt-2">Contributed to a major Salesforce implementation by identifying product enhancement opportunities and leading the integration of new services. Focused on improving data accuracy, user efficiency, and workflow automation.</p>
+                    <a href="#project-2-details" data-target="project-2-details" class="block bg-stone-50 p-6 rounded-lg border border-stone-200 hover:shadow-lg hover:border-orange-400 transition-all duration-300">
+                        <h3 class="text-xl sm:text-2xl font-semibold text-gray-800">Salesforce Product & Implementation Specialist</h3>
+                        <p class="text-stone-600 text-sm mt-2">Contributed to a major Salesforce implementation by identifying product enhancement opportunities and leading the integration of new services.</p>
                     </a>
-                     <!-- Project 3 Link (Placeholder) -->
                      <a href="#" data-target="" class="block bg-stone-50 p-6 rounded-lg border border-stone-200 hover:shadow-lg hover:border-orange-400 transition-all duration-300">
-                        <h3 class="text-2xl font-semibold text-gray-800">Project 3 Title</h3>
+                        <h3 class="text-xl sm:text-2xl font-semibold text-gray-800">Project 3 Title</h3>
                         <p class="text-sm text-stone-500 mb-2"><em>Project 3 Subtitle</em></p>
                         <p class="text-stone-600 text-sm">And here is where you can add another project summary to build out your portfolio...</p>
                     </a>
                 </div>
             </section>
 
-            <!-- Explorations Sections -->
             <section id="financial-content" class="content-section hidden bg-white rounded-lg p-6 md:p-8">
                 <h2 class="text-3xl font-bold text-gray-800">Financial Projects</h2>
-                <!-- Add your financial project content here -->
+                 <p class="mt-4 text-gray-600">Content coming soon!</p>
             </section>
             <section id="hiking-content" class="content-section hidden bg-white rounded-lg p-6 md:p-8">
                 <h2 class="text-3xl font-bold text-gray-800">Hiking Adventures</h2>
-                <!-- Add your hiking content here -->
+                <p class="mt-4 text-gray-600">Content coming soon!</p>
             </section>
             <section id="baking-content" class="content-section hidden bg-white rounded-lg p-6 md:p-8">
                 <h2 class="text-3xl font-bold text-gray-800">Baking Creations</h2>
-                 <!-- Add your baking content here -->
+                <p class="mt-4 text-gray-600">Content coming soon!</p>
             </section>
             <section id="books-read-content" class="content-section hidden bg-white rounded-lg p-6 md:p-8">
                 <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Books Read</h2>
@@ -634,14 +573,11 @@
                         </button>
                         <div class="book-list hidden mt-2 pl-4 border-l-2 border-orange-300">
                             <ul class="list-disc list-inside text-stone-700 space-y-2 p-4">
-                               <li>Andrew Carnegie by David Nasaw</li>
-                               <li>The New Rule to Lifting for Life</li>
-                               <li>Poor Charlie's Almanack</li>
-                               <li>Prisoners of Geography by Tim Marshall</li>
-                               <li>The Book Thief by Markus Zusak</li>
-                               <li>The Manning Sisters</li>
-                               <li>Fiasco by Frank Partnoy</li>
-                               <li>Killing Fat (use the science of thermodynamics) by Darden Ellington</li>
+                                <li>Andrew Carnegie by David Nasaw</li>
+                                <li>The New Rule to Lifting for Life</li>
+                                <li>Poor Charlie's Almanack</li>
+                                <li>Prisoners of Geography by Tim Marshall</li>
+                                <li>The Book Thief by Markus Zusak</li>
                             </ul>
                         </div>
                     </div>
@@ -650,7 +586,6 @@
 
         </main>
 
-        <!-- Footer -->
         <footer class="mt-10 pt-6 border-t border-gray-200 text-center p-6 bg-white rounded-b-xl">
             <p class="text-gray-600 mb-4">&copy; 2025 Rasika Dharne. All rights reserved.</p>
             <div class="flex justify-center space-x-6 text-gray-700">
@@ -661,19 +596,52 @@
         </footer>
     </div>
     
-    <!-- JavaScript for Tab Functionality -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const allLinks = document.querySelectorAll('a[data-target]');
             const contentSections = document.querySelectorAll('.content-section');
             const heroSection = document.getElementById('hero-home');
             const mainContentWrapper = document.getElementById('main-content-wrapper');
-            
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileExplorationsBtn = document.getElementById('mobile-explorations-btn');
+            const mobileExplorationsDropdown = document.getElementById('mobile-explorations-dropdown');
+
+            // --- Mobile Menu Toggle ---
+            if (mobileMenuBtn && mobileMenu) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                    const icon = mobileMenuBtn.querySelector('i');
+                    if (mobileMenu.classList.contains('hidden')) {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    } else {
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-times');
+                    }
+                });
+            }
+
+            // --- Mobile Explorations Dropdown Toggle ---
+            if (mobileExplorationsBtn && mobileExplorationsDropdown) {
+                 mobileExplorationsBtn.addEventListener('click', (e) => {
+                     e.stopPropagation(); // Prevent main link handler
+                     mobileExplorationsDropdown.classList.toggle('hidden');
+                 });
+            }
+
+            // --- Content Switching Logic ---
             function handleLinkClick(event) {
                 event.preventDefault();
                 const targetId = event.currentTarget.dataset.target;
                 const targetSection = document.getElementById(targetId);
-        
+                
+                // Close mobile menu on link click
+                if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenuBtn.querySelector('i').classList.replace('fa-times', 'fa-bars');
+                }
+
                 allLinks.forEach(link => link.classList.remove('active'));
                 contentSections.forEach(section => section.classList.remove('active'));
         
@@ -684,14 +652,21 @@
 
                 if (targetId === 'home-page-main-content') {
                     heroSection.classList.add('active');
-                    mainContentWrapper.style.marginTop = '2rem';
+                    mainContentWrapper.style.marginTop = '2rem'; // Spacing for below hero
                     document.getElementById('home-page-main-content').classList.add('active');
                 } else if (targetSection) {
                     heroSection.classList.remove('active');
-                    mainContentWrapper.style.marginTop = '80px';
+                    mainContentWrapper.style.marginTop = '80px'; // Spacing for below fixed header
                     targetSection.classList.add('active');
                 }
-                 // Special scroll for contact form link
+                
+                // Scroll to top of the content wrapper
+                 window.scrollTo({
+                    top: mainContentWrapper.offsetTop - 80, // Adjust for fixed header height
+                    behavior: 'smooth'
+                });
+
+                // Special scroll for contact form link
                 if (event.currentTarget.getAttribute('href') === '#contact-form') {
                     setTimeout(() => {
                         const formElement = document.getElementById('contact-form');
@@ -706,7 +681,7 @@
                 link.addEventListener('click', handleLinkClick);
             });
             
-            // Skills data
+            // --- Skills data ---
             const skills = [
                 { name: 'Requirement Gathering & Analysis', score: 5 },
                 { name: 'SQL', score: 5 },
@@ -723,13 +698,7 @@
 
             const skillsContainer = document.getElementById('skills-container-new');
             if (skillsContainer) {
-                 // Sort skills from highest to lowest score, then alphabetically
-                skills.sort((a, b) => {
-                    if (b.score === a.score) {
-                        return a.name.localeCompare(b.name);
-                    }
-                    return b.score - a.score;
-                });
+                skills.sort((a, b) => b.score - a.score || a.name.localeCompare(b.name));
                 
                 skillsContainer.innerHTML = ''; // Clear previous skills
                 skills.forEach(skill => {
@@ -754,7 +723,7 @@
                 });
             }
             
-            // PDF Download functionality
+            // --- PDF Download functionality ---
             const downloadPdfBtn = document.getElementById('download-pdf-btn');
             if(downloadPdfBtn) {
                 downloadPdfBtn.addEventListener('click', function() {
@@ -770,92 +739,64 @@
                 });
             }
         
-            // Contact form functionality
+            // --- Contact form functionality ---
             const contactForm = document.getElementById('contact-form');
-            const formSuccessMessage = document.getElementById('form-success-message');
-            const formErrorMessage = document.getElementById('form-error-message');
-
             if(contactForm) {
                 contactForm.addEventListener('submit', function(e) {
                     e.preventDefault();
-                    
                     const formData = new FormData(contactForm);
-                    const formAction = "https://formspree.io/f/movnpqwp";
-
-                    fetch(formAction, {
+                    fetch("https://formspree.io/f/movnpqwp", {
                         method: 'POST',
                         body: formData,
-                        headers: {
-                            'Accept': 'application/json'
-                        }
+                        headers: {'Accept': 'application/json'}
                     }).then(response => {
+                        const formSuccessMessage = document.getElementById('form-success-message');
+                        const formErrorMessage = document.getElementById('form-error-message');
                         if (response.ok) {
                             contactForm.style.display = 'none';
                             formSuccessMessage.style.display = 'block';
-                            formErrorMessage.style.display = 'none';
                         } else {
-                            response.json().then(data => {
-                                if (Object.hasOwn(data, 'errors')) {
-                                    const errorText = data["errors"].map(error => error["message"]).join(", ");
-                                    formErrorMessage.textContent = `Oops! ${errorText}`;
-                                } else {
-                                    formErrorMessage.textContent = 'Oops! Something went wrong submitting the form.';
-                                }
-                                formErrorMessage.style.display = 'block';
-                                formSuccessMessage.style.display = 'none';
-                            })
+                            formErrorMessage.textContent = 'Oops! Something went wrong. Please try again.';
+                            formErrorMessage.style.display = 'block';
                         }
                     }).catch(error => {
+                        const formErrorMessage = document.getElementById('form-error-message');
                         formErrorMessage.textContent = 'Oops! Something went wrong. Please try again.';
                         formErrorMessage.style.display = 'block';
-                        formSuccessMessage.style.display = 'none';
                     });
                 });
             }
 
-             // Corrected Read More button functionality
+            // --- Read More button functionality ---
             document.querySelectorAll('.read-more-btn').forEach(button => {
                 button.addEventListener('click', function(e) {
                     e.preventDefault();
                     e.stopPropagation(); 
-
                     const projectExpandable = this.closest('.project-expandable');
                     if (!projectExpandable) return;
-
                     const fullText = projectExpandable.querySelector('.full-text');
                     const summaryText = projectExpandable.querySelector('.summary-text');
                     
                     if (fullText && summaryText) {
-                        if (fullText.style.display === 'none' || fullText.style.display === '') {
-                            fullText.style.display = 'block';
-                            summaryText.style.display = 'none';
-                            this.textContent = 'Read Less...';
-                        } else {
-                            fullText.style.display = 'none';
-                            summaryText.style.display = 'inline';
-                            this.textContent = 'Read More...';
-                        }
+                        const isHidden = fullText.style.display === 'none' || fullText.style.display === '';
+                        fullText.style.display = isHidden ? 'block' : 'none';
+                        summaryText.style.display = isHidden ? 'none' : 'inline';
+                        this.textContent = isHidden ? 'Read Less...' : 'Read More...';
                     }
                 });
             });
 
-            // Collapsible book list functionality
+            // --- Collapsible book list functionality ---
             document.querySelectorAll('.year-toggle').forEach(button => {
                 button.addEventListener('click', () => {
                     const bookList = button.nextElementSibling;
                     const icon = button.querySelector('i');
-
-                    if (bookList.classList.contains('hidden')) {
-                        bookList.classList.remove('hidden');
-                        icon.classList.add('rotate-180');
-                    } else {
-                        bookList.classList.add('hidden');
-                        icon.classList.remove('rotate-180');
-                    }
+                    bookList.classList.toggle('hidden');
+                    icon.classList.toggle('rotate-180');
                 });
             });
 
-            // Initial setup for page load
+            // --- Initial setup for page load ---
             document.querySelector('a[data-target="home-page-main-content"]').classList.add('active');
             heroSection.classList.add('active');
             document.getElementById('home-page-main-content').classList.add('active');
@@ -864,4 +805,3 @@
     </script>
 </body>
 </html>
-
