@@ -1,807 +1,787 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio | Constantly Revamping</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio | Constantly Revamping</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
 
-    <style>
-        /* Custom styles for the Inter font and smooth transitions */
-        body {
-            font-family: 'Inter', sans-serif;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-        .hero-section {
-            background-image: url('https://raw.githubusercontent.com/rasikadharne/my-portfolio/main/images/home/Home%20page%20Image.jpg');
-            background-size: cover;
-            background-position: center;
-            height: 80vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            position: relative;
-            color: #fff;
-            width: 100%;
-        }
-        /* Gradient overlay for better text contrast */
-        .hero-section::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.5), transparent 60%);
-            z-index: 1;
-        }
-        .hero-content {
-            position: relative;
-            z-index: 2; /* Ensure content is above the overlay */
-            animation: fadeIn 1.5s ease-out forwards;
-        }
+<style>
+/* Custom styles for the Inter font and smooth transitions */
+body {
+font-family: 'Inter', sans-serif;
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+}
+.hero-section {
+background-image: url('https://raw.githubusercontent.com/rasikadharne/my-portfolio/main/images/home/Home%20page%20Image.jpg');
+background-size: cover;
+background-position: center;
+height: 80vh;
+display: flex;
+flex-direction: column;
+align-items: center;
+text-align: center;
+position: relative;
+color: #fff;
+width: 100%;
+}
+/* Gradient overlay for better text contrast */
+.hero-section::after {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background: linear-gradient(to top, rgba(0, 0, 0, 0.5), transparent 60%);
+z-index: 1;
+}
+.hero-content {
+position: relative;
+z-index: 2; /* Ensure content is above the overlay */
+animation: fadeIn 1.5s ease-out forwards;
+}
 
-        /* Styles for content sections */
-        .content-section {
-            display: none;
-            animation: fadeIn 0.4s ease-out forwards;
-        }
-        .content-section.active {
-            display: block;
-        }
-        /* Animation */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        /* Custom text shadow for better readability */
-        .text-shadow {
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
-        }
-        /* Custom active state for nav links */
-        .nav-link.active {
-            color: #c2410c; /* text-orange-700 */
-            font-weight: 600; /* font-semibold */
-            border-bottom-color: #EA580C; /* border-orange-600 */
-        }
-        .full-text {
-            display: none;
-        }
-        .skill-circle {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            display: inline-block;
-            margin-left: 3px; /* Use margin-left to space out circles */
-        }
-    </style>
+/* Styles for content sections */
+.content-section {
+display: none;
+animation: fadeIn 0.4s ease-out forwards;
+}
+.content-section.active {
+display: block;
+}
+/* Animation */
+@keyframes fadeIn {
+from { opacity: 0; transform: translateY(20px); }
+to { opacity: 1; transform: translateY(0); }
+}
+/* Custom text shadow for better readability */
+.text-shadow {
+text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+}
+/* Custom active state for nav links */
+.nav-link.active {
+color: #c2410c; /* text-orange-700 */
+font-weight: 600; /* font-semibold */
+border-bottom-color: #EA580C; /* border-orange-600 */
+}
+.full-text {
+display: none;
+}
+.skill-circle {
+width: 10px;
+height: 10px;
+border-radius: 50%;
+display: inline-block;
+margin-left: 3px; /* Use margin-left to space out circles */
+}
+</style>
 </head>
 <body class="bg-stone-100 min-h-screen flex flex-col items-center pb-10">
 
-    <header class="fixed top-0 w-full bg-white bg-opacity-95 backdrop-blur-sm z-30 shadow-sm py-4 px-6 flex justify-between items-center">
-        <div class="flex items-center">
-            <img src="https://raw.githubusercontent.com/rasikadharne/my-portfolio/main/images/about_me/Display%20Picture.JPG" alt="Rasika Dharne Profile Photo" class="w-10 h-10 rounded-full shadow-md object-cover border-2 border-white">
-            <span class="ml-3 font-bold text-gray-800 md:hidden">Rasika Dharne</span>
+<header class="fixed top-0 w-full bg-white bg-opacity-95 backdrop-blur-sm z-30 shadow-sm py-4 px-6 flex justify-between items-center">
+<div class="flex items-center">
+<img src="https://raw.githubusercontent.com/rasikadharne/my-portfolio/main/images/about_me/Display%20Picture.JPG" alt="Rasika Dharne Profile Photo" class="w-10 h-10 rounded-full shadow-md object-cover border-2 border-white">
+<span class="ml-3 font-bold text-gray-800 md:hidden">Rasika Dharne</span>
+</div>
+<button id="mobile-menu-btn" class="md:hidden text-gray-700 focus:outline-none">
+<i class="fas fa-bars fa-lg"></i>
+</button>
+
+<div id="desktop-nav-container" class="hidden md:flex items-center space-x-4">
+<nav class="flex items-center space-x-4 md:space-x-6">
+<a href="#hero-home" class="nav-link text-lg text-gray-700 font-medium px-3 py-2 rounded-md transition-all duration-200 ease-in-out border-b-2 border-transparent hover:text-orange-700 hover:border-orange-600" data-target="home-page-main-content">Home</a>
+<a href="#about-me-content" class="nav-link text-lg text-gray-700 font-medium px-3 py-2 rounded-md transition-all duration-200 ease-in-out border-b-2 border-transparent hover:text-orange-700 hover:border-orange-600" data-target="about-me-content">About Me</a>
+<a href="#resume-content" class="nav-link text-lg text-gray-700 font-medium px-3 py-2 rounded-md transition-all duration-200 ease-in-out border-b-2 border-transparent hover:text-orange-700 hover:border-orange-600" data-target="resume-content">Resume</a>
+<a href="#portfolio-detailed-projects-content" class="nav-link text-lg text-gray-700 font-medium px-3 py-2 rounded-md transition-all duration-200 ease-in-out border-b-2 border-transparent hover:text-orange-700 hover:border-orange-600" data-target="portfolio-detailed-projects-content">Portfolio</a>
+
+<div class="relative group">
+<button class="nav-link text-lg text-gray-700 font-medium px-3 py-2 rounded-md transition-all duration-200 ease-in-out border-b-2 border-transparent hover:text-orange-700 hover:border-orange-600 flex items-center" id="explorations-dropdown-btn">
+Explorations
+<svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+</button>
+<div class="absolute right-0 md:left-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-40 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-in-out transform scale-95 group-hover:scale-100">
+<a href="#financial-content" class="block px-4 py-2 text-sm text-gray-700 transition-colors duration-200 hover:bg-orange-100" data-target="financial-content">Financial</a>
+<a href="#hiking-content" class="block px-4 py-2 text-sm text-gray-700 transition-colors duration-200 hover:bg-orange-100" data-target="hiking-content">Hiking</a>
+<a href="#baking-content" class="block px-4 py-2 text-sm text-gray-700 transition-colors duration-200 hover:bg-orange-100" data-target="baking-content">Baking</a>
+<a href="#books-read-content" class="block px-4 py-2 text-sm text-gray-700 transition-colors duration-200 hover:bg-orange-100" data-target="books-read-content">Books Read</a>
+</div>
+</div>
+</nav>
+<div class="flex items-center space-x-4 ml-4">
+<a href="#contact-form" data-target="about-me-content" class="inline-block bg-orange-600 text-white font-bold py-2 px-6 rounded-full shadow-lg hover:bg-orange-700 transition-colors text-sm">
+Contact Me
+</a>
+</div>
+</div>
+
+<div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-white shadow-lg md:hidden">
+<nav class="flex flex-col p-4 space-y-2">
+<a href="#hero-home" class="nav-link text-lg text-gray-700 font-medium px-3 py-2 rounded-md" data-target="home-page-main-content">Home</a>
+<a href="#about-me-content" class="nav-link text-lg text-gray-700 font-medium px-3 py-2 rounded-md" data-target="about-me-content">About Me</a>
+<a href="#resume-content" class="nav-link text-lg text-gray-700 font-medium px-3 py-2 rounded-md" data-target="resume-content">Resume</a>
+<a href="#portfolio-detailed-projects-content" class="nav-link text-lg text-gray-700 font-medium px-3 py-2 rounded-md" data-target="portfolio-detailed-projects-content">Portfolio</a>
+<div>
+<button class="w-full text-left nav-link text-lg text-gray-700 font-medium px-3 py-2 rounded-md flex justify-between items-center" id="mobile-explorations-btn">
+Explorations
+<svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+</button>
+<div id="mobile-explorations-dropdown" class="hidden pl-4 mt-2 space-y-2">
+<a href="#financial-content" class="block px-4 py-2 text-sm text-gray-700" data-target="financial-content">Financial</a>
+<a href="#hiking-content" class="block px-4 py-2 text-sm text-gray-700" data-target="hiking-content">Hiking</a>
+<a href="#baking-content" class="block px-4 py-2 text-sm text-gray-700" data-target="baking-content">Baking</a>
+<a href="#books-read-content" class="block px-4 py-2 text-sm text-gray-700" data-target="books-read-content">Books Read</a>
+</div>
+</div>
+
+<a href="#contact-form" data-target="about-me-content" class="mt-4 w-full text-center bg-orange-600 text-white font-bold py-2 px-6 rounded-full shadow-lg hover:bg-orange-700">
+Contact Me
+</a>
+</nav>
+</div>
+</header>
+
+
+<section id="hero-home" class="hero-section content-section active">
+<div class="my-auto pt-24 hero-content px-4">
+<h1 class="text-5xl sm:text-6xl md:text-8xl font-extrabold text-white drop-shadow-lg tracking-tight text-shadow">Rasika Dharne</h1>
+<p class="text-xl sm:text-2xl md:text-3xl text-white mt-4 italic tracking-wide text-shadow">constantly revamping.</p>
+<a href="#resume-content" data-target="resume-content" class="mt-8 inline-block bg-orange-600 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-orange-700 transition-transform transform hover:scale-105">
+Explore My Work
+</a>
+</div>
+</section>
+
+<div id="main-content-wrapper" class="max-w-4xl w-full bg-white rounded-xl shadow-lg relative overflow-hidden mt-8">
+
+<main class="p-4 sm:p-6 md:p-10">
+
+<section id="home-page-main-content" class="content-section active bg-white rounded-lg p-4 md:p-8">
+<div class="mb-12">
+<div class="flex justify-between items-center mb-6">
+<h2 class="text-3xl font-bold text-gray-800">Welcome!</h2>
+</div>
+<div>
+<p class="text-gray-700 leading-relaxed">
+Hello and welcome to my portfolio. I'm a business solutions analyst who enjoys connecting the dots and finding value. I believe in continuous improvement, a principle I apply to my professional projects and personal passions like running, strength training, baking, and analyzing corporate financials.
+</p>
+</div>
+</div>
+
+<div>
+<h3 class="text-3xl font-bold text-gray-800 mb-12 text-center">TIMELINE</h3>
+<div class="relative container mx-auto px-2 sm:px-6 flex flex-col space-y-8">
+<div class="absolute z-0 w-1 h-full bg-orange-300 shadow-md left-5 md:left-1/2 transform md:-translate-x-1/2"></div>
+<div class="relative flex items-start">
+<div class="absolute left-5 top-0 -translate-x-1/2 z-10 flex items-center justify-center w-10 h-10 rounded-full border-2 border-orange-500 bg-white text-orange-600">
+<i class="fas fa-star"></i>
+</div>
+<div class="w-full pl-12 md:pl-0 md:w-1/2 md:pr-8">
+<div class="md:hidden mb-2">
+<p class="font-semibold text-orange-700">2025 – Present</p>
+<p class="text-sm text-stone-600 mt-1">Senior Business Solution Analyst</p>
+</div>
+<div class="bg-white p-4 sm:p-6 rounded border border-gray-200 shadow">
+<div class="text-gray-600 text-sm space-y-3">
+<div class="project-expandable">
+<strong>Salesforce AI Agent POC:</strong> <span class="summary-text">Authored white paper on Salesforce AgentForce for dynamic blurb generation, securing POC approval with projected 500 monthly hours saved (~$180K annual savings).</span>
+<div class="full-text mt-2">
+<p>Authored a white paper outlining the benefits and implementation plan for leveraging Salesforce AgentForce to create a dynamic blurb module, securing client approval for a Proof of Concept (POC). Currently collaborating with stakeholders to execute the POC, projecting an average of 500 hours saved per month, resulting in approximately $180K in savings annual for 6,000 Benefits Verifications (BV) per month requiring manual intervention.</p>
+</div>
+<a href="#" class="read-more-btn text-orange-700 hover:underline text-xs font-semibold block mt-1">Read More...</a>
+</div>
+<p>
+<strong>Coverage Discovery Workflows:</strong> Leading requirements for end-to-end workflows embedding eligibility/coverage discovery tools into existing access ecosystem preventing ~3,600 annual claim denials (300/month on 10K volume) while modularizing for scalable external deployment.
+</p>
+</div>
+</div>
+</div>
+<div class="hidden md:block md:w-1/2 md:pl-8">
+<p class="font-semibold text-orange-700">2025 – Present</p>
+<p class="text-sm text-stone-600 mt-1">Senior Business Solution Analyst:<br>Product Development</p>
+</div>
+</div>
+
+<div class="relative flex items-start md:flex-row-reverse">
+<div class="absolute left-5 top-0 -translate-x-1/2 z-10 flex items-center justify-center w-10 h-10 rounded-full border-2 border-orange-500 bg-white text-orange-600">
+<i class="fas fa-robot"></i>
+</div>
+<div class="w-full pl-12 md:pl-0 md:w-1/2 md:ml-8">
+<div class="md:hidden mb-2">
+<p class="font-semibold text-orange-700">2022 - 2024</p>
+<p class="text-sm text-stone-600 mt-1">Senior Business Solution Analyst</p>
+</div>
+<div class="bg-white p-4 sm:p-6 rounded border border-gray-200 shadow">
+<div class="text-gray-600 text-sm space-y-3">
+<div class="project-expandable">
+<strong>Hypothesis Driven Product Revamp:</strong> <span class="summary-text">Conceptualized the hypothesis-driven expansion of a core AI product, broadening its predictive capabilities...</span>
+<div class="full-text mt-2">
+<p>Conceptualized the hypothesis-driven expansion of a core AI product, broadening its predictive capabilities from solely medical benefits to a comprehensive suite including diagnostic and pharmacy verification. This architectural enhancement drastically cut benefit verification costs from $30 to cents per transaction, directly enabling the successful onboarding of five new client programs (4 pharmacy, 1 diagnostic) and scaling the product's market reach.</p>
+</div>
+<a href="#" class="read-more-btn text-orange-700 hover:underline text-xs font-semibold block mt-1">Read More...</a>
+</div>
+<div class="project-expandable">
+<strong>Salesforce CRM Enhancements:</strong> <span class="summary-text">Orchestrated a comprehensive overhaul of the patient enrollment and claims submission process...</span>
+<div class="full-text mt-2">
+<p>Orchestrated a comprehensive overhaul of the patient enrollment and claims submission process, introducing API-driven automation to eliminate critical workflow bottlenecks. The solution slashed user time-on-task by 5 minutes and cut clicks by nearly 50% (from 280 to 150), enabling a significant increase in operational capacity and allowing teams to shift focus from manual data entry to high-impact patient care.</p>
+</div>
+<a href="#" class="read-more-btn text-orange-700 hover:underline text-xs font-semibold block mt-1">Read More...</a>
+</div>
+</div>
+</div>
+</div>
+<div class="hidden md:block md:w-1/2 md:text-right md:pr-8">
+<p class="font-semibold text-orange-700">2022 - 2024</p>
+<p class="text-sm text-stone-600 mt-1">Senior Business Solution Analyst:<br>Product Development</p>
+</div>
+</div>
+
+<div class="relative flex items-start">
+<div class="absolute left-5 top-0 -translate-x-1/2 z-10 flex items-center justify-center w-10 h-10 rounded-full border-2 border-orange-500 bg-white text-orange-600">
+<i class="fas fa-cogs"></i>
+</div>
+<div class="w-full pl-12 md:pl-0 md:w-1/2 md:pr-8">
+<div class="md:hidden mb-2">
+<p class="font-semibold text-orange-700">2020 - 2022</p>
+<p class="text-sm text-stone-600 mt-1">Senior Business Solution Analyst</p>
+</div>
+<div class="bg-white p-4 sm:p-6 rounded border border-gray-200 shadow">
+<div class="text-gray-600 text-sm space-y-3">
+<p><strong>Error Classification Engine:</strong> System automatically categorizes errors into actionable buckets, eliminating guesswork that creates unnecessary incidents.</p>
+<p><strong>API integrations:</strong> Built APIs/batch feeds with pharmacies and aggregators, implemented 20+ integrations.</p>
+<div class="project-expandable">
+<strong>Patient Segmentation Effort:</strong> <span class="summary-text">Define requirements for segmentation-driven patient communication platform...</span>
+<div class="full-text mt-2">
+<p>Define requirements for segmentation-driven patient communication platform that automated and personalized stakeholder outreach across multiple channels, including SMS, email, letters, and phone reminders. By translating patient segmentation scores into unique communication cadences, this initiative dramatically improved patient adherence while significantly reducing operational overhead for care teams.</p>
+</div>
+<a href="#" class="read-more-btn text-orange-700 hover:underline text-xs font-semibold block mt-1">Read More...</a>
+</div>
+</div>
+</div>
+</div>
+<div class="hidden md:block md:w-1/2 md:pl-8">
+<p class="font-semibold text-orange-700">2020 - 2022</p>
+<p class="text-sm text-stone-600 mt-1">Senior Business Solution Analyst:<br>Product Development</p>
+</div>
+</div>
+
+<div class="relative flex items-start md:flex-row-reverse">
+<div class="absolute left-5 top-0 -translate-x-1/2 z-10 flex items-center justify-center w-10 h-10 rounded-full border-2 border-orange-500 bg-white text-orange-600">
+<i class="fas fa-database"></i>
+</div>
+<div class="w-full pl-12 md:pl-0 md:w-1/2 md:ml-8">
+<div class="md:hidden mb-2">
+<p class="font-semibold text-orange-700">2018 - 2020</p>
+<p class="text-sm text-stone-600 mt-1">Business Solution Analyst</p>
+</div>
+<div class="bg-white p-4 sm:p-6 rounded border border-gray-200 shadow">
+<div class="text-gray-600 text-sm space-y-3">
+<p><strong>Enterprise Data Migration:</strong> Refine end-to-end requirements for cloud migration of enterprise data for three core programs, ensuring business continuity. This strategic initiative successfully modernized the company's data infrastructure.</p>
+<p><strong>Correspondence Automation:</strong> Defined logic for merging fields, fax/email blasts, and SMS integration with vendors. Completed end-to-end requirements for 5 medical programs, reducing trigger time from 3 minutes to seconds per record.</p>
+</div>
+</div>
+</div>
+<div class="hidden md:block md:w-1/2 md:text-right md:pr-8">
+<p class="font-semibold text-orange-700">2018 - 2020</p>
+<p class="text-sm text-stone-600 mt-1">Business Solution Analyst:<br>Product Development</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="about-me-content" class="content-section hidden bg-white rounded-lg p-4 md:p-8">
+<div class="flex flex-col items-center">
+<h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">About Me</h2>
+<img src="https://raw.githubusercontent.com/rasikadharne/my-portfolio/main/images/about_me/Display%20Picture.JPG" alt="Rasika Dharne Profile Photo" class="w-48 h-48 sm:w-64 sm:h-64 rounded-full shadow-lg object-cover border-4 border-white mb-8">
+<div class="w-full max-w-2xl text-left">
+<h3 class="text-2xl font-semibold text-gray-800 mb-3">Who am I?</h3>
+<p class="text-gray-700 leading-relaxed mb-4">
+I’m a problem solver at heart with over seven years of experience in the healthcare technology space. My focus is always on understanding the real business need first, then figuring out how technology can add value—rather than creating unnecessary overhead. Over the years, I’ve led projects that cut manual work, saved millions in costs, and helped teams make smarter, data-driven decisions.
+</p>
+<p class="text-gray-700 leading-relaxed mb-4">
+I’ve embraced the principle of “invert,” a mental model I learned from Charlie Munger: instead of only asking how to succeed, I ask what could cause failure and work backward to avoid it. This mindset has been invaluable in building products that are innovative, practical, and resilient.
+</p>
+<p class="text-gray-700 leading-relaxed mb-4">
+I enjoy turning complex challenges into simple, effective solutions—whether it’s streamlining workflows, automating processes, or helping a team bring a new product to life. I thrive on working closely with technical teams, business leaders, and end users to ensure every solution is scalable, simple, and impactful.
+</p>
+<p class="text-gray-700 leading-relaxed mb-6">
+Outside of work, I’m endlessly curious—exploring everything from blockchain to fitness and nutrition. I thrive on learning, experimenting, and creating value wherever I can.
+</p>
+</div>
+
+<div class="w-full max-w-2xl mt-10">
+<h3 class="text-2xl font-semibold text-gray-800 mb-3 text-center">Let's Work Together</h3>
+<p class="text-center text-gray-600 mb-6">Please feel free to connect with me.</p>
+
+<form id="contact-form" class="space-y-4">
+<div class="flex flex-col md:flex-row gap-4">
+<div class="w-full">
+<label for="firstName" class="block text-sm font-medium text-gray-700">First Name</label>
+<input type="text" id="firstName" name="firstName" required class="mt-1 block w-full px-3 py-2 bg-white border border-stone-300 rounded-md shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500">
+</div>
+<div class="w-full">
+<label for="lastName" class="block text-sm font-medium text-gray-700">Last Name</label>
+<input type="text" id="lastName" name="lastName" required class="mt-1 block w-full px-3 py-2 bg-white border border-stone-300 rounded-md shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500">
+</div>
+</div>
+<div>
+<label for="email" class="block text-sm font-medium text-gray-700">Email ID</label>
+<input type="email" id="email" name="email" required class="mt-1 block w-full px-3 py-2 bg-white border border-stone-300 rounded-md shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500">
+</div>
+<div>
+<label for="message" class="block text-sm font-medium text-gray-700">Message</label>
+<textarea id="message" name="message" rows="4" maxlength="500" class="mt-1 block w-full px-3 py-2 bg-white border border-stone-300 rounded-md shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500"></textarea>
+<p class="text-xs text-gray-500 mt-1 text-right">Max. 500 characters</p>
+</div>
+<div class="text-center">
+<button type="submit" class="inline-block bg-orange-600 text-white font-bold py-3 px-10 rounded-full shadow-lg hover:bg-orange-700 transition-colors">
+Submit
+</button>
+</div>
+</form>
+<div id="form-success-message" class="hidden text-center p-4 mt-4 bg-green-100 text-green-800 rounded-md">
+Thanks for connecting! I'll get back to you soon.
+</div>
+<div id="form-error-message" class="hidden text-center p-4 mt-4 bg-red-100 text-red-800 rounded-md">
+Oops! Something went wrong. Please try again.
+</div>
+</div>
+</div>
+</section>
+<section id="resume-content" class="content-section hidden bg-white rounded-lg text-stone-800 p-4 sm:p-6 md:p-10">
+<div id="resume-export-area">
+<div class="text-center mb-8">
+<h2 class="text-3xl md:text-5xl font-bold text-black">Rasika Dharne</h2>
+<ul class="flex flex-wrap justify-center gap-x-4 gap-y-1 text-stone-500 mt-3 text-xs sm:text-sm">
+<li class="flex items-center"><i class="fas fa-envelope fa-fw mr-2 text-orange-600"></i>rasikadharne@gmail.com</li>
+<li class="flex items-center"><i class="fab fa-linkedin fa-fw mr-2 text-orange-600"></i>linkedin.com/in/rasikadharne</li>
+<li class="flex items-center"><i class="fas fa-globe fa-fw mr-2 text-orange-600"></i>rasikadharne.github.io/RasikaDharne/</li>
+</ul>
+</div>
+
+<div class="mb-8">
+<h3 class="text-xl font-bold text-black border-b border-stone-300 pb-2 mb-3 flex items-center"><i class="fas fa-user-circle fa-fw mr-3 text-orange-600"></i>Summary</h3>
+<p class="text-stone-700 text-sm sm:text-base" style="line-height: 1.5;">
+For around 7 years I have consulted for Fortune 500 Healthcare clients, building reliable, responsive, cost-effective distributed architectures. My approach centers on rigorous preparation and anticipating risks, with a constant focus on downstream impacts to build solutions that are robust, scalable, and outcome-driven.
+</p>
+</div>
+
+<div class="mb-8">
+<h3 class="text-xl font-bold text-black border-b border-stone-300 pb-2 mb-3 flex items-center"><i class="fas fa-cogs fa-fw mr-3 text-orange-600"></i>Skills</h3>
+<div id="skills-container-new" class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2 text-stone-700 text-sm">
+</div>
+</div>
+<div class="mb-8">
+<h3 class="text-xl font-bold text-black border-b border-stone-300 pb-2 mb-4 flex items-center"><i class="fas fa-briefcase fa-fw mr-3 text-orange-600"></i>Work Experience</h3>
+<div class="space-y-6">
+    <div>
+        <div class="flex flex-col sm:flex-row justify-between sm:items-baseline mb-2">
+            <h4 class="text-lg sm:text-xl font-bold">Tata Consultancy Services, Client- Cencora</h4>
+            <p class="text-sm text-stone-500 flex-shrink-0 sm:ml-4"><em>Dec 2018 - Present</em></p>
         </div>
-        
-        <button id="mobile-menu-btn" class="md:hidden text-gray-700 focus:outline-none">
-            <i class="fas fa-bars fa-lg"></i>
-        </button>
-
-        <div id="desktop-nav-container" class="hidden md:flex items-center space-x-4">
-            <nav class="flex items-center space-x-4 md:space-x-6">
-                <a href="#hero-home" class="nav-link text-lg text-gray-700 font-medium px-3 py-2 rounded-md transition-all duration-200 ease-in-out border-b-2 border-transparent hover:text-orange-700 hover:border-orange-600" data-target="home-page-main-content">Home</a>
-                <a href="#about-me-content" class="nav-link text-lg text-gray-700 font-medium px-3 py-2 rounded-md transition-all duration-200 ease-in-out border-b-2 border-transparent hover:text-orange-700 hover:border-orange-600" data-target="about-me-content">About Me</a>
-                <a href="#resume-content" class="nav-link text-lg text-gray-700 font-medium px-3 py-2 rounded-md transition-all duration-200 ease-in-out border-b-2 border-transparent hover:text-orange-700 hover:border-orange-600" data-target="resume-content">Resume</a>
-                <a href="#portfolio-detailed-projects-content" class="nav-link text-lg text-gray-700 font-medium px-3 py-2 rounded-md transition-all duration-200 ease-in-out border-b-2 border-transparent hover:text-orange-700 hover:border-orange-600" data-target="portfolio-detailed-projects-content">Portfolio</a>
-
-                <div class="relative group">
-                    <button class="nav-link text-lg text-gray-700 font-medium px-3 py-2 rounded-md transition-all duration-200 ease-in-out border-b-2 border-transparent hover:text-orange-700 hover:border-orange-600 flex items-center" id="explorations-dropdown-btn">
-                        Explorations
-                        <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                    </button>
-                    <div class="absolute right-0 md:left-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-40 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-in-out transform scale-95 group-hover:scale-100">
-                        <a href="#financial-content" class="block px-4 py-2 text-sm text-gray-700 transition-colors duration-200 hover:bg-orange-100" data-target="financial-content">Financial</a>
-                        <a href="#hiking-content" class="block px-4 py-2 text-sm text-gray-700 transition-colors duration-200 hover:bg-orange-100" data-target="hiking-content">Hiking</a>
-                        <a href="#baking-content" class="block px-4 py-2 text-sm text-gray-700 transition-colors duration-200 hover:bg-orange-100" data-target="baking-content">Baking</a>
-                        <a href="#books-read-content" class="block px-4 py-2 text-sm text-gray-700 transition-colors duration-200 hover:bg-orange-100" data-target="books-read-content">Books Read</a>
-                    </div>
+        <div>
+            <div class="flex flex-col sm:flex-row justify-between sm:items-start">
+                <h5 class="text-base sm:text-lg font-semibold text-stone-800">Senior Business Solution Analyst-Product</h5>
                 </div>
-            </nav>
-            <div class="flex items-center space-x-4 ml-4">
-                <a href="#contact-form" data-target="about-me-content" class="inline-block bg-orange-600 text-white font-bold py-2 px-6 rounded-full shadow-lg hover:bg-orange-700 transition-colors text-sm">
-                    Contact Me
-                </a>
-            </div>
+            <ul class="list-disc list-inside text-stone-700 space-y-2 mt-2 text-sm pl-4" style="line-height: 1.6;">
+                <li>Leading proof-of-concept for designing an AI-powered benefit blurb generation agent, projecting ~$180K in annual savings.</li>
+                <li>Owned the functional blueprint for a major AI product expansion, scaling the predictive pipeline from a single service (Medical) into a multi-service platform.</li>
+                <li>Optimized 5 crucial Salesforce case workflows by building a custom click-tracking tool to analyze user behavior, cutting user clicks by 28%.</li>
+                <li>Drove a 40% increase in predictions accuracy by defining new architecture and validating the design via A/B testing.</li>
+                <li>Applied Monte Carlo simulation to uncover ~3,000 errors in 10,000 successfully predicted benefits.</li>
+                <li>Adopted LLMs to accelerate SQL/SOQL/Power BI queries, reducing SLA response times from 1 day to minutes.</li>
+            </ul>
         </div>
-
-        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-white shadow-lg md:hidden">
-            <nav class="flex flex-col p-4 space-y-2">
-                 <a href="#hero-home" class="nav-link text-lg text-gray-700 font-medium px-3 py-2 rounded-md" data-target="home-page-main-content">Home</a>
-                <a href="#about-me-content" class="nav-link text-lg text-gray-700 font-medium px-3 py-2 rounded-md" data-target="about-me-content">About Me</a>
-                <a href="#resume-content" class="nav-link text-lg text-gray-700 font-medium px-3 py-2 rounded-md" data-target="resume-content">Resume</a>
-                <a href="#portfolio-detailed-projects-content" class="nav-link text-lg text-gray-700 font-medium px-3 py-2 rounded-md" data-target="portfolio-detailed-projects-content">Portfolio</a>
-                
-                <div>
-                     <button class="w-full text-left nav-link text-lg text-gray-700 font-medium px-3 py-2 rounded-md flex justify-between items-center" id="mobile-explorations-btn">
-                        Explorations
-                        <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                    </button>
-                    <div id="mobile-explorations-dropdown" class="hidden pl-4 mt-2 space-y-2">
-                        <a href="#financial-content" class="block px-4 py-2 text-sm text-gray-700" data-target="financial-content">Financial</a>
-                        <a href="#hiking-content" class="block px-4 py-2 text-sm text-gray-700" data-target="hiking-content">Hiking</a>
-                        <a href="#baking-content" class="block px-4 py-2 text-sm text-gray-700" data-target="baking-content">Baking</a>
-                        <a href="#books-read-content" class="block px-4 py-2 text-sm text-gray-700" data-target="books-read-content">Books Read</a>
-                    </div>
-                </div>
-
-                <a href="#contact-form" data-target="about-me-content" class="mt-4 w-full text-center bg-orange-600 text-white font-bold py-2 px-6 rounded-full shadow-lg hover:bg-orange-700">
-                    Contact Me
-                </a>
-            </nav>
-        </div>
-    </header>
-
-
-    <section id="hero-home" class="hero-section content-section active">
-        <div class="my-auto pt-24 hero-content px-4">
-            <h1 class="text-5xl sm:text-6xl md:text-8xl font-extrabold text-white drop-shadow-lg tracking-tight text-shadow">Rasika Dharne</h1>
-            <p class="text-xl sm:text-2xl md:text-3xl text-white mt-4 italic tracking-wide text-shadow">constantly revamping.</p>
-            <a href="#resume-content" data-target="resume-content" class="mt-8 inline-block bg-orange-600 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-orange-700 transition-transform transform hover:scale-105">
-                Explore My Work
-            </a>
-        </div>
-    </section>
-
-    <div id="main-content-wrapper" class="max-w-4xl w-full bg-white rounded-xl shadow-lg relative overflow-hidden mt-8">
-
-        <main class="p-4 sm:p-6 md:p-10">
-
-            <section id="home-page-main-content" class="content-section active bg-white rounded-lg p-4 md:p-8">
-                <div class="mb-12">
-                    <div class="flex justify-between items-center mb-6">
-                        <h2 class="text-3xl font-bold text-gray-800">Welcome!</h2>
-                    </div>
-                    <div>
-                        <p class="text-gray-700 leading-relaxed">
-                            Hello and welcome to my portfolio. I'm a business solutions analyst who enjoys connecting the dots and finding value. I believe in continuous improvement, a principle I apply to my professional projects and personal passions like running, strength training, baking, and analyzing corporate financials.
-                        </p>
-                    </div>
-                </div>
-
-                <div>
-                    <h3 class="text-3xl font-bold text-gray-800 mb-12 text-center">TIMELINE</h3>
-                    <div class="relative container mx-auto px-2 sm:px-6 flex flex-col space-y-8">
-                        <div class="absolute z-0 w-1 h-full bg-orange-300 shadow-md left-5 md:left-1/2 transform md:-translate-x-1/2"></div>
-                        
-                        <div class="relative flex items-start">
-                            <div class="absolute left-5 top-0 -translate-x-1/2 z-10 flex items-center justify-center w-10 h-10 rounded-full border-2 border-orange-500 bg-white text-orange-600">
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <div class="w-full pl-12 md:pl-0 md:w-1/2 md:pr-8">
-                                <div class="md:hidden mb-2">
-                                    <p class="font-semibold text-orange-700">2025 – Present</p>
-                                    <p class="text-sm text-stone-600 mt-1">Senior Business Solution Analyst</p>
-                                </div>
-                                <div class="bg-white p-4 sm:p-6 rounded border border-gray-200 shadow">
-                                    <div class="text-gray-600 text-sm space-y-3">
-                                        <div class="project-expandable">
-                                            <strong>Salesforce AI Agent POC:</strong> <span class="summary-text">Authored white paper on Salesforce AgentForce for dynamic blurb generation, securing POC approval with projected 500 monthly hours saved (~$180K annual savings).</span>
-                                            <div class="full-text mt-2">
-                                                <p>Authored a white paper outlining the benefits and implementation plan for leveraging Salesforce AgentForce to create a dynamic blurb module, securing client approval for a Proof of Concept (POC). Currently collaborating with stakeholders to execute the POC, projecting an average of 500 hours saved per month, resulting in approximately $180K in savings annual for 6,000 Benefits Verifications (BV) per month requiring manual intervention.</p>
-                                            </div>
-                                            <a href="#" class="read-more-btn text-orange-700 hover:underline text-xs font-semibold block mt-1">Read More...</a>
-                                        </div>
-                                        <p>
-                                            <strong>Coverage Discovery Workflows:</strong> Leading requirements for end-to-end workflows embedding eligibility/coverage discovery tools into existing access ecosystem preventing ~3,600 annual claim denials (300/month on 10K volume) while modularizing for scalable external deployment.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="hidden md:block md:w-1/2 md:pl-8">
-                                <p class="font-semibold text-orange-700">2025 – Present</p>
-                                <p class="text-sm text-stone-600 mt-1">Senior Business Solution Analyst:<br>Product Development</p>
-                            </div>
-                        </div>
-
-                        <div class="relative flex items-start md:flex-row-reverse">
-                             <div class="absolute left-5 top-0 -translate-x-1/2 z-10 flex items-center justify-center w-10 h-10 rounded-full border-2 border-orange-500 bg-white text-orange-600">
-                                <i class="fas fa-robot"></i>
-                            </div>
-                            <div class="w-full pl-12 md:pl-0 md:w-1/2 md:ml-8">
-                                 <div class="md:hidden mb-2">
-                                    <p class="font-semibold text-orange-700">2022 - 2024</p>
-                                    <p class="text-sm text-stone-600 mt-1">Senior Business Solution Analyst</p>
-                                </div>
-                               <div class="bg-white p-4 sm:p-6 rounded border border-gray-200 shadow">
-                                    <div class="text-gray-600 text-sm space-y-3">
-                                        <div class="project-expandable">
-                                            <strong>Hypothesis Driven Product Revamp:</strong> <span class="summary-text">Conceptualized the hypothesis-driven expansion of a core AI product, broadening its predictive capabilities...</span>
-                                            <div class="full-text mt-2">
-                                                <p>Conceptualized the hypothesis-driven expansion of a core AI product, broadening its predictive capabilities from solely medical benefits to a comprehensive suite including diagnostic and pharmacy verification. This architectural enhancement drastically cut benefit verification costs from $30 to cents per transaction, directly enabling the successful onboarding of five new client programs (4 pharmacy, 1 diagnostic) and scaling the product's market reach.</p>
-                                            </div>
-                                            <a href="#" class="read-more-btn text-orange-700 hover:underline text-xs font-semibold block mt-1">Read More...</a>
-                                        </div>
-                                        <div class="project-expandable">
-                                            <strong>Salesforce CRM Enhancements:</strong> <span class="summary-text">Orchestrated a comprehensive overhaul of the patient enrollment and claims submission process...</span>
-                                            <div class="full-text mt-2">
-                                                <p>Orchestrated a comprehensive overhaul of the patient enrollment and claims submission process, introducing API-driven automation to eliminate critical workflow bottlenecks. The solution slashed user time-on-task by 5 minutes and cut clicks by nearly 50% (from 280 to 150), enabling a significant increase in operational capacity and allowing teams to shift focus from manual data entry to high-impact patient care.</p>
-                                            </div>
-                                            <a href="#" class="read-more-btn text-orange-700 hover:underline text-xs font-semibold block mt-1">Read More...</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                           <div class="hidden md:block md:w-1/2 md:text-right md:pr-8">
-                                <p class="font-semibold text-orange-700">2022 - 2024</p>
-                                <p class="text-sm text-stone-600 mt-1">Senior Business Solution Analyst:<br>Product Development</p>
-                            </div>
-                        </div>
-
-                        <div class="relative flex items-start">
-                             <div class="absolute left-5 top-0 -translate-x-1/2 z-10 flex items-center justify-center w-10 h-10 rounded-full border-2 border-orange-500 bg-white text-orange-600">
-                                <i class="fas fa-cogs"></i>
-                            </div>
-                            <div class="w-full pl-12 md:pl-0 md:w-1/2 md:pr-8">
-                                <div class="md:hidden mb-2">
-                                    <p class="font-semibold text-orange-700">2020 - 2022</p>
-                                    <p class="text-sm text-stone-600 mt-1">Senior Business Solution Analyst</p>
-                                </div>
-                                <div class="bg-white p-4 sm:p-6 rounded border border-gray-200 shadow">
-                                    <div class="text-gray-600 text-sm space-y-3">
-                                        <p><strong>Error Classification Engine:</strong> System automatically categorizes errors into actionable buckets, eliminating guesswork that creates unnecessary incidents.</p>
-                                        <p><strong>API integrations:</strong> Built APIs/batch feeds with pharmacies and aggregators, implemented 20+ integrations.</p>
-                                        <div class="project-expandable">
-                                            <strong>Patient Segmentation Effort:</strong> <span class="summary-text">Define requirements for segmentation-driven patient communication platform...</span>
-                                            <div class="full-text mt-2">
-                                                <p>Define requirements for segmentation-driven patient communication platform that automated and personalized stakeholder outreach across multiple channels, including SMS, email, letters, and phone reminders. By translating patient segmentation scores into unique communication cadences, this initiative dramatically improved patient adherence while significantly reducing operational overhead for care teams.</p>
-                                            </div>
-                                            <a href="#" class="read-more-btn text-orange-700 hover:underline text-xs font-semibold block mt-1">Read More...</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="hidden md:block md:w-1/2 md:pl-8">
-                                <p class="font-semibold text-orange-700">2020 - 2022</p>
-                                <p class="text-sm text-stone-600 mt-1">Senior Business Solution Analyst:<br>Product Development</p>
-                            </div>
-                        </div>
-
-                        <div class="relative flex items-start md:flex-row-reverse">
-                             <div class="absolute left-5 top-0 -translate-x-1/2 z-10 flex items-center justify-center w-10 h-10 rounded-full border-2 border-orange-500 bg-white text-orange-600">
-                                <i class="fas fa-database"></i>
-                            </div>
-                            <div class="w-full pl-12 md:pl-0 md:w-1/2 md:ml-8">
-                                <div class="md:hidden mb-2">
-                                    <p class="font-semibold text-orange-700">2018 - 2020</p>
-                                    <p class="text-sm text-stone-600 mt-1">Business Solution Analyst</p>
-                                </div>
-                                <div class="bg-white p-4 sm:p-6 rounded border border-gray-200 shadow">
-                                    <div class="text-gray-600 text-sm space-y-3">
-                                        <p><strong>Enterprise Data Migration:</strong> Refine end-to-end requirements for cloud migration of enterprise data for three core programs, ensuring business continuity. This strategic initiative successfully modernized the company's data infrastructure.</p>
-                                        <p><strong>Correspondence Automation:</strong> Defined logic for merging fields, fax/email blasts, and SMS integration with vendors. Completed end-to-end requirements for 5 medical programs, reducing trigger time from 3 minutes to seconds per record.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="hidden md:block md:w-1/2 md:text-right md:pr-8">
-                                <p class="font-semibold text-orange-700">2018 - 2020</p>
-                                <p class="text-sm text-stone-600 mt-1">Business Solution Analyst:<br>Product Development</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="about-me-content" class="content-section hidden bg-white rounded-lg p-4 md:p-8">
-                <div class="flex flex-col items-center">
-                    <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">About Me</h2>
-                    <img src="https://raw.githubusercontent.com/rasikadharne/my-portfolio/main/images/about_me/Display%20Picture.JPG" alt="Rasika Dharne Profile Photo" class="w-48 h-48 sm:w-64 sm:h-64 rounded-full shadow-lg object-cover border-4 border-white mb-8">
-                    <div class="w-full max-w-2xl text-left">
-                        <h3 class="text-2xl font-semibold text-gray-800 mb-3">Who am I?</h3>
-                        <p class="text-gray-700 leading-relaxed mb-4">
-                            I’m a problem solver at heart with over seven years of experience in the healthcare technology space. My focus is always on understanding the real business need first, then figuring out how technology can add value—rather than creating unnecessary overhead. Over the years, I’ve led projects that cut manual work, saved millions in costs, and helped teams make smarter, data-driven decisions.
-                        </p>
-                        <p class="text-gray-700 leading-relaxed mb-4">
-                            I’ve embraced the principle of “invert,” a mental model I learned from Charlie Munger: instead of only asking how to succeed, I ask what could cause failure and work backward to avoid it. This mindset has been invaluable in building products that are innovative, practical, and resilient.
-                        </p>
-                        <p class="text-gray-700 leading-relaxed mb-4">
-                            I enjoy turning complex challenges into simple, effective solutions—whether it’s streamlining workflows, automating processes, or helping a team bring a new product to life. I thrive on working closely with technical teams, business leaders, and end users to ensure every solution is scalable, simple, and impactful.
-                        </p>
-                         <p class="text-gray-700 leading-relaxed mb-6">
-                            Outside of work, I’m endlessly curious—exploring everything from blockchain to fitness and nutrition. I thrive on learning, experimenting, and creating value wherever I can.
-                        </p>
-                    </div>
-
-                    <div class="w-full max-w-2xl mt-10">
-                         <h3 class="text-2xl font-semibold text-gray-800 mb-3 text-center">Let's Work Together</h3>
-                         <p class="text-center text-gray-600 mb-6">Please feel free to connect with me.</p>
-
-                         <form id="contact-form" class="space-y-4">
-                            <div class="flex flex-col md:flex-row gap-4">
-                                <div class="w-full">
-                                    <label for="firstName" class="block text-sm font-medium text-gray-700">First Name</label>
-                                    <input type="text" id="firstName" name="firstName" required class="mt-1 block w-full px-3 py-2 bg-white border border-stone-300 rounded-md shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500">
-                                </div>
-                                <div class="w-full">
-                                     <label for="lastName" class="block text-sm font-medium text-gray-700">Last Name</label>
-                                     <input type="text" id="lastName" name="lastName" required class="mt-1 block w-full px-3 py-2 bg-white border border-stone-300 rounded-md shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500">
-                                </div>
-                            </div>
-                             <div>
-                                <label for="email" class="block text-sm font-medium text-gray-700">Email ID</label>
-                                <input type="email" id="email" name="email" required class="mt-1 block w-full px-3 py-2 bg-white border border-stone-300 rounded-md shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500">
-                            </div>
-                            <div>
-                                <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
-                                <textarea id="message" name="message" rows="4" maxlength="500" class="mt-1 block w-full px-3 py-2 bg-white border border-stone-300 rounded-md shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500"></textarea>
-                                <p class="text-xs text-gray-500 mt-1 text-right">Max. 500 characters</p>
-                            </div>
-                              <div class="text-center">
-                                  <button type="submit" class="inline-block bg-orange-600 text-white font-bold py-3 px-10 rounded-full shadow-lg hover:bg-orange-700 transition-colors">
-                                       Submit
-                                  </button>
-                              </div>
-                         </form>
-                         <div id="form-success-message" class="hidden text-center p-4 mt-4 bg-green-100 text-green-800 rounded-md">
-                            Thanks for connecting! I'll get back to you soon.
-                        </div>
-                        <div id="form-error-message" class="hidden text-center p-4 mt-4 bg-red-100 text-red-800 rounded-md">
-                            Oops! Something went wrong. Please try again.
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
-            <section id="resume-content" class="content-section hidden bg-white rounded-lg text-stone-800 p-4 sm:p-6 md:p-10">
-                <div id="resume-export-area">
-                    <div class="text-center mb-8">
-                        <h2 class="text-3xl md:text-5xl font-bold text-black">Rasika Dharne</h2>
-                        <ul class="flex flex-wrap justify-center gap-x-4 gap-y-1 text-stone-500 mt-3 text-xs sm:text-sm">
-                            <li class="flex items-center"><i class="fas fa-envelope fa-fw mr-2 text-orange-600"></i>rasikadharne@gmail.com</li>
-                            <li class="flex items-center"><i class="fab fa-linkedin fa-fw mr-2 text-orange-600"></i>linkedin.com/in/rasikadharne</li>
-                            <li class="flex items-center"><i class="fas fa-globe fa-fw mr-2 text-orange-600"></i>rasikadharne.github.io/RasikaDharne/</li>
-                        </ul>
-                    </div>
-
-                    <div class="mb-8">
-                        <h3 class="text-xl font-bold text-black border-b border-stone-300 pb-2 mb-3 flex items-center"><i class="fas fa-user-circle fa-fw mr-3 text-orange-600"></i>Summary</h3>
-                        <p class="text-stone-700 text-sm sm:text-base" style="line-height: 1.5;">
-                            For around 7 years I have consulted for Fortune 500 Healthcare clients, building reliable, responsive, cost-effective distributed architectures. My approach centers on rigorous preparation and anticipating risks, with a constant focus on downstream impacts to build solutions that are robust, scalable, and outcome-driven.
-                        </p>
-                    </div>
-
-                    <div class="mb-8">
-                        <h3 class="text-xl font-bold text-black border-b border-stone-300 pb-2 mb-3 flex items-center"><i class="fas fa-cogs fa-fw mr-3 text-orange-600"></i>Skills</h3>
-                        <div id="skills-container-new" class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2 text-stone-700 text-sm">
-                            </div>
-                    </div>
-                    
-                    <div class="mb-8">
-                        <h3 class="text-xl font-bold text-black border-b border-stone-300 pb-2 mb-4 flex items-center"><i class="fas fa-briefcase fa-fw mr-3 text-orange-600"></i>Work Experience</h3>
-                        <div class="space-y-6">
-                            <div>
-                                <div class="flex flex-col sm:flex-row justify-between sm:items-baseline mb-2">
-                                    <h4 class="text-lg sm:text-xl font-bold">Tata Consultancy Services, Client- Cencora</h4>
-                                    <p class="text-sm text-stone-500 flex-shrink-0 sm:ml-4"><em>2018 - Present</em></p>
-                                </div>
-                                
-                                <div class="space-y-4">
-                                    <div>
-                                        <div class="flex flex-col sm:flex-row justify-between sm:items-start">
-                                            <h5 class="text-base sm:text-lg font-semibold text-stone-800">Senior Business Solution Analyst-Product</h5>
-                                            <p class="text-sm text-stone-500 flex-shrink-0 sm:ml-4 sm:text-right"><em>2020 - Present</em></p>
-                                        </div>
-                                        <ul class="list-disc list-inside text-stone-700 space-y-2 mt-2 text-sm pl-4" style="line-height: 1.6;">
-                                            <li>Leading proof-of-concept for designing an AI-powered benefit blurb generation agent, projecting ~$180K in annual savings.</li>
-                                            <li>Owned the functional blueprint for a major AI product expansion, scaling the predictive pipeline from a single service (Medical) into a multi-service platform.</li>
-                                            <li>Optimized 5 crucial Salesforce case workflows by building a custom click-tracking tool to analyze user behavior, cutting user clicks by 28%.</li>
-                                            <li>Drove a 40% increase in predictions accuracy by defining new architecture and validating the design via A/B testing.</li>
-                                            <li>Applied Monte Carlo simulation to uncover ~3,000 errors in 10,000 successfully predicted benefits.</li>
-                                            <li>Adopted LLMs to accelerate SQL/SOQL/Power BI queries, reducing SLA response times from 1 day to minutes.</li>
-                                        </ul>
-                                    </div>
-                                    <div>
-                                        <div class="flex flex-col sm:flex-row justify-between sm:items-baseline">
-                                            <h5 class="text-base sm:text-lg font-semibold text-stone-800">Business Solution Analyst</h5>
-                                            <p class="text-sm text-stone-500 flex-shrink-0 sm:ml-4"><em>Dec 2018 - Dec 2020</em></p>
-                                        </div>
-                                        <ul class="list-disc list-inside text-stone-700 space-y-2 mt-2 text-sm pl-4" style="line-height: 1.6;">
-                                            <li>Supported data analysis workstream for the cloud migration of 3 enterprise programs, delivering comprehensive data maps and over 200 business rules.</li>
-                                            <li>Defined requirements for a centralized Error Intelligence Layer to dynamically classify errors, reducing user-reported incidents by over 25%.</li>
-                                            <li>Implemented ~20+ API integrations by defining detailed scope and requirements.</li>
-                                        </ul>
-                                    </div>
-                                    </div>
-                                </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <h3 class="text-xl font-bold text-black border-b border-stone-300 pb-2 mb-3 flex items-center"><i class="fas fa-graduation-cap fa-fw mr-3 text-orange-600"></i>Education</h3>
-                        <div class="space-y-4">
-                            <div class="relative pl-4">
-                                <div class="absolute left-0 top-2.5 w-2 h-2 bg-orange-600 rounded-full"></div>
-                                <p class="font-semibold text-stone-800">M.Sc. Innovation Management & Entrepreneurship</p>
-                                <p class="text-sm text-stone-500"><em>Temple University, 2015</em></p>
-                            </div>
-                            <div class="relative pl-4">
-                                <div class="absolute left-0 top-2.5 w-2 h-2 bg-orange-600 rounded-full"></div>
-                                <p class="font-semibold text-stone-800">B.E. Instrumentation & Control</p>
-                                <p class="text-sm text-stone-500"><em>Cummins College of Engineering, 2014</em></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="text-center mt-10">
-                    <button id="download-pdf-btn" class="inline-block bg-orange-600 text-white font-bold py-3 px-10 rounded-full shadow-lg hover:bg-orange-700 transition-colors">
-                        <i class="fas fa-file-pdf mr-2"></i> Download PDF
-                    </button>
-                </div>
-            </section>
-            
-            <section id="project-1-details" class="content-section hidden bg-white rounded-lg p-4 sm:p-6 md:p-10">
-                <a href="#portfolio-detailed-projects-content" data-target="portfolio-detailed-projects-content" class="inline-flex items-center text-orange-600 hover:text-orange-800 mb-6">
-                    <i class="fas fa-arrow-left mr-2"></i>
-                    Back to Portfolio
-                </a>
-                <h2 class="text-2xl sm:text-3xl font-bold text-gray-800">Salesforce AI Agent POC:</h2>
-                <p class="text-md text-stone-500 mb-2"><em>A White Paper on Bridging Gaps in Patient Communication</em></p>
-                <p class="text-sm text-stone-400 mb-6">YEAR: Currently working on the POC</p>
-
-                <p class="text-stone-700 mb-6">Here is the brief overview of the white paper proposed to the client:</p>
-                
-                <div class="space-y-6 text-stone-800" style="line-height: 1.6;">
-                    <div>
-                        <h4 class="text-xl font-bold mb-2">Objective</h4>
-                        <p>To evaluate if an AI-driven solution to dynamically generate context specific, patient-friendly benefit explanations ("blurbs"), aiming to reduce therapy delays, decrease operational costs, and improve the patient experience.</p>
-                    </div>
-                    <div>
-                        <h4 class="text-xl font-bold mb-2">The Challenge</h4>
-                         <ul class="list-disc list-inside pl-4 space-y-2 text-sm sm:text-base">
-                            <li><strong>Process Inefficiency:</strong> The manual workflow was time-intensive, error-prone, and created bottlenecks that directly delayed patient access to therapy.</li>
-                            <li><strong>Patient Confusion:</strong> Organizations often used generic blurbs that lacked specificity, leading to patient confusion and increased support inquiries.</li>
-                            <li><strong>Scalability Issues:</strong> Manually crafting tailored blurbs for every possible combination of benefits was impractical and unsustainable.</li>
-                        </ul>
-                    </div>
-                     <div>
-                        <h4 class="text-xl font-bold mb-2">The Solution</h4>
-                        <p>I researched state-of-the-art AI techniques, including Chain-of-Thought (CoT) prompting and knowledge graphs. I theorized this combination was a perfect fit. I then investigated our existing enterprise technology and confirmed Salesforce Agent Force's underlying architecture was built on these principles. I am currently working with our team to conduct a POC to identify a feasible approach.</p>
-                    </div>
-                     <div>
-                        <h4 class="text-xl font-bold mb-2">Benefits & Business Impacts</h4>
-                        <div class="space-y-6">
-                            <div>
-                                <h5 class="text-lg font-semibold text-stone-800">Accelerated Patient Access to Therapy</h5>
-                                <div class="pl-4 mt-2 space-y-2 text-sm">
-                                    <p><strong>Impact:</strong> Automating blurb generation eliminates manual peer reviews, saving 500 staff hours per month.</p>
-                                </div>
-                            </div>
-                            <div>
-                                <h5 class="text-lg font-semibold text-stone-800">Improved Patient and Provider Experience</h5>
-                                 <div class="pl-4 mt-2 space-y-2 text-sm">
-                                    <p><strong>Impact:</strong> Tailored, patient-friendly blurbs replace generic explanations, reducing confusion and support calls by an estimated 20–30%.</p>
-                                </div>
-                            </div>
-                            <div>
-                                <h5 class="text-lg font-semibold text-stone-800">Cost Saving & Operational Efficiency</h5>
-                                <div class="pl-4 mt-2 space-y-2 text-sm">
-                                    <p><strong>Impact:</strong> Automation reduces manual labor costs, translating to ~$180,000 in annual savings.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="project-2-details" class="content-section hidden bg-white rounded-lg p-4 sm:p-6 md:p-10">
-                <a href="#portfolio-detailed-projects-content" data-target="portfolio-detailed-projects-content" class="inline-flex items-center text-orange-600 hover:text-orange-800 mb-6">
-                    <i class="fas fa-arrow-left mr-2"></i>
-                    Back to Portfolio
-                </a>
-                <h2 class="text-2xl sm:text-3xl font-bold text-gray-800">Salesforce optimizations</h2>
-                <p class="text-stone-700 my-4 leading-relaxed">
-                    Contributed towards several Salesforce initiatives.
-                </p>
-                
-                <div class="space-y-8 text-stone-800">
-                    <div class="p-4 border-l-4 border-orange-200">
-                        <h4 class="text-xl font-bold mb-2">Project: Automated Healthcare Coverage & Eligibility Verification</h4>
-                        <p class="mb-3"><strong>Objective:</strong> To streamline the benefits verification process by implementing an automated service to discover and validate patient insurance coverage.</p>
-                        <ul class="list-disc list-inside pl-4 space-y-2 text-sm">
-                            <li>Led the end-to-end implementation of the service, from requirements gathering to deployment.</li>
-                            <li>Coordinated with third-party vendors to ensure a seamless API integration via MuleSoft.</li>
-                             <li>Achieved a successful launch, with a post-production incident rate of less than 5%.</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="p-4 border-l-4 border-orange-200">
-                        <h4 class="text-xl font-bold mb-2">Project: User Experience & Workflow Optimization</h4>
-                        <p class="mb-3"><strong>Objective:</strong> To improve user productivity within Salesforce by identifying and eliminating inefficiencies in core business processes.</p>
-                         <ul class="list-disc list-inside pl-4 space-y-2 text-sm">
-                            <li>Developed a custom click-tracking tool to analyze user behavior.</li>
-                            <li>Utilized the data to identify bottlenecks and redesign the user interface.</li>
-                            <li>Successfully reduced user clicks by an average of 28% for targeted workflows.</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
-            <section id="portfolio-detailed-projects-content" class="content-section hidden bg-white rounded-lg p-4 md:p-8">
-                <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Portfolio</h2>
-                <div class="space-y-6">
-                    <a href="#project-1-details" data-target="project-1-details" class="block bg-stone-50 p-6 rounded-lg border border-stone-200 hover:shadow-lg hover:border-orange-400 transition-all duration-300">
-                        <h3 class="text-xl sm:text-2xl font-semibold text-gray-800">Salesforce AI Agent POC:</h3>
-                        <p class="text-sm text-stone-500 mb-2"><em>A White Paper on Bridging Gaps in Patient Communication</em></p>
-                        <p class="text-stone-600 text-sm">An overview of a white paper proposing an AI-driven solution to dynamically generate context-specific, patient-friendly benefit explanations...</p>
-                    </a>
-                    <a href="#project-2-details" data-target="project-2-details" class="block bg-stone-50 p-6 rounded-lg border border-stone-200 hover:shadow-lg hover:border-orange-400 transition-all duration-300">
-                        <h3 class="text-xl sm:text-2xl font-semibold text-gray-800">Salesforce Product & Implementation Specialist</h3>
-                        <p class="text-stone-600 text-sm mt-2">Contributed to a major Salesforce implementation by identifying product enhancement opportunities and leading the integration of new services.</p>
-                    </a>
-                     <a href="#" data-target="" class="block bg-stone-50 p-6 rounded-lg border border-stone-200 hover:shadow-lg hover:border-orange-400 transition-all duration-300">
-                        <h3 class="text-xl sm:text-2xl font-semibold text-gray-800">Project 3 Title</h3>
-                        <p class="text-sm text-stone-500 mb-2"><em>Project 3 Subtitle</em></p>
-                        <p class="text-stone-600 text-sm">And here is where you can add another project summary to build out your portfolio...</p>
-                    </a>
-                </div>
-            </section>
-
-            <section id="financial-content" class="content-section hidden bg-white rounded-lg p-6 md:p-8">
-                <h2 class="text-3xl font-bold text-gray-800">Financial Projects</h2>
-                 <p class="mt-4 text-gray-600">Content coming soon!</p>
-            </section>
-            <section id="hiking-content" class="content-section hidden bg-white rounded-lg p-6 md:p-8">
-                <h2 class="text-3xl font-bold text-gray-800">Hiking Adventures</h2>
-                <p class="mt-4 text-gray-600">Content coming soon!</p>
-            </section>
-            <section id="baking-content" class="content-section hidden bg-white rounded-lg p-6 md:p-8">
-                <h2 class="text-3xl font-bold text-gray-800">Baking Creations</h2>
-                <p class="mt-4 text-gray-600">Content coming soon!</p>
-            </section>
-            <section id="books-read-content" class="content-section hidden bg-white rounded-lg p-6 md:p-8">
-                <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Books Read</h2>
-                <div class="space-y-4 max-w-lg mx-auto">
-                    <div>
-                        <button class="year-toggle flex justify-between items-center w-full text-left font-semibold text-xl p-4 bg-stone-100 rounded-lg hover:bg-stone-200 transition-colors">
-                            <span>2025</span>
-                            <i class="fas fa-chevron-down transform transition-transform"></i>
-                        </button>
-                        <div class="book-list hidden mt-2 pl-4 border-l-2 border-orange-300">
-                            <ul class="list-disc list-inside text-stone-700 space-y-2 p-4">
-                                <li>Andrew Carnegie by David Nasaw</li>
-                                <li>The New Rule to Lifting for Life</li>
-                                <li>Poor Charlie's Almanack</li>
-                                <li>Prisoners of Geography by Tim Marshall</li>
-                                <li>The Book Thief by Markus Zusak</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-        </main>
-
-        <footer class="mt-10 pt-6 border-t border-gray-200 text-center p-6 bg-white rounded-b-xl">
-            <p class="text-gray-600 mb-4">&copy; 2025 Rasika Dharne. All rights reserved.</p>
-            <div class="flex justify-center space-x-6 text-gray-700">
-                <a href="#" class="hover:text-orange-700"><i class="fab fa-linkedin fa-2x"></i></a>
-                <a href="#" class="hover:text-orange-700"><i class="fab fa-github fa-2x"></i></a>
-                <a href="#" class="hover:text-orange-700"><i class="fab fa-twitter fa-2x"></i></a>
-            </div>
-        </footer>
     </div>
-    
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const allLinks = document.querySelectorAll('a[data-target]');
-            const contentSections = document.querySelectorAll('.content-section');
-            const heroSection = document.getElementById('hero-home');
-            const mainContentWrapper = document.getElementById('main-content-wrapper');
-            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-            const mobileMenu = document.getElementById('mobile-menu');
-            const mobileExplorationsBtn = document.getElementById('mobile-explorations-btn');
-            const mobileExplorationsDropdown = document.getElementById('mobile-explorations-dropdown');
+    <div>
+        <div class="flex flex-col sm:flex-row justify-between sm:items-baseline mb-2">
+            <h4 class="text-lg sm:text-xl font-bold"> Intone Networks</h4>
+            <p class="text-sm text-stone-500 flex-shrink-0 sm:ml-4"><em>Oct 2016 - Dec 2018</em></p>
+        </div>
+        <div>
+            <div class="flex flex-col sm:flex-row justify-between sm:items-baseline">
+                <h5 class="text-base sm:text-lg font-semibold text-stone-800">Business Solution Analyst</h5>
+                 </div>
+            <ul class="list-disc list-inside text-stone-700 space-y-2 mt-2 text-sm pl-4" style="line-height: 1.6;">
+                <li>Supported data analysis workstream for the cloud migration of 3 enterprise programs, delivering comprehensive data maps and over 200 business rules.</li>
+                <li>Defined requirements for a centralized Error Intelligence Layer to dynamically classify errors, reducing user-reported incidents by over 25%.</li>
+                <li>Implemented ~20+ API integrations by defining detailed scope and requirements.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+</div>
 
-            // --- Mobile Menu Toggle ---
-            if (mobileMenuBtn && mobileMenu) {
-                mobileMenuBtn.addEventListener('click', () => {
-                    mobileMenu.classList.toggle('hidden');
-                    const icon = mobileMenuBtn.querySelector('i');
-                    if (mobileMenu.classList.contains('hidden')) {
-                        icon.classList.remove('fa-times');
-                        icon.classList.add('fa-bars');
-                    } else {
-                        icon.classList.remove('fa-bars');
-                        icon.classList.add('fa-times');
-                    }
-                });
-            }
+<div>
+<h3 class="text-xl font-bold text-black border-b border-stone-300 pb-2 mb-3 flex items-center"><i class="fas fa-graduation-cap fa-fw mr-3 text-orange-600"></i>Education</h3>
+<div class="space-y-4">
+<div class="relative pl-4">
+<div class="absolute left-0 top-2.5 w-2 h-2 bg-orange-600 rounded-full"></div>
+<p class="font-semibold text-stone-800">M.Sc. Innovation Management & Entrepreneurship</p>
+<p class="text-sm text-stone-500"><em>Temple University, 2015</em></p>
+</div>
+<div class="relative pl-4">
+<div class="absolute left-0 top-2.5 w-2 h-2 bg-orange-600 rounded-full"></div>
+<p class="font-semibold text-stone-800">B.E. Instrumentation & Control</p>
+<p class="text-sm text-stone-500"><em>Cummins College of Engineering, 2014</em></p>
+</div>
+</div>
+</div>
+</div>
+<div class="text-center mt-10">
+<button id="download-pdf-btn" class="inline-block bg-orange-600 text-white font-bold py-3 px-10 rounded-full shadow-lg hover:bg-orange-700 transition-colors">
+<i class="fas fa-file-pdf mr-2"></i> Download PDF
+</button>
+</div>
+</section>
+<section id="project-1-details" class="content-section hidden bg-white rounded-lg p-4 sm:p-6 md:p-10">
+<a href="#portfolio-detailed-projects-content" data-target="portfolio-detailed-projects-content" class="inline-flex items-center text-orange-600 hover:text-orange-800 mb-6">
+<i class="fas fa-arrow-left mr-2"></i>
+Back to Portfolio
+</a>
+<h2 class="text-2xl sm:text-3xl font-bold text-gray-800">Salesforce AI Agent POC:</h2>
+<p class="text-md text-stone-500 mb-2"><em>A White Paper on Bridging Gaps in Patient Communication</em></p>
+<p class="text-sm text-stone-400 mb-6">YEAR: Currently working on the POC</p>
 
-            // --- Mobile Explorations Dropdown Toggle ---
-            if (mobileExplorationsBtn && mobileExplorationsDropdown) {
-                 mobileExplorationsBtn.addEventListener('click', (e) => {
-                     e.stopPropagation(); // Prevent main link handler
-                     mobileExplorationsDropdown.classList.toggle('hidden');
-                 });
-            }
+<p class="text-stone-700 mb-6">Here is the brief overview of the white paper proposed to the client:</p>
+<div class="space-y-6 text-stone-800" style="line-height: 1.6;">
+<div>
+<h4 class="text-xl font-bold mb-2">Objective</h4>
+<p>To evaluate if an AI-driven solution to dynamically generate context specific, patient-friendly benefit explanations ("blurbs"), aiming to reduce therapy delays, decrease operational costs, and improve the patient experience.</p>
+</div>
+<div>
+<h4 class="text-xl font-bold mb-2">The Challenge</h4>
+<ul class="list-disc list-inside pl-4 space-y-2 text-sm sm:text-base">
+<li><strong>Process Inefficiency:</strong> The manual workflow was time-intensive, error-prone, and created bottlenecks that directly delayed patient access to therapy.</li>
+<li><strong>Patient Confusion:</strong> Organizations often used generic blurbs that lacked specificity, leading to patient confusion and increased support inquiries.</li>
+<li><strong>Scalability Issues:</strong> Manually crafting tailored blurbs for every possible combination of benefits was impractical and unsustainable.</li>
+</ul>
+</div>
+<div>
+<h4 class="text-xl font-bold mb-2">The Solution</h4>
+<p>I researched state-of-the-art AI techniques, including Chain-of-Thought (CoT) prompting and knowledge graphs. I theorized this combination was a perfect fit. I then investigated our existing enterprise technology and confirmed Salesforce Agent Force's underlying architecture was built on these principles. I am currently working with our team to conduct a POC to identify a feasible approach.</p>
+</div>
+<div>
+<h4 class="text-xl font-bold mb-2">Benefits & Business Impacts</h4>
+<div class="space-y-6">
+<div>
+<h5 class="text-lg font-semibold text-stone-800">Accelerated Patient Access to Therapy</h5>
+<div class="pl-4 mt-2 space-y-2 text-sm">
+<p><strong>Impact:</strong> Automating blurb generation eliminates manual peer reviews, saving 500 staff hours per month.</p>
+</div>
+</div>
+<div>
+<h5 class="text-lg font-semibold text-stone-800">Improved Patient and Provider Experience</h5>
+<div class="pl-4 mt-2 space-y-2 text-sm">
+<p><strong>Impact:</strong> Tailored, patient-friendly blurbs replace generic explanations, reducing confusion and support calls by an estimated 20–30%.</p>
+</div>
+</div>
+<div>
+<h5 class="text-lg font-semibold text-stone-800">Cost Saving & Operational Efficiency</h5>
+<div class="pl-4 mt-2 space-y-2 text-sm">
+<p><strong>Impact:</strong> Automation reduces manual labor costs, translating to ~$180,000 in annual savings.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
 
-            // --- Content Switching Logic ---
-            function handleLinkClick(event) {
-                event.preventDefault();
-                const targetId = event.currentTarget.dataset.target;
-                const targetSection = document.getElementById(targetId);
-                
-                // Close mobile menu on link click
-                if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
-                    mobileMenu.classList.add('hidden');
-                    mobileMenuBtn.querySelector('i').classList.replace('fa-times', 'fa-bars');
-                }
+<section id="project-2-details" class="content-section hidden bg-white rounded-lg p-4 sm:p-6 md:p-10">
+<a href="#portfolio-detailed-projects-content" data-target="portfolio-detailed-projects-content" class="inline-flex items-center text-orange-600 hover:text-orange-800 mb-6">
+<i class="fas fa-arrow-left mr-2"></i>
+Back to Portfolio
+</a>
+<h2 class="text-2xl sm:text-3xl font-bold text-gray-800">Salesforce optimizations</h2>
+<p class="text-stone-700 my-4 leading-relaxed">
+Contributed towards several Salesforce initiatives.
+</p>
+<div class="space-y-8 text-stone-800">
+<div class="p-4 border-l-4 border-orange-200">
+<h4 class="text-xl font-bold mb-2">Project: Automated Healthcare Coverage & Eligibility Verification</h4>
+<p class="mb-3"><strong>Objective:</strong> To streamline the benefits verification process by implementing an automated service to discover and validate patient insurance coverage.</p>
+<ul class="list-disc list-inside pl-4 space-y-2 text-sm">
+<li>Led the end-to-end implementation of the service, from requirements gathering to deployment.</li>
+<li>Coordinated with third-party vendors to ensure a seamless API integration via MuleSoft.</li>
+<li>Achieved a successful launch, with a post-production incident rate of less than 5%.</li>
+</ul>
+</div>
+<div class="p-4 border-l-4 border-orange-200">
+<h4 class="text-xl font-bold mb-2">Project: User Experience & Workflow Optimization</h4>
+<p class="mb-3"><strong>Objective:</strong> To improve user productivity within Salesforce by identifying and eliminating inefficiencies in core business processes.</p>
+<ul class="list-disc list-inside pl-4 space-y-2 text-sm">
+<li>Developed a custom click-tracking tool to analyze user behavior.</li>
+<li>Utilized the data to identify bottlenecks and redesign the user interface.</li>
+<li>Successfully reduced user clicks by an average of 28% for targeted workflows.</li>
+</ul>
+</div>
+</div>
+</section>
 
-                allLinks.forEach(link => link.classList.remove('active'));
-                contentSections.forEach(section => section.classList.remove('active'));
-        
-                event.currentTarget.classList.add('active');
-                if (event.currentTarget.closest('.group')) {
-                    event.currentTarget.closest('.group').querySelector('.nav-link').classList.add('active');
-                }
+<section id="portfolio-detailed-projects-content" class="content-section hidden bg-white rounded-lg p-4 md:p-8">
+<h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Portfolio</h2>
+<div class="space-y-6">
+<a href="#project-1-details" data-target="project-1-details" class="block bg-stone-50 p-6 rounded-lg border border-stone-200 hover:shadow-lg hover:border-orange-400 transition-all duration-300">
+<h3 class="text-xl sm:text-2xl font-semibold text-gray-800">Salesforce AI Agent POC:</h3>
+<p class="text-sm text-stone-500 mb-2"><em>A White Paper on Bridging Gaps in Patient Communication</em></p>
+<p class="text-stone-600 text-sm">An overview of a white paper proposing an AI-driven solution to dynamically generate context-specific, patient-friendly benefit explanations...</p>
+</a>
+<a href="#project-2-details" data-target="project-2-details" class="block bg-stone-50 p-6 rounded-lg border border-stone-200 hover:shadow-lg hover:border-orange-400 transition-all duration-300">
+<h3 class="text-xl sm:text-2xl font-semibold text-gray-800">Salesforce Product & Implementation Specialist</h3>
+<p class="text-stone-600 text-sm mt-2">Contributed to a major Salesforce implementation by identifying product enhancement opportunities and leading the integration of new services.</p>
+</a>
+<a href="#" data-target="" class="block bg-stone-50 p-6 rounded-lg border border-stone-200 hover:shadow-lg hover:border-orange-400 transition-all duration-300">
+<h3 class="text-xl sm:text-2xl font-semibold text-gray-800">Project 3 Title</h3>
+<p class="text-sm text-stone-500 mb-2"><em>Project 3 Subtitle</em></p>
+<p class="text-stone-600 text-sm">And here is where you can add another project summary to build out your portfolio...</p>
+</a>
+</div>
+</section>
 
-                if (targetId === 'home-page-main-content') {
-                    heroSection.classList.add('active');
-                    mainContentWrapper.style.marginTop = '2rem'; // Spacing for below hero
-                    document.getElementById('home-page-main-content').classList.add('active');
-                } else if (targetSection) {
-                    heroSection.classList.remove('active');
-                    mainContentWrapper.style.marginTop = '80px'; // Spacing for below fixed header
-                    targetSection.classList.add('active');
-                }
-                
-                // Scroll to top of the content wrapper
-                 window.scrollTo({
-                    top: mainContentWrapper.offsetTop - 80, // Adjust for fixed header height
-                    behavior: 'smooth'
-                });
+<section id="financial-content" class="content-section hidden bg-white rounded-lg p-6 md:p-8">
+<h2 class="text-3xl font-bold text-gray-800">Financial Projects</h2>
+<p class="mt-4 text-gray-600">Content coming soon!</p>
+</section>
+<section id="hiking-content" class="content-section hidden bg-white rounded-lg p-6 md:p-8">
+<h2 class="text-3xl font-bold text-gray-800">Hiking Adventures</h2>
+<p class="mt-4 text-gray-600">Content coming soon!</p>
+</section>
+<section id="baking-content" class="content-section hidden bg-white rounded-lg p-6 md:p-8">
+<h2 class="text-3xl font-bold text-gray-800">Baking Creations</h2>
+<p class="mt-4 text-gray-600">Content coming soon!</p>
+</section>
+<section id="books-read-content" class="content-section hidden bg-white rounded-lg p-6 md:p-8">
+<h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Books Read</h2>
+<div class="space-y-4 max-w-lg mx-auto">
+<div>
+<button class="year-toggle flex justify-between items-center w-full text-left font-semibold text-xl p-4 bg-stone-100 rounded-lg hover:bg-stone-200 transition-colors">
+<span>2025</span>
+<i class="fas fa-chevron-down transform transition-transform"></i>
+</button>
+<div class="book-list hidden mt-2 pl-4 border-l-2 border-orange-300">
+<ul class="list-disc list-inside text-stone-700 space-y-2 p-4">
+<li>Andrew Carnegie by David Nasaw</li>
+<li>The New Rule to Lifting for Life</li>
+<li>Poor Charlie's Almanack</li>
+<li>Prisoners of Geography by Tim Marshall</li>
+<li>The Book Thief by Markus Zusak</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
 
-                // Special scroll for contact form link
-                if (event.currentTarget.getAttribute('href') === '#contact-form') {
-                    setTimeout(() => {
-                        const formElement = document.getElementById('contact-form');
-                        if (formElement) {
-                            formElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                        }
-                    }, 300); // Allow time for the section to fade in
-                }
-            }
-        
-            allLinks.forEach(link => {
-                link.addEventListener('click', handleLinkClick);
-            });
-            
-            // --- Skills data ---
-            const skills = [
-                { name: 'Requirement Gathering & Analysis', score: 5 },
-                { name: 'SQL', score: 5 },
-                { name: 'API Integration', score: 5 },
-                { name: 'Salesforce', score: 4 },
-                { name: 'Prompt Engineering', score: 4 },
-                { name: 'Data Storytelling', score: 4 },
-                { name: 'Process Automation (RPA)', score: 4 },
-                { name: 'Python', score: 3 },
-                { name: 'Microsoft Azure', score: 3 },
-                { name: 'Tableau', score: 3 },
-                { name: 'Power BI', score: 3 }
-            ];
+</main>
 
-            const skillsContainer = document.getElementById('skills-container-new');
-            if (skillsContainer) {
-                skills.sort((a, b) => b.score - a.score || a.name.localeCompare(b.name));
-                
-                skillsContainer.innerHTML = ''; // Clear previous skills
-                skills.forEach(skill => {
-                    const skillElement = document.createElement('div');
-                    skillElement.className = 'flex items-center justify-between';
+<footer class="mt-10 pt-6 border-t border-gray-200 text-center p-6 bg-white rounded-b-xl">
+<p class="text-gray-600 mb-4">&copy; 2025 Rasika Dharne. All rights reserved.</p>
+<div class="flex justify-center space-x-6 text-gray-700">
+<a href="#" class="hover:text-orange-700"><i class="fab fa-linkedin fa-2x"></i></a>
+<a href="#" class="hover:text-orange-700"><i class="fab fa-github fa-2x"></i></a>
+<a href="#" class="hover:text-orange-700"><i class="fab fa-twitter fa-2x"></i></a>
+</div>
+</footer>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+const allLinks = document.querySelectorAll('a[data-target]');
+const contentSections = document.querySelectorAll('.content-section');
+const heroSection = document.getElementById('hero-home');
+const mainContentWrapper = document.getElementById('main-content-wrapper');
+const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+const mobileMenu = document.getElementById('mobile-menu');
+const mobileExplorationsBtn = document.getElementById('mobile-explorations-btn');
+const mobileExplorationsDropdown = document.getElementById('mobile-explorations-dropdown');
 
-                    const skillName = document.createElement('span');
-                    skillName.className = 'text-stone-700';
-                    skillName.textContent = skill.name;
-                    skillElement.appendChild(skillName);
-                    
-                    const circles = document.createElement('div');
-                    circles.className = 'flex-shrink-0';
-                    for (let i = 0; i < 5; i++) {
-                        const circle = document.createElement('span');
-                        circle.className = 'skill-circle';
-                        circle.classList.add(i < skill.score ? 'bg-orange-600' : 'bg-stone-300');
-                        circles.appendChild(circle);
-                    }
-                    skillElement.appendChild(circles);
-                    skillsContainer.appendChild(skillElement);
-                });
-            }
-            
-            // --- PDF Download functionality ---
-            const downloadPdfBtn = document.getElementById('download-pdf-btn');
-            if(downloadPdfBtn) {
-                downloadPdfBtn.addEventListener('click', function() {
-                    const resumeElement = document.getElementById('resume-export-area');
-                    const opt = {
-                      margin:       0.5,
-                      filename:     'Rasika_Dharne_Resume.pdf',
-                      image:        { type: 'jpeg', quality: 0.98 },
-                      html2canvas:  { scale: 2 },
-                      jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
-                    };
-                    html2pdf().set(opt).from(resumeElement).save();
-                });
-            }
-        
-            // --- Contact form functionality ---
-            const contactForm = document.getElementById('contact-form');
-            if(contactForm) {
-                contactForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    const formData = new FormData(contactForm);
-                    fetch("https://formspree.io/f/movnpqwp", {
-                        method: 'POST',
-                        body: formData,
-                        headers: {'Accept': 'application/json'}
-                    }).then(response => {
-                        const formSuccessMessage = document.getElementById('form-success-message');
-                        const formErrorMessage = document.getElementById('form-error-message');
-                        if (response.ok) {
-                            contactForm.style.display = 'none';
-                            formSuccessMessage.style.display = 'block';
-                        } else {
-                            formErrorMessage.textContent = 'Oops! Something went wrong. Please try again.';
-                            formErrorMessage.style.display = 'block';
-                        }
-                    }).catch(error => {
-                        const formErrorMessage = document.getElementById('form-error-message');
-                        formErrorMessage.textContent = 'Oops! Something went wrong. Please try again.';
-                        formErrorMessage.style.display = 'block';
-                    });
-                });
-            }
+// --- Mobile Menu Toggle ---
+if (mobileMenuBtn && mobileMenu) {
+mobileMenuBtn.addEventListener('click', () => {
+mobileMenu.classList.toggle('hidden');
+const icon = mobileMenuBtn.querySelector('i');
+if (mobileMenu.classList.contains('hidden')) {
+icon.classList.remove('fa-times');
+icon.classList.add('fa-bars');
+} else {
+icon.classList.remove('fa-bars');
+icon.classList.add('fa-times');
+}
+});
+}
 
-            // --- Read More button functionality ---
-            document.querySelectorAll('.read-more-btn').forEach(button => {
-                button.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation(); 
-                    const projectExpandable = this.closest('.project-expandable');
-                    if (!projectExpandable) return;
-                    const fullText = projectExpandable.querySelector('.full-text');
-                    const summaryText = projectExpandable.querySelector('.summary-text');
-                    
-                    if (fullText && summaryText) {
-                        const isHidden = fullText.style.display === 'none' || fullText.style.display === '';
-                        fullText.style.display = isHidden ? 'block' : 'none';
-                        summaryText.style.display = isHidden ? 'none' : 'inline';
-                        this.textContent = isHidden ? 'Read Less...' : 'Read More...';
-                    }
-                });
-            });
+// --- Mobile Explorations Dropdown Toggle ---
+if (mobileExplorationsBtn && mobileExplorationsDropdown) {
+mobileExplorationsBtn.addEventListener('click', (e) => {
+e.stopPropagation(); // Prevent main link handler
+mobileExplorationsDropdown.classList.toggle('hidden');
+});
+}
 
-            // --- Collapsible book list functionality ---
-            document.querySelectorAll('.year-toggle').forEach(button => {
-                button.addEventListener('click', () => {
-                    const bookList = button.nextElementSibling;
-                    const icon = button.querySelector('i');
-                    bookList.classList.toggle('hidden');
-                    icon.classList.toggle('rotate-180');
-                });
-            });
+// --- Content Switching Logic ---
+function handleLinkClick(event) {
+event.preventDefault();
+const targetId = event.currentTarget.dataset.target;
+const targetSection = document.getElementById(targetId);
+// Close mobile menu on link click
+if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+mobileMenu.classList.add('hidden');
+mobileMenuBtn.querySelector('i').classList.replace('fa-times', 'fa-bars');
+}
 
-            // --- Initial setup for page load ---
-            document.querySelector('a[data-target="home-page-main-content"]').classList.add('active');
-            heroSection.classList.add('active');
-            document.getElementById('home-page-main-content').classList.add('active');
-            mainContentWrapper.style.marginTop = '2rem';
-        });
-    </script>
+allLinks.forEach(link => link.classList.remove('active'));
+contentSections.forEach(section => section.classList.remove('active'));
+event.currentTarget.classList.add('active');
+if (event.currentTarget.closest('.group')) {
+event.currentTarget.closest('.group').querySelector('.nav-link').classList.add('active');
+}
+
+if (targetId === 'home-page-main-content') {
+heroSection.classList.add('active');
+mainContentWrapper.style.marginTop = '2rem'; // Spacing for below hero
+document.getElementById('home-page-main-content').classList.add('active');
+} else if (targetSection) {
+heroSection.classList.remove('active');
+mainContentWrapper.style.marginTop = '80px'; // Spacing for below fixed header
+targetSection.classList.add('active');
+}
+// Scroll to top of the content wrapper
+window.scrollTo({
+top: mainContentWrapper.offsetTop - 80, // Adjust for fixed header height
+behavior: 'smooth'
+});
+
+// Special scroll for contact form link
+if (event.currentTarget.getAttribute('href') === '#contact-form') {
+setTimeout(() => {
+const formElement = document.getElementById('contact-form');
+if (formElement) {
+formElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+}, 300); // Allow time for the section to fade in
+}
+}
+allLinks.forEach(link => {
+link.addEventListener('click', handleLinkClick);
+});
+// --- Skills data ---
+const skills = [
+{ name: 'Requirement Gathering & Analysis', score: 5 },
+{ name: 'SQL', score: 5 },
+{ name: 'API Integration', score: 5 },
+{ name: 'Salesforce', score: 4 },
+{ name: 'Prompt Engineering', score: 4 },
+{ name: 'Data Storytelling', score: 4 },
+{ name: 'Process Automation (RPA)', score: 4 },
+{ name: 'Python', score: 3 },
+{ name: 'Microsoft Azure', score: 3 },
+{ name: 'Tableau', score: 3 },
+{ name: 'Power BI', score: 3 }
+];
+
+const skillsContainer = document.getElementById('skills-container-new');
+if (skillsContainer) {
+skills.sort((a, b) => b.score - a.score || a.name.localeCompare(b.name));
+skillsContainer.innerHTML = ''; // Clear previous skills
+skills.forEach(skill => {
+const skillElement = document.createElement('div');
+skillElement.className = 'flex items-center justify-between';
+
+const skillName = document.createElement('span');
+skillName.className = 'text-stone-700';
+skillName.textContent = skill.name;
+skillElement.appendChild(skillName);
+const circles = document.createElement('div');
+circles.className = 'flex-shrink-0';
+for (let i = 0; i < 5; i++) {
+const circle = document.createElement('span');
+circle.className = 'skill-circle';
+circle.classList.add(i < skill.score ? 'bg-orange-600' : 'bg-stone-300');
+circles.appendChild(circle);
+}
+skillElement.appendChild(circles);
+skillsContainer.appendChild(skillElement);
+});
+}
+// --- PDF Download functionality ---
+const downloadPdfBtn = document.getElementById('download-pdf-btn');
+if(downloadPdfBtn) {
+downloadPdfBtn.addEventListener('click', function() {
+const resumeElement = document.getElementById('resume-export-area');
+const opt = {
+margin: 0.5,
+filename: 'Rasika_Dharne_Resume.pdf',
+image: { type: 'jpeg', quality: 0.98 },
+html2canvas: { scale: 2 },
+jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+};
+html2pdf().set(opt).from(resumeElement).save();
+});
+}
+// --- Contact form functionality ---
+const contactForm = document.getElementById('contact-form');
+if(contactForm) {
+contactForm.addEventListener('submit', function(e) {
+e.preventDefault();
+const formData = new FormData(contactForm);
+fetch("https://formspree.io/f/movnpqwp", {
+method: 'POST',
+body: formData,
+headers: {'Accept': 'application/json'}
+}).then(response => {
+const formSuccessMessage = document.getElementById('form-success-message');
+const formErrorMessage = document.getElementById('form-error-message');
+if (response.ok) {
+contactForm.style.display = 'none';
+formSuccessMessage.style.display = 'block';
+} else {
+formErrorMessage.textContent = 'Oops! Something went wrong. Please try again.';
+formErrorMessage.style.display = 'block';
+}
+}).catch(error => {
+const formErrorMessage = document.getElementById('form-error-message');
+formErrorMessage.textContent = 'Oops! Something went wrong. Please try again.';
+formErrorMessage.style.display = 'block';
+});
+});
+}
+
+// --- Read More button functionality ---
+document.querySelectorAll('.read-more-btn').forEach(button => {
+button.addEventListener('click', function(e) {
+e.preventDefault();
+e.stopPropagation(); 
+const projectExpandable = this.closest('.project-expandable');
+if (!projectExpandable) return;
+const fullText = projectExpandable.querySelector('.full-text');
+const summaryText = projectExpandable.querySelector('.summary-text');
+if (fullText && summaryText) {
+const isHidden = fullText.style.display === 'none' || fullText.style.display === '';
+fullText.style.display = isHidden ? 'block' : 'none';
+summaryText.style.display = isHidden ? 'none' : 'inline';
+this.textContent = isHidden ? 'Read Less...' : 'Read More...';
+}
+});
+});
+
+// --- Collapsible book list functionality ---
+document.querySelectorAll('.year-toggle').forEach(button => {
+button.addEventListener('click', () => {
+const bookList = button.nextElementSibling;
+const icon = button.querySelector('i');
+bookList.classList.toggle('hidden');
+icon.classList.toggle('rotate-180');
+});
+});
+
+// --- Initial setup for page load ---
+document.querySelector('a[data-target="home-page-main-content"]').classList.add('active');
+heroSection.classList.add('active');
+document.getElementById('home-page-main-content').classList.add('active');
+mainContentWrapper.style.marginTop = '2rem';
+});
+</script>
 </body>
 </html>
