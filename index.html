@@ -564,8 +564,159 @@ The long-term objective is to automate the extraction, and analysis process.
 </section>
 
 <section id="financial-content" class="content-section hidden bg-white rounded-lg p-6 md:p-8">
-<h2 class="text-3xl font-bold text-gray-800">Financial Projects</h2>
-<p class="mt-4 text-gray-600">Content coming soon!</p>
+<h2 class="text-3xl font-bold text-gray-800 mb-8">Financial Case Study</h2>
+
+<div class="bg-stone-50 p-6 rounded-lg border border-stone-200 hover:shadow-lg transition-all duration-300">
+<h3 class="text-2xl font-semibold text-gray-800 mb-2">Nvidia Financial Case Study</h3>
+<p class="text-sm text-stone-500 mb-4">Rasika Dharne | Dec 04, 2025</p>
+
+<div class="project-expandable text-stone-700 leading-relaxed">
+
+<span class="summary-text">
+This analysis evaluates NVIDIA’s financial health through a review of its Balance Sheet, Income Statement, and Cash Flow Statement. The main goals are to understand the company’s creditworthiness, operational efficiency, and capital allocation strategy. A secondary goal is personal: to deepen my own understanding of how financial statements work and how investment strategies depend on these core documents.
+</span>
+
+<div class="full-text mt-6 space-y-6">
+
+<p class="text-sm italic text-stone-500 bg-stone-100 p-2 rounded border-l-4 border-orange-300">
+<strong>Disclaimer:</strong> This analysis is purely for informational and research purposes. I am not certified to recommend any investment decisions. I am simply passionate about understanding companies through their financials, and this write-up is part of my learning journey.
+</p>
+
+<div>
+<h4 class="text-xl font-bold text-gray-800 mb-2">2. Feedback Request</h4>
+<p>This is my first full financial analysis, so I would really appreciate feedback on my understanding of the numbers and my writing/explanations. I am very open to learning and improving.</p>
+</div>
+
+<div>
+<h4 class="text-xl font-bold text-gray-800 mb-2">3. Approach</h4>
+<p>Instead of going line-by-line through each statement, I structured this analysis around key questions about NVIDIA’s business and financial strength. As I answer each question, I use data from the balance sheet, income statement, and cash flow statement, add relevant technical details, and connect the numbers back to business reality. Many questions are inspired by long-term investors such as Warren Buffett, Charlie Munger, and Li Lu.</p>
+</div>
+
+<div>
+<h4 class="text-xl font-bold text-gray-800 mb-2">4. Data Criteria</h4>
+<ul class="list-disc list-inside pl-4 space-y-1">
+<li>Data is directly extracted from the SEC database using XBRL tags via API integration.</li>
+<li>The analysis uses data from 2014 to 2025.</li>
+<li>All numbers are divided by 1,000,000 (represented in millions).</li>
+</ul>
+</div>
+
+<div>
+<h4 class="text-xl font-bold text-gray-800 mb-4">5. Analysis</h4>
+
+<h5 class="text-lg font-semibold text-orange-700 mt-4">5.1. Does NVIDIA have enough cash to meet its debt obligations?</h5>
+<p><strong>Short Term:</strong> Since 2014, NVIDIA’s Current Ratio has been > 1, indicating decent liquidity. To stress-test this, I calculated the Quick Ratio (excluding inventory) and reduced marketable securities by up to 25%. Even after these stress tests, NVIDIA’s quick ratio remains above 3, which is excellent and shows strong coverage for short-term debt.</p>
+
+<h5 class="text-lg font-semibold text-orange-700 mt-4">5.2. Is NVIDIA hoarding cash as a one-time event or as a sustained pattern?</h5>
+<p>Since 2014, the Cash Ratio has consistently been over 20%. From 2014–2020, over 50% of assets were in cash equivalents. Recently, this has decreased to ~30%+, likely reflecting the deployment of cash to strengthen and grow the business rather than just sitting on it.</p>
+
+<h5 class="text-lg font-semibold text-orange-700 mt-4">5.3. Does total debt hurt cash flow? Does operating cash flow comfortably exceed debt?</h5>
+<p>Since 2014, Net Debt has been negative, meaning cash exceeds debt. While the company has taken on more debt recently (decreasing this value somewhat), it is not alarming because the cash generated still comfortably exceeds the debt.</p>
+
+<h5 class="text-lg font-semibold text-orange-700 mt-4">5.4. Is Accounts Receivable proportional to sales growth?</h5>
+<p>NVIDIA’s Accounts Receivable (AR) is generally greater than cash equivalents, suggesting significant sales on credit. However, Days Sales Outstanding (DSO) since 2020 has been between 53 and 65 days—quite strong. Receivables Turnover is high, indicating faster collection. NVIDIA fits "Case 3" (AR ↑, Sales ↑, DSO Stable), which is healthy.</p>
+
+<h5 class="text-lg font-semibold text-orange-700 mt-4">5.5. Is inventory sitting on shelves too long?</h5>
+<p>Inventory on shelves has decreased over the years while sales have grown, which is positive and suggests efficient inventory management.</p>
+
+<h5 class="text-lg font-semibold text-orange-700 mt-4">5.6. Is the company spending money on investments (CapEx)?</h5>
+<p>CapEx jumped sharply from 2021, likely due to a structural shift in investment or a fiercely competitive market. Average CapEx (2020–2025) is roughly 8× higher than in the earlier period (2015–2019).</p>
+
+<h5 class="text-lg font-semibold text-orange-700 mt-4">5.7. CapEx has increased by ~8×. Has revenue increased by at least 8×?</h5>
+<p>Yes. Revenue increased by roughly 22.22× (from ~1,988M to ~44,181M average). Revenue growth far outpaces CapEx growth, which is very favorable.</p>
+
+<h5 class="text-lg font-semibold text-orange-700 mt-4">5.8. Is the company buying new businesses at an advantage?</h5>
+<p>Since 2021, goodwill has increased, indicating active acquisitions. Based on the pattern, it does not appear businesses are being bought below book value (no sharp downward adjustments).</p>
+
+<h5 class="text-lg font-semibold text-orange-700 mt-4">5.9. What is the situation for intangible assets like patents?</h5>
+<p>Intangible assets have increased from 2021 onward, likely due to filing more patents or acquiring companies/IP. The NVIDIA brand value itself is not fully captured here but is significant.</p>
+
+<h5 class="text-lg font-semibold text-orange-700 mt-4">5.10. If the company went bankrupt today, how much money would I get back?</h5>
+<p>In a conservative scenario (haircuts on assets), the recovery value is 0. Using total assets as-is, a retail investor would get about $3 per share. Conclusion: Retail investors are unlikely to recover much in bankruptcy.</p>
+
+<h5 class="text-lg font-semibold text-orange-700 mt-4">5.11. Does the company have less short-term debt compared to long-term?</h5>
+<p>Short-term debt has increased recently, which can be a concern as it exposes the company to short-term credit market risk.</p>
+
+<h5 class="text-lg font-semibold text-orange-700 mt-4">5.12. How many years of profit would it take to pay off long-term debt?</h5>
+<p>NVIDIA can pay off long-term debt in well under one year of profit. Using Free Cash Flow, it would take about 1.5 years—still a strong position.</p>
+
+<h5 class="text-lg font-semibold text-orange-700 mt-4">5.13. Is the company using debt or its earning power to finance operations?</h5>
+<p>Primarily earning power. For every dollar of equity, the company carries only about 0.4 to 0.8 units of debt. Anything below 0.8 suggests a durable competitive advantage.</p>
+
+<h5 class="text-lg font-semibold text-orange-700 mt-4">5.14. Is the company making additions to retained earnings?</h5>
+<p>Yes, consistently (except for two years). Profits have grown and been reinvested. The wealth created ratio for 2025 is 0.99, a very good indicator.</p>
+
+<h5 class="text-lg font-semibold text-orange-700 mt-4">5.15. Treasury stock behavior</h5>
+<p>Recently, no treasury stock is shown, but past behavior was generally positive (share buybacks).</p>
+
+<h5 class="text-lg font-semibold text-orange-700 mt-4">5.16. Return on shareholder equity (ROE)</h5>
+<p>Since 2020, ROE has consistently been >20%. In 2025, it was ~0.9 profit per 1.0 equity. Levels are generally strong.</p>
+
+<h5 class="text-lg font-semibold text-orange-700 mt-4">5.17. Does the company have any leverage that could “fake” competitive advantage?</h5>
+<p>No heavy leverage is used. The high ROE is likely driven by exceptional business performance, not financial engineering.</p>
+
+<h5 class="text-lg font-semibold text-orange-700 mt-4">5.18. Does the company have a consistent gross profit margin?</h5>
+<p>Yes, consistently over 50%. This suggests durable competitive advantage, though peer comparison is needed to confirm.</p>
+
+<h5 class="text-lg font-semibold text-orange-700 mt-4">5.19. Is the company operating in a highly competitive space (High SG&A/R&D)?</h5>
+<ul class="list-disc list-inside pl-4 space-y-1">
+<li><strong>SG&A:</strong> Consistently below 30% (Good sign).</li>
+<li><strong>R&D:</strong> Critical for this industry. Initially 50% of gross profits, but the percentage has decreased over time, suggesting efficiency. Spikes align with product cycles.</li>
+<li><strong>Depreciation:</strong> Kept low relative to scale (Excellent).</li>
+<li><strong>Financial Cost:</strong> Very small to no meaningful debt payments relative to operating income.</li>
+</ul>
+
+<h5 class="text-lg font-semibold text-orange-700 mt-4">5.20. Does the company have high interest payments relative to operating income?</h5>
+<p>No. Interest payments are very low to almost none compared to operating income.</p>
+
+<h5 class="text-lg font-semibold text-orange-700 mt-4">5.21. Is net income increasing?</h5>
+<p>YOY net income is volatile, but the average growth from 2014 to 2025 is about 60%, which is very strong.</p>
+
+<h5 class="text-lg font-semibold text-orange-700 mt-4">5.22. Does the company have a higher percentage of net earnings to total revenue?</h5>
+<p>The ratio is volatile but has been very high (~40%) in the last two years. While consistency is a small yellow flag, the level fits the profile of a "very good business" (>20%).</p>
+</div>
+
+<div>
+<h4 class="text-xl font-bold text-gray-800 mb-4">6. Summary Checklist</h4>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse border border-stone-300">
+<thead class="bg-stone-200">
+<tr>
+<th class="p-3 border border-stone-300 w-12">#</th>
+<th class="p-3 border border-stone-300">Question</th>
+<th class="p-3 border border-stone-300 w-40">Rating</th>
+</tr>
+</thead>
+<tbody class="text-sm">
+<tr><td class="p-2 border border-stone-300">1</td><td class="p-2 border border-stone-300">Enough cash to meet short-term obligations?</td><td class="p-2 border border-stone-300 font-semibold text-green-700">✅ Great</td></tr>
+<tr><td class="p-2 border border-stone-300">2</td><td class="p-2 border border-stone-300">Cash levels show a sustained pattern?</td><td class="p-2 border border-stone-300 font-semibold text-green-700">✅ Great</td></tr>
+<tr><td class="p-2 border border-stone-300">3</td><td class="p-2 border border-stone-300">Does cash exceed debt?</td><td class="p-2 border border-stone-300 font-semibold text-green-700">✅ Great</td></tr>
+<tr><td class="p-2 border border-stone-300">4</td><td class="p-2 border border-stone-300">Healthy AR and DSO?</td><td class="p-2 border border-stone-300 font-semibold text-green-700">✅ Great</td></tr>
+<tr><td class="p-2 border border-stone-300">5</td><td class="p-2 border border-stone-300">Is inventory moving?</td><td class="p-2 border border-stone-300 font-semibold text-green-700">✅ Great</td></tr>
+<tr><td class="p-2 border border-stone-300">6</td><td class="p-2 border border-stone-300">Is rising CapEx a sign of competitive investment?</td><td class="p-2 border border-stone-300 font-semibold text-green-700">✅ Good</td></tr>
+<tr><td class="p-2 border border-stone-300">7</td><td class="p-2 border border-stone-300">Has revenue grown more than CapEx?</td><td class="p-2 border border-stone-300 font-semibold text-green-700">✅ Great</td></tr>
+<tr><td class="p-2 border border-stone-300">8</td><td class="p-2 border border-stone-300">Are acquisitions at attractive prices?</td><td class="p-2 border border-stone-300 font-semibold text-yellow-600">⚠️ Good / Not Clearly Cheap</td></tr>
+<tr><td class="p-2 border border-stone-300">9</td><td class="p-2 border border-stone-300">Intangible assets strengthening?</td><td class="p-2 border border-stone-300 font-semibold text-green-700">✅ Great</td></tr>
+<tr><td class="p-2 border border-stone-300">10</td><td class="p-2 border border-stone-300">Bankruptcy recovery?</td><td class="p-2 border border-stone-300 font-semibold text-yellow-600">⚠️ Okay (Low)</td></tr>
+<tr><td class="p-2 border border-stone-300">11</td><td class="p-2 border border-stone-300">Short-term vs long-term debt?</td><td class="p-2 border border-stone-300 font-semibold text-yellow-600">⚠️ Okay (ST Increased)</td></tr>
+<tr><td class="p-2 border border-stone-300">12</td><td class="p-2 border border-stone-300">Can debt be paid off quickly?</td><td class="p-2 border border-stone-300 font-semibold text-green-700">✅ Great</td></tr>
+<tr><td class="p-2 border border-stone-300">13</td><td class="p-2 border border-stone-300">Funding operations via earnings?</td><td class="p-2 border border-stone-300 font-semibold text-green-700">✅ Great</td></tr>
+<tr><td class="p-2 border border-stone-300">14</td><td class="p-2 border border-stone-300">Retained earnings growing?</td><td class="p-2 border border-stone-300 font-semibold text-green-700">✅ Great</td></tr>
+<tr><td class="p-2 border border-stone-300">15</td><td class="p-2 border border-stone-300">Shareholder-friendly treasury stock?</td><td class="p-2 border border-stone-300 font-semibold text-green-700">✅ Good</td></tr>
+<tr><td class="p-2 border border-stone-300">16</td><td class="p-2 border border-stone-300">ROE consistent (>20%)?</td><td class="p-2 border border-stone-300 font-semibold text-green-700">✅ Great</td></tr>
+<tr><td class="p-2 border border-stone-300">17</td><td class="p-2 border border-stone-300">High ROE driven by business performance?</td><td class="p-2 border border-stone-300 font-semibold text-green-700">✅ Great</td></tr>
+<tr><td class="p-2 border border-stone-300">18</td><td class="p-2 border border-stone-300">CapEx burn reasonable?</td><td class="p-2 border border-stone-300 font-semibold text-green-700">✅ Great</td></tr>
+<tr><td class="p-2 border border-stone-300">19</td><td class="p-2 border border-stone-300">Cash from ongoing operations?</td><td class="p-2 border border-stone-300 font-semibold text-green-700">✅ Good–Great</td></tr>
+<tr><td class="p-2 border border-stone-300">20</td><td class="p-2 border border-stone-300">Earnings and cash flow rising together?</td><td class="p-2 border border-stone-300 font-semibold text-green-700">✅ Good</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+</div>
+<a href="#" class="read-more-btn text-orange-700 hover:underline text-sm font-semibold block mt-4">Read More...</a>
+</div>
+</div>
 </section>
 <section id="hiking-content" class="content-section hidden bg-white rounded-lg p-6 md:p-8">
 <h2 class="text-3xl font-bold text-gray-800">Hiking Adventures</h2>
